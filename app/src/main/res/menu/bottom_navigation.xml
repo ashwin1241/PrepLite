@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_sharp_home_40"
+        android:title="Feed"
+        android:id="@+id/nav_feed" />
+    <item
+        android:icon="@drawable/ic_baseline_institute_40"
+        android:title="Institute"
+        android:id="@+id/nav_institute" />
+    <item
+        android:icon="@drawable/ic_baseline_company_40"
+        android:title="Company"
+        android:id="@+id/nav_company" />
+    <item
+        android:icon="@drawable/ic_baseline_message_40"
+        android:title="Chat"
+        android:id="@+id/nav_chat" />
+    <item
+        android:icon="@drawable/ic_baseline_user_40"
+        android:title="Profile"
+        android:id="@+id/nav_profile" />
+</menu>
