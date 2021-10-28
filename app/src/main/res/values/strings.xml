@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">PrepLite</string>
+    <string name="forgot_password">"Forgot Password ?        "</string>
+    <string name="login_with">login with</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="new_user_register_here">New user ? Register here</string>
+    <string name="sign_up">Sign up</string>
+    <string name="already_have_an_account_login_here">Already have an account ? login here</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="sign_up_with">Sign up with</string>
+    <string name="tagline">A one stop solution to make career preparation easier for everyone...</string>
 </resources>
