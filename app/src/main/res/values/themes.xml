@@ -13,7 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="Theme.Bottom_Nav" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Bottom_Nav" parent="Theme.AppCompat.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/highlight_icon</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
