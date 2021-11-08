@@ -23,7 +23,7 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
 
     private TextView lgn_link;
-    EditText email,name,password;
+    EditText email,name,password,year,alumni;
     TextView register;
 
 
@@ -35,6 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
         email = findViewById(R.id.remail);
         name = findViewById(R.id.rname);
         password = findViewById(R.id.rpassword);
+        year = findViewById(R.id.ryear);
+        alumni = findViewById(R.id.ralumni);
 
         register = findViewById(R.id.register_button);
 
@@ -65,6 +67,8 @@ public class RegisterActivity extends AppCompatActivity {
         String userName=name.getText().toString();
         String userEmail=email.getText().toString();
         String userPassword=password.getText().toString();
+        String userYear=year.getText().toString();
+        String userAlumni=alumni.getText().toString();
 
 
 
@@ -83,6 +87,16 @@ public class RegisterActivity extends AppCompatActivity {
             email.setError("Enter valid email");
             return;
         }
+        if(userYear.isEmpty()){
+            year.requestFocus();
+            year.setError("Enter your year");
+            return;
+        }
+        if(userAlumni.isEmpty()){
+            alumni.requestFocus();
+            alumni.setError("Are you an alumni ?");
+            return;
+        }
         if(userPassword.isEmpty()){
             password.requestFocus();
             password.setError("Enter your password");
@@ -95,10 +109,11 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
+
         Call<ResponseRegister> call= Client
                 .getInstance()
                 .getApi()
-                .register(userName,userEmail,userPassword);
+                .register(userName,userEmail,userPassword,userYear,userAlumni);
 
         call.enqueue(new Callback<ResponseRegister>() {
             @Override
