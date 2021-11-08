@@ -39,7 +39,7 @@
 
             <!-- INPUT -->
             <EditText
-                android:id="@+id/username_input"
+                android:id="@+id/remail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/username_icon"
@@ -75,15 +75,15 @@
 
             <!-- INPUT -->
             <EditText
-                android:id="@+id/rpasswprd"
+                android:id="@+id/rname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/phoneicon"
                 android:layout_marginStart="0dp"
+                android:layout_toEndOf="@id/phoneicon"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="@string/contact_number"
-                android:inputType="textPassword"
+                android:hint="@string/username"
+                android:inputType="text"
                 android:maxLength="20"
                 android:maxLines="1"
                 android:paddingStart="12dp"
@@ -114,7 +114,7 @@
 
             <!-- INPUT -->
             <EditText
-                android:id="@+id/pass"
+                android:id="@+id/rpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/icon"
