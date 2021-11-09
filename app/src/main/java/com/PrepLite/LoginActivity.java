@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        if(userPassword.length()<8){
+        if(userPassword.length()<6){
             password.requestFocus();
             password.setError("Enter your valid password");
             return;
@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(loginResponse.getError().equals("200")){
 
 
-                        Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
