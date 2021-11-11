@@ -10,6 +10,7 @@ import retrofit2.http.POST;
 
 public interface ApiCalls {
 
+    @FormUrlEncoded
     @POST("register")
     Call<ResponseRegister> register(
             @Field("name") String name,
@@ -20,6 +21,7 @@ public interface ApiCalls {
 
     );
 
+    @FormUrlEncoded
     @POST("login")
     Call<ResponseLogin> login(
             @Field("email") String email,
