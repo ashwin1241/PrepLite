@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.PrepLite.response.ResponseRegister;
 
 import java.time.chrono.ChronoLocalDateTime;
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -108,22 +109,26 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
+        HashMap<String, String> map = new HashMap<>();
+        map.put("name", userName);
+        map.put("email", userEmail);
+        map.put("password", userPassword);
+        map.put("yearOfStudy", userYear);
+        map.put("alumni", userAlumni);
 
 
         Call<ResponseRegister> call= Client
-                .getInstance()
-                .getApi()
-                .register(userName,userEmail,userPassword,userYear,userAlumni);
+                .getRetrofitInstance()
+                .create(ApiCalls.class)
+                .register(map);
 
         call.enqueue(new Callback<ResponseRegister>() {
             @Override
-            public void onResponse(@NonNull Call<ResponseRegister> call, @NonNull Response<ResponseRegister> response) {
+            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
 
                 ResponseRegister registerResponse=response.body();
-                if(response.isSuccessful()){
+                if(registerResponse != null){
 
-
-                    assert registerResponse != null;
                     Toast.makeText(RegisterActivity.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
@@ -133,7 +138,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NonNull Call<ResponseRegister> call, @NonNull Throwable t) {
+            public void onFailure(Call<ResponseRegister> call, Throwable t) {
 
                 Toast.makeText(RegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
