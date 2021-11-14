@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        Call<ResponseLogin> call= Client.getInstance().getApi().login(userEmail,userPassword);
+        Call<ResponseLogin> call= Client.getRetrofitInstance().create(ApiCalls.class).login(userEmail,userPassword);
 
         call.enqueue(new Callback<ResponseLogin>() {
             @Override
