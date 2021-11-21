@@ -65,11 +65,11 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void registerUser() {
 
-        String userName=name.getText().toString();
-        String userEmail=email.getText().toString();
-        String userPassword=password.getText().toString();
-        String userYear=year.getText().toString();
-        String userAlumni=alumni.getText().toString();
+        String userName=name.getText().toString().trim();
+        String userEmail=email.getText().toString().trim();
+        String userPassword=password.getText().toString().trim();
+        String userYear=year.getText().toString().trim();
+        String userAlumni=alumni.getText().toString().trim();
 
 
 
