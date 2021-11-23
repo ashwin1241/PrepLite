@@ -50,8 +50,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void userLogin() {
 
-        String userEmail=email.getText().toString();
-        String userPassword=password.getText().toString();
+        String userEmail=email.getText().toString().trim();
+        String userPassword=password.getText().toString().trim();
 
         if(userEmail.isEmpty()){
             email.requestFocus();
