@@ -65,17 +65,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/delete_account"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/amaranth"
-        android:textSize="25dp"
+        android:text="Rate Us"
         android:textColor="@color/black"
-        android:text="Rate Us"/>
+        android:textSize="25dp" />
+
+    <RatingBar
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rate_us_hdg"
+        android:layout_marginBottom="10dp"
+        android:numStars="5"
+        android:stepSize="0.5"/>
 
     <TextView
         android:id="@+id/feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rate_us_hdg"
+        android:layout_below="@id/rating"
         android:layout_centerInParent="true"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
