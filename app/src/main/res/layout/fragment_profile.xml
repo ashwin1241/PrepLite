@@ -204,7 +204,8 @@
         android:paddingStart="20dp"
         android:text="Edit profile"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:gravity="center_vertical"/>
 
     <TextView
         android:id="@+id/my_companies"
@@ -219,11 +220,13 @@
         android:drawablePadding="40dp"
         android:elevation="10dp"
         android:fontFamily="@font/amaranth"
+        android:gravity="center_vertical"
         android:padding="10dp"
         android:paddingStart="20dp"
         android:text="My Companies"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        />
 
     <TextView
         android:id="@+id/my_institutes"
@@ -242,7 +245,8 @@
         android:paddingStart="20dp"
         android:text="My Institutes"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:gravity="center_vertical"/>
 
     <TextView
         android:id="@+id/my_posts"
@@ -261,7 +265,8 @@
         android:paddingStart="20dp"
         android:text="My Posts"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:gravity="center_vertical"/>
 
     <ImageButton
         android:id="@+id/logout_button_profile"

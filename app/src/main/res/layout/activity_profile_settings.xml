@@ -4,6 +4,156 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile_Settings">
+    tools:context=".Profile_Settings"
+    android:background="#EFFBF7">
+
+    <TextView
+        android:id="@+id/acct_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/amaranth"
+        android:text="Account"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/change_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/acct_heading"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/profile_textview"
+        android:drawableStart="@drawable/ic_baseline_vpn_key_24"
+        android:drawablePadding="40dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center_vertical"
+        android:paddingVertical="5dp"
+        android:paddingStart="15dp"
+        android:text="Change Password"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/delete_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/change_password"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/profile_textview"
+        android:drawableStart="@drawable/ic_baseline_delete_24"
+        android:drawablePadding="40dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center_vertical"
+        android:paddingVertical="5dp"
+        android:paddingStart="15dp"
+        android:text="Delete account"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/rate_us_hdg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/delete_account"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/amaranth"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:text="Rate Us"/>
+
+    <TextView
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rate_us_hdg"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/profile_textview"
+        android:drawableStart="@drawable/ic_baseline_feedback_24"
+        android:drawablePadding="40dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center_vertical"
+        android:paddingVertical="5dp"
+        android:paddingStart="15dp"
+        android:text="Feedback"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feedback"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/profile_textview"
+        android:drawableStart="@drawable/ic_baseline_info_24"
+        android:drawablePadding="40dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center_vertical"
+        android:paddingVertical="5dp"
+        android:paddingStart="15dp"
+        android:text="About"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/amaranth"
+        android:text="Notifications"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:id="@+id/notif_bell"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/notifications"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_baseline_notifications_active_24"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notifications"
+        android:layout_alignBaseline="@id/notif_bell"
+        android:layout_marginStart="40dp"
+        android:layout_toRightOf="@id/notif_bell"
+        android:fontFamily="@font/amaranth"
+        android:layout_marginTop="2dp"
+        android:text="Notifications"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <Switch
+        android:id="@+id/notif_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notifications"
+        android:layout_alignBaseline="@id/notif_bell"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"/>
 
 </RelativeLayout>
