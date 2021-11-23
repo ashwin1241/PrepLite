@@ -1,10 +1,15 @@
 package com.PrepLite;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -63,5 +68,24 @@ public class Profile_Settings extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.save_changes_profile_settings://backend code to save rating and notifications status
+                Toast.makeText(Profile_Settings.this, "Changes saved successfully!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Profile_Settings.this,HomeActivity.class);
+                startActivity(intent);
+                return true;
+            default:return super.onOptionsItemSelected(item);
+        }
     }
 }
