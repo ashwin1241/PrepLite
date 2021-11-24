@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ public class Profile_Settings extends AppCompatActivity {
     private String rating_value;
     private TextView feedback;
     private TextView about;
+    private TextView delete_acct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,50 @@ public class Profile_Settings extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Profile_Settings.this,About_Page.class);
                 startActivity(intent);
+            }
+        });
+        delete_acct = findViewById(R.id.delete_account);
+        delete_acct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View view1 = getLayoutInflater().inflate(R.layout.pswrd_et,null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Profile_Settings.this);
+                builder.setTitle("Delete account")
+                .setMessage("Are you sure you want to delete this account?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        AlertDialog.Builder pswrd_confirmation = new AlertDialog.Builder(Profile_Settings.this);
+                        pswrd_confirmation.setTitle("Confirm your password")
+                        .setView(view1)
+                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                EditText password = view1.findViewById(R.id.pswrd_et);
+                                String pswrd = password.getText().toString().trim();
+                                //backend code to validate password and delete account
+                                //Toast.makeText(Profile_Settings.this, pswrd, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Profile_Settings.this, "Account deleted successfully!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Profile_Settings.this, LoginActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                        pswrd_confirmation.create().show();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.create().show();
             }
         });
 
