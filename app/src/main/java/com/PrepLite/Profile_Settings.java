@@ -23,6 +23,7 @@ public class Profile_Settings extends AppCompatActivity {
     private RatingBar rating;
     private String rating_value;
     private TextView feedback;
+    private TextView about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,14 @@ public class Profile_Settings extends AppCompatActivity {
                 })
                 ;
                 builder.create().show();
+            }
+        });
+        about = findViewById(R.id.about);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile_Settings.this,About_Page.class);
+                startActivity(intent);
             }
         });
 
