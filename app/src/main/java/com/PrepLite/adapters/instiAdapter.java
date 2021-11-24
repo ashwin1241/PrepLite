@@ -12,19 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.companyData;
-import com.PrepLite.fragments.CompanyFragment;
+import com.PrepLite.dataBindings.instiData;
 
 import java.util.ArrayList;
 
-public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHolder> {
+public class instiAdapter extends RecyclerView.Adapter<instiAdapter.ViewHolder> {
 
-    ArrayList<companyData> companydata;
+    ArrayList<instiData> instiData;
     Context context;
 
-    public companyAdapter(ArrayList<companyData> companydata, Context activity)   {
+    public instiAdapter(ArrayList<instiData> instiData, Context activity)   {
 
-        this.companydata = companydata;
+        this.instiData = instiData;
         this.context=activity;
 
 
@@ -35,7 +34,7 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHold
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from((parent.getContext()));
-        View view = layoutInflater.inflate(R.layout.company_card,parent,false);
+        View view = layoutInflater.inflate(R.layout.insti_card,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
@@ -43,14 +42,14 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final companyData companyList = companydata.get(position);
-        holder.companyTitle.setText(companyList.getCompanyName());
-        holder.companyImage.setImageResource(companyList.getCompanyImage());
+        final instiData instiList = instiData.get(position);
+        holder.instiTitle.setText(instiList.getInstiName());
+        holder.instiImage.setImageResource(instiList.getInstiImage());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, companyList.getCompanyName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, instiList.getInstiName(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -58,17 +57,17 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHold
     @Override
     public int getItemCount() {
 
-        return companydata.size();
+        return instiData.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView companyImage;
-        TextView companyTitle;
+        ImageView instiImage;
+        TextView instiTitle;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            companyImage = itemView.findViewById(R.id.companyImage);
-            companyTitle = itemView.findViewById(R.id.companyTitle);
+            instiImage = itemView.findViewById(R.id.instiImage);
+            instiTitle = itemView.findViewById(R.id.instiTitle);
         }
     }
 }
