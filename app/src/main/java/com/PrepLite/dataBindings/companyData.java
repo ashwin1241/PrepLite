@@ -3,9 +3,9 @@ package com.PrepLite.dataBindings;
 public class companyData {
 
     private String companyName;
-    private String companyImage;
+    private Integer companyImage;
 
-    public companyData(String companyName, String companyImage) {
+    public companyData(String companyName, Integer companyImage) {
         this.companyName = companyName;
         this.companyImage = companyImage;
     }
@@ -19,10 +19,10 @@ public class companyData {
     }
 
     public int getCompanyImage() {
-        return Integer.parseInt(companyImage);
+        return companyImage;
     }
 
-    public void setCompanyImage(String companyImage) {
+    public void setCompanyImage(Integer companyImage) {
         this.companyImage = companyImage;
     }
 }

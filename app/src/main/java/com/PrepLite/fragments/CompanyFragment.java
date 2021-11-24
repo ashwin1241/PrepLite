@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
+import com.PrepLite.dataBindings.companyData;
 
 public class CompanyFragment extends Fragment {
     @Nullable
@@ -21,6 +22,13 @@ public class CompanyFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        companyData companydata [] = {
+          new companyData("Microsoft",R.drawable.default_companypreview),
+          new companyData("Amazon",R.drawable.amazon),
+          new companyData("Oracle",R.drawable.oracle),
+          new companyData("Code Nation",R.drawable.codenation),
+        };
 
         return view;
     }

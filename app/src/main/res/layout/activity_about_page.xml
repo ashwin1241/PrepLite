@@ -11,27 +11,36 @@
         android:id="@+id/about_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/amaranth"
         android:text="About the app"
         android:textColor="@color/black"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:layout_below="@id/imageView"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/about_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/about_heading"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/amaranth"
-        android:text="About the app"
+        android:text="@string/about_the_app"
         android:textColor="@color/black"
         android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="226dp"
+        android:layout_height="162dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="92dp"
+        app:srcCompat="@drawable/apklogo" />
 
 </RelativeLayout>
