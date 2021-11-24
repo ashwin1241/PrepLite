@@ -18,20 +18,19 @@
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_main.xml" value="0.2526041666666667" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_profile_settings.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_register.xml" value="0.2526041666666667" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/company_card.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/feedback_edittext.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_chat.xml" value="0.21271929824561403" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_company.xml" value="0.21271929824561403" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_feed.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_institute.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/password_change_view.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/pswrd_et.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/menu/bottom_navigation.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/menu/settings_menu.xml" value="0.264" />
         <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/activity_login.xml" value="0.21739130434782608" />
         <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/activity_register.xml" value="0.1" />
-        <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/company_card.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/fragment_chat.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/fragment_company.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>

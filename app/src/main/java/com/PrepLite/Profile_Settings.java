@@ -26,6 +26,7 @@ public class Profile_Settings extends AppCompatActivity {
     private TextView feedback;
     private TextView about;
     private TextView delete_acct;
+    private TextView change_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,40 @@ public class Profile_Settings extends AppCompatActivity {
                             }
                         });
                         pswrd_confirmation.create().show();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.create().show();
+            }
+        });
+        change_password = findViewById(R.id.change_password);
+        change_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View view12 = getLayoutInflater().inflate(R.layout.password_change_view,null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Profile_Settings.this);
+                builder.setTitle("Change Password")
+                .setView(view12)
+                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        EditText old_pswrd = view12.findViewById(R.id.old_pswrd);
+                        EditText new_pswrd = view12.findViewById(R.id.new_pswrd);
+                        String old_password,new_password;
+                        old_password=old_pswrd.getText().toString().trim();
+                        new_password=new_pswrd.getText().toString().trim();
+                        if(old_password.equals(new_password))
+                        {
+                            //backend code to update password
+                            Toast.makeText(Profile_Settings.this, "Password updated successfully!", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            Toast.makeText(Profile_Settings.this, "Old and new passwords do not match!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
