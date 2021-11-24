@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +21,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextView reg_link;
     private TextView login_button;
-    EditText email,password;
-    TextView login;
+    private EditText email,password;
+    private TextView login;
+    private ImageView login_bypass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +47,21 @@ public class LoginActivity extends AppCompatActivity {
                userLogin();
             }
         });
+        login_bypass = findViewById(R.id.login_bypass);
+        login_bypass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
     private void userLogin() {
 
-        String userEmail=email.getText().toString();
-        String userPassword=password.getText().toString();
+        String userEmail=email.getText().toString().trim();
+        String userPassword=password.getText().toString().trim();
 
         if(userEmail.isEmpty()){
             email.requestFocus();
