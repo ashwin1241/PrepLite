@@ -20,7 +20,7 @@
 
             <ImageView
                 android:layout_margin="10dp"
-                android:src="@drawable/default_companyPreview"
+                android:src="@drawable/default_companypreview"
                 android:id="@+id/companyImage"
                 android:layout_width="120dp"
                 android:layout_height="100dp"/>

@@ -36,7 +36,7 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHold
         View view = layoutInflater.inflate(R.layout.company_card,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
 
-        return null;
+        return viewHolder;
     }
 
     @Override
