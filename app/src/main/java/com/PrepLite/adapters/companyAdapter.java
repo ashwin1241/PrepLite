@@ -21,6 +21,18 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
     ArrayList<companyData> companydata;
     Context context;
 
+    private OnCompanyClickListener cListener;
+
+    public void setOnCompanyClickListener(OnCompanyClickListener listener)
+    {
+        this.cListener = listener;
+    }
+
+    public interface OnCompanyClickListener
+    {
+        void OnItemClicked(int position);
+    }
+
     public companyAdapter(ArrayList<companyData> companydata, Context activity)   {
 
         this.companydata = companydata;
@@ -49,7 +61,14 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, companyList.getCompanyName(), Toast.LENGTH_SHORT).show();
+                if(cListener!=null)
+                {
+                    int position = holder.getAdapterPosition();
+                    if(position!=RecyclerView.NO_POSITION)
+                    {
+                        cListener.OnItemClicked(position);
+                    }
+                }
             }
         });
     }
