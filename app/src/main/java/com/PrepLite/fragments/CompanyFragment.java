@@ -44,6 +44,10 @@ public class CompanyFragment extends Fragment {
         companydata.add(new companyData("Amazon",R.drawable.amazon));
         companydata.add(new companyData("Oracle",R.drawable.oracle));
         companydata.add(new companyData("Code Nation",R.drawable.codenation));
+        companydata.add(new companyData("Service Now",R.drawable.servicenow9653));
+        companydata.add(new companyData("Cisco",R.drawable.cisco));
+        companydata.add(new companyData("Spotify",R.drawable.spo));
+        companydata.add(new companyData("General Motors",R.drawable.gm));
         companyAdapter = new companyAdapter(companydata,container12.getContext());
         recyclerView = view12.findViewById(R.id.company_recyclerView);
         recyclerView.setHasFixedSize(true);

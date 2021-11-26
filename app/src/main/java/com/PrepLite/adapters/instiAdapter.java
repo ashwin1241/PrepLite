@@ -16,7 +16,7 @@ import com.PrepLite.dataBindings.instiData;
 
 import java.util.ArrayList;
 
-public class instiAdapter extends RecyclerView.Adapter<instiAdapter.Insti_ViewHolder> {
+public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<instiAdapter.Insti_ViewHolder> {
 
     ArrayList<instiData> instiData;
     Context context;
@@ -58,6 +58,19 @@ public class instiAdapter extends RecyclerView.Adapter<instiAdapter.Insti_ViewHo
     public int getItemCount() {
 
         return instiData.size();
+    }
+
+    private instiAdapter.OnInstiClickListener iListener;
+
+
+    public void setOnInstiClickListener(instiAdapter.OnInstiClickListener listener) {
+        this.iListener = listener;
+    }
+
+    public interface OnInstiClickListener{
+
+        void OnItemClicked(int position);
+
     }
 
     public static class Insti_ViewHolder extends RecyclerView.ViewHolder{

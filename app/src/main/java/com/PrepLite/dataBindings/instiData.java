@@ -3,14 +3,16 @@ package com.PrepLite.dataBindings;
 public class instiData {
 
     private String instiName;
-    private String instiImage;
+    private Integer instiImage;
     private long no_participants;
 
-    public instiData(String instiName, String instiImage, long no_participants) {
+    public instiData(String instiName, Integer instiImage, long no_participants) {
         this.instiName = instiName;
         this.instiImage = instiImage;
         this.no_participants = no_participants;
     }
+
+
 
     public String getInstiName() {
         return instiName;
@@ -21,10 +23,10 @@ public class instiData {
     }
 
     public int getInstiImage() {
-        return Integer.parseInt(instiImage);
+        return instiImage;
     }
 
-    public void setInstiImage(String instiImage) {
+    public void setInstiImage(Integer instiImage) {
         this.instiImage = instiImage;
     }
 
