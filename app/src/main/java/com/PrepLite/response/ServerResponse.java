@@ -2,7 +2,7 @@ package com.PrepLite.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseRegister {
+public class ServerResponse {
 
     @SerializedName("error")
     public boolean error;
@@ -10,12 +10,16 @@ public class ResponseRegister {
     @SerializedName("message")
     public String message;
 
-    public ResponseRegister(boolean error, String message) {
+    @SerializedName("result")
+    public Result result;
+
+    public ServerResponse(boolean error, String message, Result result) {
         this.error = error;
         this.message = message;
+        this.result = result;
     }
 
-    public boolean getError() {
+    public boolean isError() {
         return error;
     }
 
@@ -29,5 +33,13 @@ public class ResponseRegister {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
     }
 }

@@ -200,12 +200,12 @@
         android:drawablePadding="40dp"
         android:elevation="10dp"
         android:fontFamily="@font/amaranth"
+        android:gravity="center_vertical"
         android:padding="10dp"
         android:paddingStart="20dp"
         android:text="Edit profile"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        android:gravity="center_vertical"/>
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/my_companies"
@@ -225,8 +225,7 @@
         android:paddingStart="20dp"
         android:text="My Companies"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/my_institutes"
