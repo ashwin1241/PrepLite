@@ -1,5 +1,7 @@
 package com.PrepLite.fragments;
 
+import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +17,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.PrepLite.ApiCalls;
+import com.PrepLite.Client;
 import com.PrepLite.LoginActivity;
+import com.PrepLite.MainActivity;
 import com.PrepLite.Profile_Settings;
 import com.PrepLite.R;
+import com.PrepLite.prefs.SharedPrefs;
+import com.PrepLite.response.Result;
+import com.PrepLite.response.ServerResponse;
+import com.PrepLite.response.User;
+
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
     private ImageView settings;
@@ -28,6 +43,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         frag_view = inflater.inflate(R.layout.fragment_profile,container,false);
         settings = frag_view.findViewById(R.id.profile_settings);
+
+        getProfile();
+
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,8 +81,37 @@ public class ProfileFragment extends Fragment {
         return frag_view;
     }
 
+    private void getProfile() {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("user_id", SharedPrefs.getIntParams(requireContext(), ID));
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).profile(map);
+
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                ServerResponse serverResponse = response.body();
+
+                if (serverResponse != null) {
+                    if (!serverResponse.isError()) {
+                        User user = serverResponse.getResult().getUser();
+                        //Update the UI here
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void logout_action()
     {
-        //backend code to actually logout
+        SharedPrefs.clearPrefsEditor(requireContext());
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        getActivity().finish();
     }
 }
