@@ -1,5 +1,7 @@
 package com.PrepLite;
 
+import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.PrepLite.response.ResponseLogin;
+import com.PrepLite.prefs.SharedPrefs;
+import com.PrepLite.response.ServerResponse;
+
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextView reg_link;
     private TextView login_button;
-    private EditText email,password;
+    private EditText email, password;
     private TextView login;
     private ImageView login_bypass;
 
@@ -32,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         login = findViewById(R.id.login_button);
         email = findViewById(R.id.remail);
-        password= findViewById(R.id.rpassword);
+        password = findViewById(R.id.rpassword);
         reg_link = findViewById(R.id.register_link);
         reg_link.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,14 +49,14 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               userLogin();
+                userLogin();
             }
         });
         login_bypass = findViewById(R.id.login_bypass);
         login_bypass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -60,55 +65,53 @@ public class LoginActivity extends AppCompatActivity {
 
     private void userLogin() {
 
-        String userEmail=email.getText().toString().trim();
-        String userPassword=password.getText().toString().trim();
+        String userEmail = email.getText().toString().trim();
+        String userPassword = password.getText().toString().trim();
 
-        if(userEmail.isEmpty()){
+        if (userEmail.isEmpty()) {
             email.requestFocus();
             email.setError("Enter your email");
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
             email.requestFocus();
             email.setError("Enter valid email");
             return;
         }
 
-        if(userPassword.length()<6){
+        if (userPassword.length() < 6) {
             password.requestFocus();
             password.setError("Enter your valid password");
             return;
         }
 
-        Call<ResponseLogin> call= Client.getRetrofitInstance().create(ApiCalls.class).login(userEmail,userPassword);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("userEmail", userEmail);
+        map.put("userPassword", userPassword);
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).login(map);
 
-        call.enqueue(new Callback<ResponseLogin>() {
+        call.enqueue(new Callback<ServerResponse>() {
             @Override
-            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
 
-                ResponseLogin loginResponse=response.body();
+                ServerResponse serverResponse = response.body();
 
-                if(response.isSuccessful()){
+                if (!serverResponse.isError()) {
+                    SharedPrefs.setIntParams(LoginActivity.this, ID, serverResponse.getResult().getUser().getId());
 
-                    if(loginResponse.getError().equals("200")){
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    Toast.makeText(LoginActivity.this, serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
-
-                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
-
-
-                    }
-
-                }
+                } else
+                    Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
 
             }
 
 
-
             @Override
-            public void onFailure(Call<ResponseLogin> call, Throwable t) {
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
 
                 Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }

@@ -1,20 +1,17 @@
 package com.PrepLite;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.PrepLite.response.ResponseRegister;
+import com.PrepLite.response.ServerResponse;
 
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -117,28 +114,27 @@ public class RegisterActivity extends AppCompatActivity {
         map.put("alumni", userAlumni);
 
 
-        Call<ResponseRegister> call= Client
+        Call<ServerResponse> call= Client
                 .getRetrofitInstance()
                 .create(ApiCalls.class)
                 .register(map);
 
-        call.enqueue(new Callback<ResponseRegister>() {
+        call.enqueue(new Callback<ServerResponse>() {
             @Override
-            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
 
-                ResponseRegister registerResponse=response.body();
+                ServerResponse registerResponse=response.body();
                 if(registerResponse != null){
 
                     Toast.makeText(RegisterActivity.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
-                //assert registerResponse != null;
                 Toast.makeText(RegisterActivity.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
-            public void onFailure(Call<ResponseRegister> call, Throwable t) {
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
 
                 Toast.makeText(RegisterActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
