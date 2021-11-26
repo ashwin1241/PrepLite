@@ -51,7 +51,7 @@ public class Comments extends AppCompatActivity {
                 else
                 {
                     date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-                    time = new SimpleDateFormat("hh:mm").format(new Date());
+                    time = new SimpleDateFormat("HH:mm").format(new Date());
                     comment_list.add(new commentData("Username",comment_text,date,time));
                     //backend code to add this comment to database
                     commentAdapter.notifyItemInserted(comment_list.size());
