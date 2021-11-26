@@ -26,7 +26,7 @@
             android:maxWidth="320dp"
             android:text="Username"
             android:textColor="#0000FF"
-            android:textSize="20dp"
+            android:textSize="22dp"
             android:textStyle="bold" />
 
         <TextView
@@ -39,19 +39,19 @@
             android:fontFamily="@font/amaranth"
             android:text="Timeframe:"
             android:textColor="#828282"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/post_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/post_layout_username"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:layout_toRightOf="@id/post_timestamp_hdg"
             android:fontFamily="@font/amaranth"
-            android:text="dd/mm/yyyy, "
+            android:text="dd/mm/yyyy"
             android:textColor="#828282"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/post_time"
@@ -59,10 +59,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/post_layout_username"
             android:layout_toRightOf="@id/post_date"
+            android:layout_marginLeft="5dp"
             android:fontFamily="@font/amaranth"
             android:text="hh:mm"
             android:textColor="#828282"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/post_content"
@@ -76,7 +77,7 @@
             android:fontFamily="@font/amaranth"
             android:text="Post content"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/post_comments"
