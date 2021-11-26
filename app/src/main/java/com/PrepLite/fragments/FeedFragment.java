@@ -41,9 +41,9 @@ public class FeedFragment extends Fragment {
 
     private void buildRecyclerView() {
         postList = new ArrayList<>();
-        postList.add(new postData("Ashwin","Amazon","24-11-2021","13:02","Hello 1"));
-        postList.add(new postData("Aagam","Cisco","25-11-2021","13:02","Hello 2"));
-        postList.add(new postData("Harsh","GE","26-11-2021","13:02","Hello 3"));
+        postList.add(new postData("Ashwin","Amazon","24-11-2021","13:02","Hello 1",""));
+        postList.add(new postData("Aagam","Cisco","25-11-2021","13:02","Hello 2",""));
+        postList.add(new postData("Harsh","GE","26-11-2021","13:02","Hello 3",""));
         postAdapter_home = new postAdapter_Home(postList, container12.getContext());
         recyclerView = view12.findViewById(R.id.feed_recyclerView);
         recyclerView.setHasFixedSize(true);

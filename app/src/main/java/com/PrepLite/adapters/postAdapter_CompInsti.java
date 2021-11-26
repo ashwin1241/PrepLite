@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.Comments;
 import com.PrepLite.R;
 import com.PrepLite.dataBindings.postData;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_CompInsti.Post_ViewHolder12> {
 
@@ -49,6 +52,10 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
                 context.startActivity(intent);
             }
         });
+        if(current_post.getImg_url().trim().length()>0)
+        Glide.with(context).load(current_post.getImg_url()).into(holder.profile_pic);
+        else
+        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.profile_pic);
     }
 
     @Override
@@ -63,6 +70,7 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
         private TextView date;
         private TextView time;
         private TextView post_comments;
+        private CircleImageView profile_pic;
         public Post_ViewHolder12(@NonNull View itemView) {
             super(itemView);
 
@@ -71,6 +79,7 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
             date = itemView.findViewById(R.id.post_date);
             time = itemView.findViewById(R.id.post_time);
             post_comments = itemView.findViewById(R.id.post_comments);
+            profile_pic = itemView.findViewById(R.id.ind_post_profile_pic);
 
         }
     }
