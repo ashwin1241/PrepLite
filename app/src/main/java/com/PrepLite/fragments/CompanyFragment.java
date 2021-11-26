@@ -14,7 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.R;
 import com.PrepLite.dataBindings.companyData;
 
+import java.util.ArrayList;
+
 public class CompanyFragment extends Fragment {
+
+    private ArrayList<companyData> companydata;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -23,12 +28,11 @@ public class CompanyFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        companyData companydata [] = {
-          new companyData("Microsoft",R.drawable.default_companypreview),
-          new companyData("Amazon",R.drawable.amazon),
-          new companyData("Oracle",R.drawable.oracle),
-          new companyData("Code Nation",R.drawable.codenation),
-        };
+        companydata = new ArrayList<>();
+        companydata.add(new companyData("Microsoft",R.drawable.default_companypreview));
+        companydata.add(new companyData("Amazon",R.drawable.amazon));
+        companydata.add(new companyData("Oracle",R.drawable.oracle));
+        companydata.add(new companyData("Code Nation",R.drawable.codenation));
 
         return view;
     }

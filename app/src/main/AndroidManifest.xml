@@ -13,9 +13,12 @@
         android:theme="@style/Theme.PrepLite"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Comments"
+            android:exported="false" />
+        <activity
             android:name=".About_Page"
             android:exported="false"
-            android:parentActivityName=".Profile_Settings"/>
+            android:parentActivityName=".Profile_Settings" />
         <activity
             android:name=".Profile_Settings"
             android:exported="false"

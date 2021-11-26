@@ -16,7 +16,7 @@ import com.PrepLite.dataBindings.instiData;
 
 import java.util.ArrayList;
 
-public class instiAdapter extends RecyclerView.Adapter<instiAdapter.ViewHolder> {
+public class instiAdapter extends RecyclerView.Adapter<instiAdapter.Insti_ViewHolder> {
 
     ArrayList<instiData> instiData;
     Context context;
@@ -31,17 +31,17 @@ public class instiAdapter extends RecyclerView.Adapter<instiAdapter.ViewHolder> 
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Insti_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from((parent.getContext()));
         View view = layoutInflater.inflate(R.layout.insti_card,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        Insti_ViewHolder instiViewHolder = new Insti_ViewHolder(view);
 
-        return viewHolder;
+        return instiViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Insti_ViewHolder holder, int position) {
         final instiData instiList = instiData.get(position);
         holder.instiTitle.setText(instiList.getInstiName());
         holder.instiImage.setImageResource(instiList.getInstiImage());
@@ -60,11 +60,11 @@ public class instiAdapter extends RecyclerView.Adapter<instiAdapter.ViewHolder> 
         return instiData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class Insti_ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView instiImage;
-        TextView instiTitle;
-        public ViewHolder(@NonNull View itemView) {
+        private ImageView instiImage;
+        private TextView instiTitle;
+        public Insti_ViewHolder(@NonNull View itemView) {
             super(itemView);
             instiImage = itemView.findViewById(R.id.instiImage);
             instiTitle = itemView.findViewById(R.id.instiTitle);

@@ -22,11 +22,11 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/amaranth"
-            android:text="Username"
             android:maxWidth="320dp"
+            android:text="Username"
             android:textColor="#0000FF"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/posted_by"
@@ -52,8 +52,8 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/posted_by"
-            android:maxWidth="320dp"
             android:fontFamily="@font/amaranth"
+            android:maxWidth="320dp"
             android:text="Company/Insti"
             android:textColor="#0000FF"
             android:textSize="20dp"
@@ -64,12 +64,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/post_layout_comp_insti"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/amaranth"
-            android:text="Posted at:"
+            android:text="Timeframe:"
             android:textColor="#828282"
-            android:textSize="18dp"
-            android:layout_alignParentStart="true"/>
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/post_date"
@@ -77,52 +77,55 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/post_layout_comp_insti"
             android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/post_timestamp_hdg"
             android:fontFamily="@font/amaranth"
             android:text="dd/mm/yyyy, "
             android:textColor="#828282"
-            android:textSize="18dp"
-            android:layout_toRightOf="@id/post_timestamp_hdg"/>
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/post_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/post_layout_comp_insti"
+            android:layout_toRightOf="@id/post_date"
             android:fontFamily="@font/amaranth"
             android:text="hh:mm"
             android:textColor="#828282"
-            android:textSize="18dp"
-            android:layout_toRightOf="@id/post_date"/>
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/post_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/post_timestamp_hdg"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/amaranth"
+            android:text="Post content"
             android:textColor="@color/black"
-            android:textSize="18dp"
-            android:text="Post content"/>
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/post_comments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/post_content"
-            android:layout_marginVertical="5dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="10dp"
-            android:textSize="16dp"
+            android:layout_marginVertical="5dp"
             android:background="@drawable/comment_tv"
-            android:textColor="@color/white"
-            android:fontFamily="@font/amaranth"
-            android:text="Comments"
             android:drawableStart="@drawable/ic_outline_comment_24"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/amaranth"
+            android:gravity="center"
             android:paddingHorizontal="15dp"
             android:paddingVertical="5dp"
-            android:drawablePadding="10dp"
-            android:gravity="center"/>
+            android:text="Comments"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
     </RelativeLayout>
 

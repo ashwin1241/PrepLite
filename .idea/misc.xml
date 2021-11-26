@@ -10,15 +10,20 @@
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/cursor_color.xml" value="0.26875" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/custom_card.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_baseline_feedback_24.xml" value="0.22631578947368422" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_send.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_user__1_.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/logout_button_theme.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/profile_textview.xml" value="0.22631578947368422" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/send_comment.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_about_page.xml" value="0.264" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_comment_preview.xml" value="0.264" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_comments.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_main.xml" value="0.2526041666666667" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_profile_settings.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_register.xml" value="0.2526041666666667" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/comment_layout.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/feedback_edittext.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_chat.xml" value="0.21271929824561403" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_company.xml" value="0.21271929824561403" />
