@@ -13,14 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
 import com.PrepLite.dataBindings.companyData;
-import com.PrepLite.fragments.CompanyFragment;
 
 import java.util.ArrayList;
 
-public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHolder> {
+public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_ViewHolder> {
 
     ArrayList<companyData> companydata;
     Context context;
+
+    private OnCompanyClickListener cListener;
+
+    public void setOnCompanyClickListener(OnCompanyClickListener listener)
+    {
+        this.cListener = listener;
+    }
+
+    public interface OnCompanyClickListener
+    {
+        void OnItemClicked(int position);
+    }
 
     public companyAdapter(ArrayList<companyData> companydata, Context activity)   {
 
@@ -32,17 +43,17 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Company_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from((parent.getContext()));
         View view = layoutInflater.inflate(R.layout.company_card,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        Company_ViewHolder companyViewHolder = new Company_ViewHolder(view);
 
-        return viewHolder;
+        return companyViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Company_ViewHolder holder, int position) {
         final companyData companyList = companydata.get(position);
         holder.companyTitle.setText(companyList.getCompanyName());
         holder.companyImage.setImageResource(companyList.getCompanyImage());
@@ -50,7 +61,14 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, companyList.getCompanyName(), Toast.LENGTH_SHORT).show();
+                if(cListener!=null)
+                {
+                    int position = holder.getAdapterPosition();
+                    if(position!=RecyclerView.NO_POSITION)
+                    {
+                        cListener.OnItemClicked(position);
+                    }
+                }
             }
         });
     }
@@ -61,11 +79,11 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.ViewHold
         return companydata.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class Company_ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView companyImage;
         TextView companyTitle;
-        public ViewHolder(@NonNull View itemView) {
+        public Company_ViewHolder(@NonNull View itemView) {
             super(itemView);
             companyImage = itemView.findViewById(R.id.companyImage);
             companyTitle = itemView.findViewById(R.id.companyTitle);
