@@ -1,5 +1,14 @@
 package com.PrepLite.fragments;
 
+import static com.PrepLite.app.Constants.BITS_PILANI_LOGO;
+import static com.PrepLite.app.Constants.CAL_TECH_LOGO;
+import static com.PrepLite.app.Constants.CAMBRIDGE_LOGO;
+import static com.PrepLite.app.Constants.IIT_DELHI_LOGO;
+import static com.PrepLite.app.Constants.STANFORD_LOGO;
+import static com.PrepLite.app.Constants.TECH_UNI_LOGO;
+import static com.PrepLite.app.Constants.TSINGHUA_LOGO;
+import static com.PrepLite.app.Constants.YALE_LOGO;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,14 +51,14 @@ public class InstituteFragment extends Fragment {
     private void buildRecyclerView()
     {
         instidata = new ArrayList<>();
-        instidata.add(new instiData("CalTech",R.drawable.caltech,0));
-        instidata.add(new instiData("Stanford",R.drawable.stanford,0));
-        instidata.add(new instiData("IIT Delhi",R.drawable.iitd,0));
-        instidata.add(new instiData("Tech Uni",R.drawable.tu,0));
-        instidata.add(new instiData("BITS Pilani",R.drawable.bits,0));
-        instidata.add(new instiData("Cambridge",R.drawable.cambridge,0));
-        instidata.add(new instiData("Yale",R.drawable.yale,0));
-        instidata.add(new instiData("Tsinghua",R.drawable.tsinghua,0));
+        instidata.add(new instiData("CalTech",CAL_TECH_LOGO,0));
+        instidata.add(new instiData("Stanford",STANFORD_LOGO,0));
+        instidata.add(new instiData("IIT Delhi",IIT_DELHI_LOGO,0));
+        instidata.add(new instiData("Tech Uni",TECH_UNI_LOGO,0));
+        instidata.add(new instiData("BITS Pilani",BITS_PILANI_LOGO,0));
+        instidata.add(new instiData("Cambridge",CAMBRIDGE_LOGO,0));
+        instidata.add(new instiData("Yale",YALE_LOGO,0));
+        instidata.add(new instiData("Tsinghua",TSINGHUA_LOGO,0));
 
         instiAdapter = new instiAdapter(instidata,container12.getContext());
         recyclerView = view12.findViewById(R.id.company_recyclerView);

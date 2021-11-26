@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
 import com.PrepLite.dataBindings.companyData;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -56,8 +57,10 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
     public void onBindViewHolder(@NonNull Company_ViewHolder holder, int position) {
         final companyData companyList = companydata.get(position);
         holder.companyTitle.setText(companyList.getCompanyName());
-        holder.companyImage.setImageResource(companyList.getCompanyImage());
-
+        if(companyList.getCompanyImage().trim().length()>0)
+        Glide.with(context).load(companyList.getCompanyImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.companyImage);
+        else
+        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.companyImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
