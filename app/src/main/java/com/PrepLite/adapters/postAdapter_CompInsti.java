@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.PrepLite.Comments;
+import com.PrepLite.CommentsActivity;
 import com.PrepLite.R;
 import com.PrepLite.dataBindings.postData;
 import com.bumptech.glide.Glide;
@@ -47,7 +47,7 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
         holder.post_comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, Comments.class);
+                Intent intent = new Intent(context, CommentsActivity.class);
                 //backend code to add data to intent as to which post comments we are viewing
                 context.startActivity(intent);
             }

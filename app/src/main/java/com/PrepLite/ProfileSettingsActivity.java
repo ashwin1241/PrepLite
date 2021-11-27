@@ -73,7 +73,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProfileSettingsActivity.this,About_Page.class);
+                Intent intent = new Intent(ProfileSettingsActivity.this, AboutPageActivity.class);
                 startActivity(intent);
             }
         });

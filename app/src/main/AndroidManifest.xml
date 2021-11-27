@@ -19,10 +19,10 @@
             android:name=".CompanyPreviewActivity"
             android:exported="false" />
         <activity
-            android:name=".Comments"
+            android:name=".CommentsActivity"
             android:exported="false" />
         <activity
-            android:name=".About_Page"
+            android:name=".AboutPageActivity"
             android:exported="false"
             android:parentActivityName=".ProfileSettingsActivity" />
         <activity
