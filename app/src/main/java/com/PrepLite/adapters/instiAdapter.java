@@ -52,7 +52,14 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, instiList.getInstiName(), Toast.LENGTH_SHORT).show();
+                if(iListener!=null)
+                {
+                    int position = holder.getAdapterPosition();
+                    if(position!=RecyclerView.NO_POSITION)
+                    {
+                        iListener.OnItemClicked(position);
+                    }
+                }
             }
         });
     }
