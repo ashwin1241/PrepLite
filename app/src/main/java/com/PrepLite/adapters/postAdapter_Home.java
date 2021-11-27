@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import com.PrepLite.CommentsActivity;
 import com.PrepLite.R;
 import com.PrepLite.dataBindings.postData;
 import com.bumptech.glide.Glide;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
@@ -72,7 +74,7 @@ public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post
         private TextView date;
         private TextView time;
         private TextView post_comments;
-        private CircleImageView compinstilogo;
+        private ShapeableImageView compinstilogo;
         public Post_ViewHolder(@NonNull View itemView) {
             super(itemView);
 

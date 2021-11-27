@@ -14,6 +14,7 @@ import com.PrepLite.CommentsActivity;
 import com.PrepLite.R;
 import com.PrepLite.dataBindings.postData;
 import com.bumptech.glide.Glide;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
@@ -70,7 +71,7 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
         private TextView date;
         private TextView time;
         private TextView post_comments;
-        private CircleImageView profile_pic;
+        private ShapeableImageView profile_pic;
         public Post_ViewHolder12(@NonNull View itemView) {
             super(itemView);
 
