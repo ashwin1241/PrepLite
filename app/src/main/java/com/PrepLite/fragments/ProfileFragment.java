@@ -1,14 +1,11 @@
 package com.PrepLite.fragments;
 
-import static com.PrepLite.prefs.SharedPrefsConstants.ID;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,9 +22,8 @@ import com.PrepLite.MainActivity;
 import com.PrepLite.Profile_Settings;
 import com.PrepLite.R;
 import com.PrepLite.prefs.SharedPrefs;
-import com.PrepLite.response.Result;
-import com.PrepLite.response.ServerResponse;
-import com.PrepLite.response.User;
+import com.PrepLite.models.ServerResponse;
+import com.PrepLite.models.User;
 
 import java.util.HashMap;
 
@@ -84,7 +80,7 @@ public class ProfileFragment extends Fragment {
 
     private void getProfile() {
         HashMap<String, Integer> map = new HashMap<>();
-        map.put("user_id", SharedPrefs.getIntParams(requireContext(), ID));
+        map.put("user_id", /*SharedPrefs.getIntParams(requireContext(), ID)*/ 1);
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).profile(map);
 
         call.enqueue(new Callback<ServerResponse>() {

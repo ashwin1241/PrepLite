@@ -1,4 +1,4 @@
-package com.PrepLite.response;
+package com.PrepLite.models;
 
 public class User {
     int id;

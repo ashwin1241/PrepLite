@@ -3,8 +3,10 @@ package com.PrepLite;
 import static com.PrepLite.app.Constants.LOGIN_USER;
 import static com.PrepLite.app.Constants.PROFILE_USER;
 import static com.PrepLite.app.Constants.REGISTER_USER;
+import static com.PrepLite.app.Constants.VIEW_COMPANIES;
+import static com.PrepLite.app.Constants.VIEW_UNIVERSITIES;
 
-import com.PrepLite.response.ServerResponse;
+import com.PrepLite.models.ServerResponse;
 
 import java.util.HashMap;
 
@@ -23,4 +25,9 @@ public interface ApiCalls {
     @POST(PROFILE_USER)
     Call<ServerResponse> profile(@Body HashMap<String, Integer> userid);
 
+    @POST(VIEW_UNIVERSITIES)
+    Call<ServerResponse> retrieveUniversities();
+
+    @POST(VIEW_COMPANIES)
+    Call<ServerResponse> retrieveCompanies();
 }

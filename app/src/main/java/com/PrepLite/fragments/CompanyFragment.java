@@ -21,12 +21,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.PrepLite.ApiCalls;
+import com.PrepLite.Client;
 import com.PrepLite.Company_Preview;
 import com.PrepLite.R;
 import com.PrepLite.adapters.companyAdapter;
 import com.PrepLite.dataBindings.companyData;
+import com.PrepLite.models.Company;
+import com.PrepLite.models.ServerResponse;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CompanyFragment extends Fragment {
 
@@ -46,8 +54,10 @@ public class CompanyFragment extends Fragment {
         return view;
     }
 
-    private void buildRecyclerView()
-    {
+    private void buildRecyclerView() {
+
+        retrieveCompanies();
+
         companydata = new ArrayList<>();
         companydata.add(new companyData("Microsoft",MICROSOFT_LOGO));
         companydata.add(new companyData("Amazon",AMAZON_LOGO));
@@ -69,6 +79,27 @@ public class CompanyFragment extends Fragment {
                 Intent intent = new Intent(container12.getContext(), Company_Preview.class);
                 intent.putExtra("name",companydata.get(position).getCompanyName());
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void retrieveCompanies() {
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveCompanies();
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                ServerResponse serverResponse = response.body();
+                if (serverResponse != null) {
+                    if(!serverResponse.isError()) {
+                        ArrayList<Company> companies = serverResponse.getResult().getCompanies();
+                        //Build the recycler view here
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
             }
         });
     }

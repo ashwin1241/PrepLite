@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.PrepLite.response.ServerResponse;
+import com.PrepLite.models.ServerResponse;
 
 import java.util.HashMap;
 
@@ -110,8 +110,10 @@ public class RegisterActivity extends AppCompatActivity {
         map.put("name", userName);
         map.put("email", userEmail);
         map.put("password", userPassword);
-        map.put("yearOfStudy", userYear);
+        map.put("batch", userYear);
         map.put("alumni", userAlumni);
+        map.put("phone", "1234567890");
+        map.put("profile_image", "");
 
 
         Call<ServerResponse> call= Client
