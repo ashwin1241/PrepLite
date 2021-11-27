@@ -21,6 +21,7 @@
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_company_preview.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_insti_preview.xml" value="0.21271929824561403" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_institute_preview.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_main.xml" value="0.2526041666666667" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/activity_profile_settings.xml" value="0.264" />
@@ -33,13 +34,14 @@
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_feed.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_institute.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/insti_card.xml" value="0.21271929824561403" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/password_change_view.xml" value="0.21271929824561403" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/post_layout.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/post_layout_for_home_page.xml" value="0.4" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/post_layout_for_individual_pages.xml" value="0.4" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/pswrd_et.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/menu/bottom_navigation.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/menu/settings_menu.xml" value="0.264" />
-        <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/fragment_profile.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/activity_about_page.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/activity_login.xml" value="0.21739130434782608" />
@@ -52,7 +54,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_14_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

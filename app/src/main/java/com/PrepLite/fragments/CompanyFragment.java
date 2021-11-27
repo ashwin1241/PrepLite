@@ -78,6 +78,7 @@ public class CompanyFragment extends Fragment {
             public void OnItemClicked(int position) {
                 Intent intent = new Intent(container12.getContext(), CompanyPreviewActivity.class);
                 intent.putExtra("name",companydata.get(position).getCompanyName());
+                intent.putExtra("logo",companydata.get(position).getCompanyImage());
                 startActivity(intent);
             }
         });

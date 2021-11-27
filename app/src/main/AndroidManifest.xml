@@ -14,10 +14,12 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".InstitutePreviewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Custom_Image_Toolbar"/>
         <activity
             android:name=".CompanyPreviewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Custom_Image_Toolbar"/>
         <activity
             android:name=".CommentsActivity"
             android:exported="false" />

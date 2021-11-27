@@ -78,6 +78,7 @@ public class InstituteFragment extends Fragment {
             public void OnItemClicked(int position) {
                 Intent intent = new Intent(container12.getContext(), InstitutePreviewActivity.class);
                 intent.putExtra("name",instidata.get(position).getInstiName());
+                intent.putExtra("logo",instidata.get(position).getInstiImage());
                 startActivity(intent);
             }
         });

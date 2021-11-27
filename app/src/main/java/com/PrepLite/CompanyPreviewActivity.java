@@ -4,14 +4,17 @@ import static com.PrepLite.app.Constants.AMAZON_LOGO;
 import static com.PrepLite.app.Constants.CISCO_LOGO;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.PrepLite.adapters.postAdapter_CompInsti;
 import com.PrepLite.adapters.postAdapter_Home;
 import com.PrepLite.dataBindings.postData;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -20,12 +23,26 @@ public class CompanyPreviewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private postAdapter_CompInsti postAdapter_compInsti;
     private ArrayList<postData> post_List;
+    private Toolbar toolbar;
+    private String title;
+    private String logo;
+    private ImageView company_logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_preview);
-        getSupportActionBar().setTitle(getIntent().getStringExtra("name"));
+
+        toolbar = findViewById(R.id.toolbar_title_company);
+        setSupportActionBar(toolbar);
+
+        title = getIntent().getStringExtra("name");
+        logo = getIntent().getStringExtra("logo");
+
+        company_logo = findViewById(R.id.toolbar_image_company);
+        Glide.with(this).load(logo).fitCenter().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(company_logo);
+
+        getSupportActionBar().setTitle(title);
         getSupportActionBar().setHomeButtonEnabled(false);
 
         buildrecyclerView();
