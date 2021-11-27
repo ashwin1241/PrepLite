@@ -54,7 +54,7 @@ public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post
             }
         });
         if(current_post.getImg_url().trim().length()>0)
-        Glide.with(context).load(current_post.getImg_url()).circleCrop().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
+        Glide.with(context).load(current_post.getImg_url()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
         else
         Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.compinstilogo);
     }

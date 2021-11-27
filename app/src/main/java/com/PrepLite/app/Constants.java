@@ -19,7 +19,7 @@ public class Constants {
 
     public static final String CAL_TECH_LOGO = "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_California_Institute_of_Technology.svg/1200px-Seal_of_the_California_Institute_of_Technology.svg.png";
     public static final String STANFORD_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Stanford_Cardinal_logo.svg/1200px-Stanford_Cardinal_logo.svg.png";
-    public static final String IIT_DELHI_LOGO = "https://upload.wikimedia.org/wikipedia/en/f/fd/Indian_Institute_of_Technology_Delhi_Logo.svg";
+    public static final String IIT_DELHI_LOGO = "https://ilogo.in/ajax/thumbnail.php?id=51044&width=540&height=540&face=front&force=1";
     public static final String TECH_UNI_LOGO = "https://img.favpng.com/12/4/13/technical-university-sofia-sofia-university-logo-brand-png-favpng-ydgiANu8ygcRX9pWC8VY8sx7w.jpg";
     public static final String BITS_PILANI_LOGO = "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png";
     public static final String CAMBRIDGE_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/University_of_Cambridge_coat_of_arms.svg/1200px-University_of_Cambridge_coat_of_arms.svg.png";

@@ -46,7 +46,7 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
         final instiData instiList = instiData.get(position);
         holder.instiTitle.setText(instiList.getInstiName());
         if(instiList.getInstiImage().trim().length()>0)
-        Glide.with(context).load(instiList.getInstiImage().trim()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.instiImage);
+        Glide.with(context).load(instiList.getInstiImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.instiImage);
         else
         Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.instiImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
