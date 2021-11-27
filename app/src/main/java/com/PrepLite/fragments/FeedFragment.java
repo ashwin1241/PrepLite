@@ -3,7 +3,6 @@ package com.PrepLite.fragments;
 import static com.PrepLite.app.Constants.AMAZON_LOGO;
 import static com.PrepLite.app.Constants.CISCO_LOGO;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.PrepLite.Company_Preview;
 import com.PrepLite.R;
-import com.PrepLite.adapters.companyAdapter;
 import com.PrepLite.adapters.postAdapter_Home;
-import com.PrepLite.dataBindings.companyData;
 import com.PrepLite.dataBindings.postData;
 
 import java.util.ArrayList;

@@ -14,7 +14,7 @@ import com.PrepLite.dataBindings.postData;
 
 import java.util.ArrayList;
 
-public class Institute_Preview extends AppCompatActivity {
+public class InstitutePreviewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private postAdapter_CompInsti postAdapter_compInsti;
     private ArrayList<postData> post_List;

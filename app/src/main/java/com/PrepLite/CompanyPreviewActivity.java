@@ -15,7 +15,7 @@ import com.PrepLite.dataBindings.postData;
 
 import java.util.ArrayList;
 
-public class Company_Preview extends AppCompatActivity {
+public class CompanyPreviewActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private postAdapter_CompInsti postAdapter_compInsti;

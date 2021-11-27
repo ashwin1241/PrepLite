@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -18,7 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Profile_Settings extends AppCompatActivity {
+public class ProfileSettingsActivity extends AppCompatActivity {
 
     private Switch notifs;
     private RatingBar rating;
@@ -43,7 +41,7 @@ public class Profile_Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 View v = getLayoutInflater().inflate(R.layout.feedback_edittext,null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(Profile_Settings.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileSettingsActivity.this);
                 builder.setTitle("Feedback")
                 .setMessage("Enter your feedback here: ")
                 .setView(v)
@@ -55,10 +53,10 @@ public class Profile_Settings extends AppCompatActivity {
                         if(feedback_text.length()>0)
                         {
                             //backend code to send feedback
-                            Toast.makeText(Profile_Settings.this, "Feedback submitted successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileSettingsActivity.this, "Feedback submitted successfully!", Toast.LENGTH_SHORT).show();
                         }
                         else
-                            Toast.makeText(Profile_Settings.this, "Cannot send empty feedback!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileSettingsActivity.this, "Cannot send empty feedback!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -75,7 +73,7 @@ public class Profile_Settings extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Profile_Settings.this,About_Page.class);
+                Intent intent = new Intent(ProfileSettingsActivity.this,About_Page.class);
                 startActivity(intent);
             }
         });
@@ -84,13 +82,13 @@ public class Profile_Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 View view1 = getLayoutInflater().inflate(R.layout.pswrd_et,null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(Profile_Settings.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileSettingsActivity.this);
                 builder.setTitle("Delete account")
                 .setMessage("Are you sure you want to delete this account?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        AlertDialog.Builder pswrd_confirmation = new AlertDialog.Builder(Profile_Settings.this);
+                        AlertDialog.Builder pswrd_confirmation = new AlertDialog.Builder(ProfileSettingsActivity.this);
                         pswrd_confirmation.setTitle("Confirm your password")
                         .setView(view1)
                         .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
@@ -100,8 +98,8 @@ public class Profile_Settings extends AppCompatActivity {
                                 String pswrd = password.getText().toString().trim();
                                 //backend code to validate password and delete account
                                 //Toast.makeText(Profile_Settings.this, pswrd, Toast.LENGTH_SHORT).show();
-                                Toast.makeText(Profile_Settings.this, "Account deleted successfully!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Profile_Settings.this, LoginActivity.class);
+                                Toast.makeText(ProfileSettingsActivity.this, "Account deleted successfully!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ProfileSettingsActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             }
                         })
@@ -128,7 +126,7 @@ public class Profile_Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 View view12 = getLayoutInflater().inflate(R.layout.password_change_view,null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(Profile_Settings.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileSettingsActivity.this);
                 builder.setTitle("Change Password")
                 .setView(view12)
                 .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
@@ -142,10 +140,10 @@ public class Profile_Settings extends AppCompatActivity {
                         if(old_password.equals(new_password))
                         {
                             //backend code to update password
-                            Toast.makeText(Profile_Settings.this, "Password updated successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileSettingsActivity.this, "Password updated successfully!", Toast.LENGTH_SHORT).show();
                         }
                         else
-                            Toast.makeText(Profile_Settings.this, "Old and new passwords do not match!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfileSettingsActivity.this, "Old and new passwords do not match!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -171,8 +169,8 @@ public class Profile_Settings extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.save_changes_profile_settings://backend code to save rating and notifications status
-                Toast.makeText(Profile_Settings.this, "Changes saved successfully!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Profile_Settings.this,HomeActivity.class);
+                Toast.makeText(ProfileSettingsActivity.this, "Changes saved successfully!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ProfileSettingsActivity.this,HomeActivity.class);
                 startActivity(intent);
                 return true;
             default:return super.onOptionsItemSelected(item);

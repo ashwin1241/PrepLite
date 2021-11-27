@@ -13,10 +13,10 @@
         android:theme="@style/Theme.PrepLite"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Institute_Preview"
+            android:name=".InstitutePreviewActivity"
             android:exported="false" />
         <activity
-            android:name=".Company_Preview"
+            android:name=".CompanyPreviewActivity"
             android:exported="false" />
         <activity
             android:name=".Comments"
@@ -24,9 +24,9 @@
         <activity
             android:name=".About_Page"
             android:exported="false"
-            android:parentActivityName=".Profile_Settings" />
+            android:parentActivityName=".ProfileSettingsActivity" />
         <activity
-            android:name=".Profile_Settings"
+            android:name=".ProfileSettingsActivity"
             android:exported="false"
             android:parentActivityName=".HomeActivity" />
         <activity

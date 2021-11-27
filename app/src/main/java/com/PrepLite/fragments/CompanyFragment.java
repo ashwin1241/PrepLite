@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.Company_Preview;
+import com.PrepLite.CompanyPreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.companyAdapter;
 import com.PrepLite.dataBindings.companyData;
@@ -76,7 +76,7 @@ public class CompanyFragment extends Fragment {
         companyAdapter.setOnCompanyClickListener(new companyAdapter.OnCompanyClickListener() {
             @Override
             public void OnItemClicked(int position) {
-                Intent intent = new Intent(container12.getContext(), Company_Preview.class);
+                Intent intent = new Intent(container12.getContext(), CompanyPreviewActivity.class);
                 intent.putExtra("name",companydata.get(position).getCompanyName());
                 startActivity(intent);
             }

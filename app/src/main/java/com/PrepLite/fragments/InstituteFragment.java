@@ -23,8 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.Company_Preview;
-import com.PrepLite.Institute_Preview;
+import com.PrepLite.InstitutePreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.instiAdapter;
 import com.PrepLite.dataBindings.instiData;
@@ -77,7 +76,7 @@ public class InstituteFragment extends Fragment {
         instiAdapter.setOnInstiClickListener(new instiAdapter.OnInstiClickListener() {
             @Override
             public void OnItemClicked(int position) {
-                Intent intent = new Intent(container12.getContext(), Institute_Preview.class);
+                Intent intent = new Intent(container12.getContext(), InstitutePreviewActivity.class);
                 intent.putExtra("name",instidata.get(position).getInstiName());
                 startActivity(intent);
             }
