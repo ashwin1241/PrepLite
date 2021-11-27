@@ -13,10 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
 import com.PrepLite.dataBindings.instiData;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class instiAdapter extends RecyclerView.Adapter<instiAdapter.Insti_ViewHolder> {
+public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<instiAdapter.Insti_ViewHolder> {
 
     ArrayList<instiData> instiData;
     Context context;
@@ -44,8 +45,10 @@ public class instiAdapter extends RecyclerView.Adapter<instiAdapter.Insti_ViewHo
     public void onBindViewHolder(@NonNull Insti_ViewHolder holder, int position) {
         final instiData instiList = instiData.get(position);
         holder.instiTitle.setText(instiList.getInstiName());
-        holder.instiImage.setImageResource(instiList.getInstiImage());
-
+        if(instiList.getInstiImage().trim().length()>0)
+        Glide.with(context).load(instiList.getInstiImage().trim()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.instiImage);
+        else
+        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.instiImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +61,19 @@ public class instiAdapter extends RecyclerView.Adapter<instiAdapter.Insti_ViewHo
     public int getItemCount() {
 
         return instiData.size();
+    }
+
+    private instiAdapter.OnInstiClickListener iListener;
+
+
+    public void setOnInstiClickListener(instiAdapter.OnInstiClickListener listener) {
+        this.iListener = listener;
+    }
+
+    public interface OnInstiClickListener{
+
+        void OnItemClicked(int position);
+
     }
 
     public static class Insti_ViewHolder extends RecyclerView.ViewHolder{

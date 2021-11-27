@@ -1,5 +1,14 @@
 package com.PrepLite.fragments;
 
+import static com.PrepLite.app.Constants.AMAZON_LOGO;
+import static com.PrepLite.app.Constants.CISCO_LOGO;
+import static com.PrepLite.app.Constants.CODE_NATION_LOGO;
+import static com.PrepLite.app.Constants.GENERAL_MOTORS_LOGO;
+import static com.PrepLite.app.Constants.MICROSOFT_LOGO;
+import static com.PrepLite.app.Constants.ORACLE_LOGO;
+import static com.PrepLite.app.Constants.SERVICE_NOW_LOGO;
+import static com.PrepLite.app.Constants.SPOTIFY_LOGO;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,10 +49,14 @@ public class CompanyFragment extends Fragment {
     private void buildRecyclerView()
     {
         companydata = new ArrayList<>();
-        companydata.add(new companyData("Microsoft",R.drawable.default_companypreview));
-        companydata.add(new companyData("Amazon",R.drawable.amazon));
-        companydata.add(new companyData("Oracle",R.drawable.oracle));
-        companydata.add(new companyData("Code Nation",R.drawable.codenation));
+        companydata.add(new companyData("Microsoft",MICROSOFT_LOGO));
+        companydata.add(new companyData("Amazon",AMAZON_LOGO));
+        companydata.add(new companyData("Oracle",ORACLE_LOGO));
+        companydata.add(new companyData("Code Nation",CODE_NATION_LOGO));
+        companydata.add(new companyData("Service Now",SERVICE_NOW_LOGO));
+        companydata.add(new companyData("Cisco",CISCO_LOGO));
+        companydata.add(new companyData("Spotify",SPOTIFY_LOGO));
+        companydata.add(new companyData("General Motors",GENERAL_MOTORS_LOGO));
         companyAdapter = new companyAdapter(companydata,container12.getContext());
         recyclerView = view12.findViewById(R.id.company_recyclerView);
         recyclerView.setHasFixedSize(true);

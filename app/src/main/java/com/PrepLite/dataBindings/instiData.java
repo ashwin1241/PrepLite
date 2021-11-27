@@ -12,6 +12,8 @@ public class instiData {
         this.no_participants = no_participants;
     }
 
+
+
     public String getInstiName() {
         return instiName;
     }
@@ -20,8 +22,8 @@ public class instiData {
         this.instiName = instiName;
     }
 
-    public int getInstiImage() {
-        return Integer.parseInt(instiImage);
+    public String getInstiImage() {
+        return instiImage;
     }
 
     public void setInstiImage(String instiImage) {
