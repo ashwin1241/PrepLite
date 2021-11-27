@@ -35,8 +35,8 @@ public class CompanyPreviewActivity extends AppCompatActivity {
     {
         //while fetching the posts from backend, make sure to fetch only those related to this company
         post_List = new ArrayList<>();
-        post_List.add(new postData("Ashwin","Amazon","24-11-2021","13:02","Hello 1",AMAZON_LOGO));
-        post_List.add(new postData("Aagam","Cisco","25-11-2021","13:02","Hello 2",CISCO_LOGO));
+        post_List.add(new postData("Ashwin","Amazon","24-11-2021","13:02","Hello 1",""));
+        post_List.add(new postData("Aagam","Cisco","25-11-2021","13:02","Hello 2",""));
         post_List.add(new postData("Harsh","GE","26-11-2021","13:02","Hello 3",""));
         postAdapter_compInsti = new postAdapter_CompInsti(post_List,this);
         recyclerView = findViewById(R.id.company_post_recycler_view);
