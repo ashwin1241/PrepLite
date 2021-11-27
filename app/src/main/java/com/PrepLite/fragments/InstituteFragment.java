@@ -21,15 +21,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.PrepLite.ApiCalls;
+import com.PrepLite.Client;
 import com.PrepLite.Company_Preview;
 import com.PrepLite.Institute_Preview;
 import com.PrepLite.R;
-import com.PrepLite.adapters.companyAdapter;
 import com.PrepLite.adapters.instiAdapter;
-import com.PrepLite.dataBindings.companyData;
 import com.PrepLite.dataBindings.instiData;
+import com.PrepLite.models.ServerResponse;
+import com.PrepLite.models.University;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class InstituteFragment extends Fragment {
     private ArrayList<instiData> instidata;
@@ -51,6 +57,7 @@ public class InstituteFragment extends Fragment {
 
     private void buildRecyclerView()
     {
+        retrieveUniversities();
         instidata = new ArrayList<>();
         instidata.add(new instiData("CalTech",CAL_TECH_LOGO,0));
         instidata.add(new instiData("Stanford",STANFORD_LOGO,0));
@@ -76,4 +83,24 @@ public class InstituteFragment extends Fragment {
             }
         });
     }
+
+    private void retrieveUniversities() {
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveUniversities();
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                ServerResponse serverResponse = response.body();
+                if (serverResponse != null) {
+                    ArrayList<University> universities = serverResponse.getResult().getUniversities();
+                    //build the recycler view here
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

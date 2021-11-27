@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.PrepLite.prefs.SharedPrefs;
-import com.PrepLite.response.ServerResponse;
+import com.PrepLite.models.ServerResponse;
 
 import java.util.HashMap;
 
@@ -36,8 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         login = findViewById(R.id.login_button);
-        email = findViewById(R.id.remail);
-        password = findViewById(R.id.rpassword);
+        email = findViewById(R.id.lemail);
+        password = findViewById(R.id.lpassword);
         reg_link = findViewById(R.id.register_link);
         reg_link.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +86,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         HashMap<String, String> map = new HashMap<>();
-        map.put("userEmail", userEmail);
-        map.put("userPassword", userPassword);
+        map.put("email", userEmail);
+        map.put("password", userPassword);
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).login(map);
 
         call.enqueue(new Callback<ServerResponse>() {

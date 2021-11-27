@@ -1,5 +1,6 @@
-package com.PrepLite.response;
+package com.PrepLite.models;
 
+import com.PrepLite.models.Result;
 import com.google.gson.annotations.SerializedName;
 
 public class ServerResponse {

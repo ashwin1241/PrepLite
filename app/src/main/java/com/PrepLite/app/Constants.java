@@ -2,11 +2,15 @@ package com.PrepLite.app;
 
 public class Constants {
 
-    public static final String BASE_URL = "http://82a7-157-48-248-163.ngrok.io/";
+    public static final String BASE_URL = "https://d3d4-2405-201-0-59d9-8ea-4753-3aaf-677e.ngrok.io";
 
     public static final String REGISTER_USER = "register/";
     public static final String LOGIN_USER = "login/";
     public static final String PROFILE_USER = "profile/";
+
+    public static final String VIEW_UNIVERSITIES = "viewUniversities/";
+    public static final String VIEW_COMPANIES = "viewCompanies/";
+
 
     public static final String MICROSOFT_LOGO = "https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80660_1280.png";
     public static final String AMAZON_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png";
@@ -25,4 +29,5 @@ public class Constants {
     public static final String CAMBRIDGE_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/University_of_Cambridge_coat_of_arms.svg/1200px-University_of_Cambridge_coat_of_arms.svg.png";
     public static final String YALE_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Yale_Bulldogs_script.svg/1045px-Yale_Bulldogs_script.svg.png";
     public static final String TSINGHUA_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Tsinghua_University_Logo.svg/1200px-Tsinghua_University_Logo.svg.png";
+
 }
