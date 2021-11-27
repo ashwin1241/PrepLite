@@ -1,5 +1,8 @@
 package com.PrepLite;
 
+import static com.PrepLite.app.Constants.STANFORD_LOGO;
+import static com.PrepLite.app.Constants.YALE_LOGO;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,8 +33,8 @@ public class Institute_Preview extends AppCompatActivity {
     {
 
         post_List = new ArrayList<>();
-        post_List.add(new postData("Ashwin","Stanford","24-11-2021","13:02","Hello 1",""));
-        post_List.add(new postData("Aagam","Yale","25-11-2021","13:02","Hello 2",""));
+        post_List.add(new postData("Ashwin","Stanford","24-11-2021","13:02","Hello 1",STANFORD_LOGO));
+        post_List.add(new postData("Aagam","Yale","25-11-2021","13:02","Hello 2",YALE_LOGO));
         post_List.add(new postData("Harsh","Oxford","26-11-2021","13:02","Hello 3",""));
         postAdapter_compInsti = new postAdapter_CompInsti(post_List,this);
         recyclerView = findViewById(R.id.institute_post_recycler_view);
