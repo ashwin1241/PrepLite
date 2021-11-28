@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="100dp"
+    android:padding="10dp"
+    android:background="@drawable/chat_receiver_shape">
+
+    <TextView
+        android:id="@+id/receiver_chat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/amaranth"
+        android:text="Your message printed here and extending it just to check the final layout"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/receiver_chat_message_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/receiver_chat_text"
+        android:layout_toLeftOf="@id/receiver_chat_message_time"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/amaranth"
+        android:textSize="14dp"
+        android:textColor="#828282"
+        android:text="28/11/2021"/>
+
+    <TextView
+        android:id="@+id/receiver_chat_message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/receiver_chat_text"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/amaranth"
+        android:textSize="14dp"
+        android:textColor="#828282"
+        android:text="17:01"/>
+
+</RelativeLayout>
