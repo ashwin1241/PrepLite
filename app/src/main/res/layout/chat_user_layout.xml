@@ -4,17 +4,19 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingHorizontal="10dp"
-    android:paddingVertical="5dp">
+    android:paddingVertical="5dp"
+    android:elevation="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <View
             android:id="@+id/chat_top_segregator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#828282"
+            android:background="#DEDEDE"
             android:layout_alignParentTop="true"
             />
 
@@ -36,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:layout_toRightOf="@id/chat_profile_image"
@@ -53,16 +55,19 @@
             android:id="@+id/chat_text_preview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/chat_profile_image"
-            android:layout_toLeftOf="@id/chat_last_timestamp"
             android:layout_below="@id/chat_person_username"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@id/chat_last_timestamp"
+            android:layout_toRightOf="@id/chat_profile_image"
+            android:ellipsize="end"
             android:fontFamily="@font/amaranth"
-            android:textColor="#828282"
-            android:textSize="20dp"
-            android:text="Chat text preview"
-            android:layout_margin="5dp"
             android:maxLines="1"
-            android:ellipsize="end"/>
+            android:text="Chat text preview"
+            android:textColor="#828282"
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/chat_last_timestamp"
@@ -75,6 +80,7 @@
             android:text="77/77/77"
             android:textColor="#A0A0A0"
             android:textSize="16dp" />
+
 
     </RelativeLayout>
 
