@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +46,7 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
     public Company_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from((parent.getContext()));
-        View view = layoutInflater.inflate(R.layout.company_card,parent,false);
+        View view = layoutInflater.inflate(R.layout.compinsti_card,parent,false);
         Company_ViewHolder companyViewHolder = new Company_ViewHolder(view);
 
         return companyViewHolder;

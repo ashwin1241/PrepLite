@@ -4,12 +4,13 @@ public class postData {
 
     private String username;
     private String comp_insti;
+    private boolean isCompnay;
     private String date;
     private String time;
     private String content;
     private String img_url;
 
-    public postData(String username, String comp_insti, String date, String time, String content,String img_url)
+    public postData(String username, String comp_insti, String date, String time, String content,String img_url,boolean isCompnay)
     {
         this.username=username;
         this.comp_insti=comp_insti;
@@ -17,6 +18,7 @@ public class postData {
         this.time=time;
         this.content=content;
         this.img_url=img_url;
+        this.isCompnay=isCompnay;
     }
 
     public String getUsername() {
@@ -65,5 +67,13 @@ public class postData {
 
     public void setImg_url(String img_url) {
         this.img_url = img_url;
+    }
+
+    public boolean isCompnay() {
+        return isCompnay;
+    }
+
+    public void setCompnay(boolean compnay) {
+        isCompnay = compnay;
     }
 }

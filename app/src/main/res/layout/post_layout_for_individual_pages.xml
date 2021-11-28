@@ -25,7 +25,9 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_twotone_person_add_100"
-            app:shapeAppearanceOverlay="@style/circular" />
+            app:shapeAppearanceOverlay="@style/circular"
+            app:strokeWidth="1.5dp"
+            app:strokeColor="#FF9900"/>
 
         <TextView
             android:id="@+id/post_layout_username"

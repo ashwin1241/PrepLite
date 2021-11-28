@@ -47,7 +47,7 @@ public class InstituteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_company,container,false);
+        View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
         container12=container;
         view12=view;
         buildRecyclerView();
@@ -68,7 +68,7 @@ public class InstituteFragment extends Fragment {
         instidata.add(new instiData("Tsinghua",TSINGHUA_LOGO,0));
 
         instiAdapter = new instiAdapter(instidata,container12.getContext());
-        recyclerView = view12.findViewById(R.id.company_recyclerView);
+        recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
         recyclerView.setAdapter(instiAdapter);

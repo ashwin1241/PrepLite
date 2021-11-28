@@ -47,7 +47,7 @@ public class CompanyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_company,container,false);
+        View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
         container12=container;
         view12=view;
         buildRecyclerView();
@@ -68,7 +68,7 @@ public class CompanyFragment extends Fragment {
         companydata.add(new companyData("Spotify",SPOTIFY_LOGO));
         companydata.add(new companyData("General Motors",GENERAL_MOTORS_LOGO));
         companyAdapter = new companyAdapter(companydata,container12.getContext());
-        recyclerView = view12.findViewById(R.id.company_recyclerView);
+        recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
         recyclerView.setAdapter(companyAdapter);

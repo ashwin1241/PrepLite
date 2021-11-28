@@ -17,14 +17,17 @@
             android:id="@+id/feed_post_compinsti_pic"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_twotone_person_add_100"
-            app:shapeAppearanceOverlay="@style/circular"/>
+            android:adjustViewBounds="true"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_work_24"
+            app:shapeAppearanceOverlay="@style/circular"
+            app:strokeColor="#FF9900"
+            app:strokeWidth="1.5dp" />
 
         <TextView
             android:id="@+id/post_layout_username"

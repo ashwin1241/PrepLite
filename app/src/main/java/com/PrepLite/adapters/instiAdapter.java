@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +34,7 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
     public Insti_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from((parent.getContext()));
-        View view = layoutInflater.inflate(R.layout.insti_card,parent,false);
+        View view = layoutInflater.inflate(R.layout.compinsti_card,parent,false);
         Insti_ViewHolder instiViewHolder = new Insti_ViewHolder(view);
 
         return instiViewHolder;
@@ -89,8 +88,8 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
         private TextView instiTitle;
         public Insti_ViewHolder(@NonNull View itemView) {
             super(itemView);
-            instiImage = itemView.findViewById(R.id.instiImage);
-            instiTitle = itemView.findViewById(R.id.instiTitle);
+            instiImage = itemView.findViewById(R.id.companyImage);
+            instiTitle = itemView.findViewById(R.id.companyTitle);
         }
     }
 }

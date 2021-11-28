@@ -50,9 +50,9 @@ public class InstitutePreviewActivity extends AppCompatActivity {
     {
 
         post_List = new ArrayList<>();
-        post_List.add(new postData("Ashwin","Stanford","24-11-2021","13:02","Hello 1",""));
-        post_List.add(new postData("Aagam","Yale","25-11-2021","13:02","Hello 2",""));
-        post_List.add(new postData("Harsh","Oxford","26-11-2021","13:02","Hello 3",""));
+        post_List.add(new postData("Ashwin","Stanford","24-11-2021","13:02","Hello 1","",false));
+        post_List.add(new postData("Aagam","Yale","25-11-2021","13:02","Hello 2","",false));
+        post_List.add(new postData("Harsh","Oxford","26-11-2021","13:02","Hello 3","",false));
         postAdapter_compInsti = new postAdapter_CompInsti(post_List,this);
         recyclerView = findViewById(R.id.institute_post_recycler_view);
         recyclerView.setHasFixedSize(true);

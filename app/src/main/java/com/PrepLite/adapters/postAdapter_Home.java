@@ -2,6 +2,7 @@ package com.PrepLite.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post_ViewHolder> {
 
@@ -58,7 +57,13 @@ public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post
         if(current_post.getImg_url().trim().length()>0)
         Glide.with(context).load(current_post.getImg_url()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
         else
-        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.compinstilogo);
+        {
+            if(current_post.isCompnay())
+                Glide.with(context).load(R.drawable.ic_baseline_work_24).into(holder.compinstilogo);
+            else
+                Glide.with(context).load(R.drawable.ic_baseline_institute_40).into(holder.compinstilogo);
+            holder.compinstilogo.setBackgroundColor(Color.parseColor("#A0A0A0"));
+        }
     }
 
     @Override
