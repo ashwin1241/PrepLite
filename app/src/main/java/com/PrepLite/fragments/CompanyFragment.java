@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.Company_Preview;
+import com.PrepLite.CompanyPreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.companyAdapter;
 import com.PrepLite.models.Company;
@@ -46,7 +46,7 @@ public class CompanyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_company,container,false);
+        View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
         container12=container;
         view12=view;
         buildRecyclerView();
@@ -67,7 +67,7 @@ public class CompanyFragment extends Fragment {
         companydata.add(new Company("Spotify",SPOTIFY_LOGO));
         companydata.add(new Company("General Motors",GENERAL_MOTORS_LOGO));
         companyAdapter = new companyAdapter(companydata,container12.getContext());
-        recyclerView = view12.findViewById(R.id.company_recyclerView);
+        recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
         recyclerView.setAdapter(companyAdapter);
@@ -75,8 +75,9 @@ public class CompanyFragment extends Fragment {
         companyAdapter.setOnCompanyClickListener(new companyAdapter.OnCompanyClickListener() {
             @Override
             public void OnItemClicked(int position) {
-                Intent intent = new Intent(container12.getContext(), Company_Preview.class);
+                Intent intent = new Intent(container12.getContext(), CompanyPreviewActivity.class);
                 intent.putExtra("name",companydata.get(position).getCompanyName());
+                intent.putExtra("logo",companydata.get(position).getCompanyLogo());
                 startActivity(intent);
             }
         });

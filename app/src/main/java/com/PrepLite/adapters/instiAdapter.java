@@ -6,28 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.instiData;
+import com.PrepLite.models.University;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<instiAdapter.Insti_ViewHolder> {
 
-    ArrayList<instiData> instiData;
+    ArrayList<University> universities;
     Context context;
 
-    public instiAdapter(ArrayList<instiData> instiData, Context activity)   {
-
-        this.instiData = instiData;
+    public instiAdapter(ArrayList<University> universities, Context activity)   {
+        this.universities = universities;
         this.context=activity;
-
-
     }
 
     @NonNull
@@ -35,7 +31,7 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
     public Insti_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from((parent.getContext()));
-        View view = layoutInflater.inflate(R.layout.insti_card,parent,false);
+        View view = layoutInflater.inflate(R.layout.compinsti_card,parent,false);
         Insti_ViewHolder instiViewHolder = new Insti_ViewHolder(view);
 
         return instiViewHolder;
@@ -43,12 +39,12 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
 
     @Override
     public void onBindViewHolder(@NonNull Insti_ViewHolder holder, int position) {
-        final instiData instiList = instiData.get(position);
-        holder.instiTitle.setText(instiList.getInstiName());
-        if(instiList.getInstiImage().trim().length()>0)
-        Glide.with(context).load(instiList.getInstiImage().trim()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.instiImage);
+        final University university = universities.get(position);
+        holder.universityTitle.setText(university.getUniversityName());
+        if(university.getUniversityLogo().trim().length()>0)
+        Glide.with(context).load(university.getUniversityName()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.universityImage);
         else
-        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.instiImage);
+        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.universityImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +63,7 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
     @Override
     public int getItemCount() {
 
-        return instiData.size();
+        return universities.size();
     }
 
     private instiAdapter.OnInstiClickListener iListener;
@@ -85,12 +81,12 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
 
     public static class Insti_ViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView instiImage;
-        private TextView instiTitle;
+        private ImageView universityImage;
+        private TextView universityTitle;
         public Insti_ViewHolder(@NonNull View itemView) {
             super(itemView);
-            instiImage = itemView.findViewById(R.id.instiImage);
-            instiTitle = itemView.findViewById(R.id.instiTitle);
+            universityImage = itemView.findViewById(R.id.companyImage);
+            universityTitle = itemView.findViewById(R.id.companyTitle);
         }
     }
 }

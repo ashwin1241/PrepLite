@@ -1,16 +1,9 @@
 package com.PrepLite.models;
 
-import com.google.gson.annotations.SerializedName;
+public class Chat {
 
-public class Comment {
-
-    @SerializedName("user")
     public User user;
-
-    @SerializedName("content")
-    public String content;
-
-    @SerializedName("timestamp")
+    public String chatFirstMessage;
     public String timestamp;
 
     public User getUser() {
@@ -21,12 +14,12 @@ public class Comment {
         this.user = user;
     }
 
-    public String getContent() {
-        return content;
+    public String getChatFirstMessage() {
+        return chatFirstMessage;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setChatFirstMessage(String chatFirstMessage) {
+        this.chatFirstMessage = chatFirstMessage;
     }
 
     public String getTimestamp() {

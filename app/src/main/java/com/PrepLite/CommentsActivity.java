@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Comments extends AppCompatActivity {
+public class CommentsActivity extends AppCompatActivity {
 
     private ArrayList<commentData> comment_list;
     private RecyclerView recyclerView;
@@ -46,7 +46,7 @@ public class Comments extends AppCompatActivity {
                 comment_text = comment.getText().toString().trim();
                 if(comment_text.length()==0)
                 {
-                    Toast.makeText(Comments.this, "Cannot post empty comment", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CommentsActivity.this, "Cannot post empty comment", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -74,7 +74,7 @@ public class Comments extends AppCompatActivity {
         commentAdapter.setOnCommentClickListener(new commentAdapter.OnCommentClickListener() {
             @Override
             public void OnItemLongClicked(int position) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Comments.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(CommentsActivity.this);
                 builder.setTitle("Delete comment")
                 .setMessage("Are you sure you want to delete this comment?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {

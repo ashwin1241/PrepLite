@@ -13,20 +13,25 @@
         android:theme="@style/Theme.PrepLite"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Institute_Preview"
+            android:name=".ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".Company_Preview"
-            android:exported="false" />
-        <activity
-            android:name=".Comments"
-            android:exported="false" />
-        <activity
-            android:name=".About_Page"
+            android:name=".InstitutePreviewActivity"
             android:exported="false"
-            android:parentActivityName=".Profile_Settings" />
+            android:theme="@style/Custom_Image_Toolbar" />
         <activity
-            android:name=".Profile_Settings"
+            android:name=".CompanyPreviewActivity"
+            android:exported="false"
+            android:theme="@style/Custom_Image_Toolbar" />
+        <activity
+            android:name=".CommentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutPageActivity"
+            android:exported="false"
+            android:parentActivityName=".ProfileSettingsActivity" />
+        <activity
+            android:name=".ProfileSettingsActivity"
             android:exported="false"
             android:parentActivityName=".HomeActivity" />
         <activity

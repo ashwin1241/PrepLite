@@ -19,7 +19,7 @@ import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
 import com.PrepLite.LoginActivity;
 import com.PrepLite.MainActivity;
-import com.PrepLite.Profile_Settings;
+import com.PrepLite.ProfileSettingsActivity;
 import com.PrepLite.R;
 import com.PrepLite.prefs.SharedPrefs;
 import com.PrepLite.models.ServerResponse;
@@ -46,7 +46,7 @@ public class ProfileFragment extends Fragment {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(container.getContext(), Profile_Settings.class);
+                Intent intent = new Intent(container.getContext(), ProfileSettingsActivity.class);
                 startActivity(intent);
             }
         });

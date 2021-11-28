@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.Company_Preview;
+import com.PrepLite.InstitutePreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.instiAdapter;
 import com.PrepLite.models.ServerResponse;
@@ -46,7 +46,7 @@ public class InstituteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_company,container,false);
+        View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
         container12=container;
         view12=view;
         buildRecyclerView();
@@ -67,7 +67,7 @@ public class InstituteFragment extends Fragment {
         instidata.add(new University("Tsinghua",TSINGHUA_LOGO,0));
 
         instiAdapter = new instiAdapter(instidata,container12.getContext());
-        recyclerView = view12.findViewById(R.id.company_recyclerView);
+        recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
         recyclerView.setAdapter(instiAdapter);
@@ -75,8 +75,9 @@ public class InstituteFragment extends Fragment {
         instiAdapter.setOnInstiClickListener(new instiAdapter.OnInstiClickListener() {
             @Override
             public void OnItemClicked(int position) {
-                Intent intent = new Intent(container12.getContext(), Company_Preview.class);
+                Intent intent = new Intent(container12.getContext(), InstitutePreviewActivity.class);
                 intent.putExtra("name",instidata.get(position).getUniversityName());
+                intent.putExtra("logo",instidata.get(position).getUniversityLogo());
                 startActivity(intent);
             }
         });

@@ -1,6 +1,8 @@
 package com.PrepLite.fragments;
 
-import android.content.Intent;
+import static com.PrepLite.app.Constants.AMAZON_LOGO;
+import static com.PrepLite.app.Constants.CISCO_LOGO;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.PrepLite.Company_Preview;
 import com.PrepLite.R;
-import com.PrepLite.adapters.companyAdapter;
 import com.PrepLite.adapters.postAdapter_Home;
 import com.PrepLite.models.Post;
 
@@ -40,9 +40,9 @@ public class FeedFragment extends Fragment {
 
     private void buildRecyclerView() {
         postList = new ArrayList<>();
-//        postList.add(new Post("Ashwin","Amazon","24-11-2021","13:02","Hello 1",""));
-//        postList.add(new Post("Aagam","Cisco","25-11-2021","13:02","Hello 2",""));
-//        postList.add(new Post("Harsh","GE","26-11-2021","13:02","Hello 3",""));
+//        postList.add(new Post("Ashwin","Amazon","24-11-2021","13:02","Hello 1",AMAZON_LOGO,true));
+//        postList.add(new Post("Aagam","Cisco","25-11-2021","13:02","Hello 2",CISCO_LOGO,true));
+//        postList.add(new Post("Harsh","GE","26-11-2021","13:02","Hello 3","",false));
         postAdapter_home = new postAdapter_Home(postList, container12.getContext());
         recyclerView = view12.findViewById(R.id.feed_recyclerView);
         recyclerView.setHasFixedSize(true);

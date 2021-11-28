@@ -10,13 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.commentData;
+import com.PrepLite.models.Comment;
+import com.PrepLite.models.User;
 
 import java.util.ArrayList;
 
 public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_ViewHolder> {
 
-    ArrayList<commentData> comments;
+    ArrayList<Comment> comments;
     Context context;
 
     private OnCommentClickListener cListener;
@@ -31,7 +32,7 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
         void OnItemLongClicked(int position);
     }
 
-    public commentAdapter(ArrayList<commentData> comments, Context context)
+    public commentAdapter(ArrayList<Comment> comments, Context context)
     {
         this.comments = comments;
         this.context = context;
@@ -46,11 +47,13 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
 
     @Override
     public void onBindViewHolder(@NonNull Comment_ViewHolder holder, int position) {
-        commentData current_comment = comments.get(position);
-        holder.username.setText(current_comment.getUsername());
+
+        Comment current_comment = comments.get(position);
+        User user = current_comment.getUser();
+        holder.username.setText(user.getUsername());
         holder.content.setText(current_comment.getContent());
-        holder.date.setText(current_comment.getDate());
-        holder.time.setText(current_comment.getTime());
+        String timestamp = current_comment.getTimestamp();;
+
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
