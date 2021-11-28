@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.Comments;
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.postData;
+import com.PrepLite.models.Post;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -21,10 +21,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post_ViewHolder> {
 
-    ArrayList<postData> posts;
+    ArrayList<Post> posts;
     Context context;
 
-    public postAdapter_Home(ArrayList<postData> posts, Context context)
+    public postAdapter_Home(ArrayList<Post> posts, Context context)
     {
         this.posts = posts;
         this.context = context;
@@ -39,24 +39,24 @@ public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post
 
     @Override
     public void onBindViewHolder(@NonNull Post_ViewHolder holder, int position) {
-        postData current_post = posts.get(position);
-        holder.username.setText(current_post.getUsername());
+        Post current_post = posts.get(position);
+        //holder.username.setText(current_post.getUsername());
         holder.content.setText(current_post.getContent());
-        holder.date.setText(current_post.getDate());
-        holder.time.setText(current_post.getTime());
-        holder.comp_insti.setText(current_post.getComp_insti());
+//        holder.date.setText(current_post.getDate());
+//        holder.time.setText(current_post.getTime());
+        //holder.comp_insti.setText(current_post.());
         holder.post_comments.setOnClickListener(new View.OnClickListener() {
-            @Override
+            //@OverridgetComp_instie
             public void onClick(View view) {
                 Intent intent = new Intent(context, Comments.class);
                 //backend code to add data to intent as to which post comments we are viewing
                 context.startActivity(intent);
             }
         });
-        if(current_post.getImg_url().trim().length()>0)
-        Glide.with(context).load(current_post.getImg_url()).circleCrop().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
-        else
-        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.compinstilogo);
+//        if(current_post.getImg_url().trim().length()>0)
+//        Glide.with(context).load(current_post.getImg_url()).circleCrop().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
+//        else
+//        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.compinstilogo);
     }
 
     @Override

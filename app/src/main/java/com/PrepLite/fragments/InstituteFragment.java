@@ -26,7 +26,6 @@ import com.PrepLite.Client;
 import com.PrepLite.Company_Preview;
 import com.PrepLite.R;
 import com.PrepLite.adapters.instiAdapter;
-import com.PrepLite.dataBindings.instiData;
 import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.University;
 
@@ -37,7 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InstituteFragment extends Fragment {
-    private ArrayList<instiData> instidata;
+    private ArrayList<University> instidata;
     private RecyclerView recyclerView;
     private com.PrepLite.adapters.instiAdapter instiAdapter;
     private ViewGroup container12;
@@ -58,14 +57,14 @@ public class InstituteFragment extends Fragment {
     {
         retrieveUniversities();
         instidata = new ArrayList<>();
-        instidata.add(new instiData("CalTech",CAL_TECH_LOGO,0));
-        instidata.add(new instiData("Stanford",STANFORD_LOGO,0));
-        instidata.add(new instiData("IIT Delhi",IIT_DELHI_LOGO,0));
-        instidata.add(new instiData("Tech Uni",TECH_UNI_LOGO,0));
-        instidata.add(new instiData("BITS Pilani",BITS_PILANI_LOGO,0));
-        instidata.add(new instiData("Cambridge",CAMBRIDGE_LOGO,0));
-        instidata.add(new instiData("Yale",YALE_LOGO,0));
-        instidata.add(new instiData("Tsinghua",TSINGHUA_LOGO,0));
+        instidata.add(new University("CalTech",CAL_TECH_LOGO,0));
+        instidata.add(new University("Stanford",STANFORD_LOGO,0));
+        instidata.add(new University("IIT Delhi",IIT_DELHI_LOGO,0));
+        instidata.add(new University("Tech Uni",TECH_UNI_LOGO,0));
+        instidata.add(new University("BITS Pilani",BITS_PILANI_LOGO,0));
+        instidata.add(new University("Cambridge",CAMBRIDGE_LOGO,0));
+        instidata.add(new University("Yale",YALE_LOGO,0));
+        instidata.add(new University("Tsinghua",TSINGHUA_LOGO,0));
 
         instiAdapter = new instiAdapter(instidata,container12.getContext());
         recyclerView = view12.findViewById(R.id.company_recyclerView);
@@ -77,7 +76,7 @@ public class InstituteFragment extends Fragment {
             @Override
             public void OnItemClicked(int position) {
                 Intent intent = new Intent(container12.getContext(), Company_Preview.class);
-                intent.putExtra("name",instidata.get(position).getInstiName());
+                intent.putExtra("name",instidata.get(position).getUniversityName());
                 startActivity(intent);
             }
         });

@@ -26,7 +26,6 @@ import com.PrepLite.Client;
 import com.PrepLite.Company_Preview;
 import com.PrepLite.R;
 import com.PrepLite.adapters.companyAdapter;
-import com.PrepLite.dataBindings.companyData;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.ServerResponse;
 
@@ -38,7 +37,7 @@ import retrofit2.Response;
 
 public class CompanyFragment extends Fragment {
 
-    private ArrayList<companyData> companydata;
+    private ArrayList<Company> companydata;
     private RecyclerView recyclerView;
     private companyAdapter companyAdapter;
     private ViewGroup container12;
@@ -59,14 +58,14 @@ public class CompanyFragment extends Fragment {
         retrieveCompanies();
 
         companydata = new ArrayList<>();
-        companydata.add(new companyData("Microsoft",MICROSOFT_LOGO));
-        companydata.add(new companyData("Amazon",AMAZON_LOGO));
-        companydata.add(new companyData("Oracle",ORACLE_LOGO));
-        companydata.add(new companyData("Code Nation",CODE_NATION_LOGO));
-        companydata.add(new companyData("Service Now",SERVICE_NOW_LOGO));
-        companydata.add(new companyData("Cisco",CISCO_LOGO));
-        companydata.add(new companyData("Spotify",SPOTIFY_LOGO));
-        companydata.add(new companyData("General Motors",GENERAL_MOTORS_LOGO));
+        companydata.add(new Company("Microsoft",MICROSOFT_LOGO));
+        companydata.add(new Company("Amazon",AMAZON_LOGO));
+        companydata.add(new Company("Oracle",ORACLE_LOGO));
+        companydata.add(new Company("Code Nation",CODE_NATION_LOGO));
+        companydata.add(new Company("Service Now",SERVICE_NOW_LOGO));
+        companydata.add(new Company("Cisco",CISCO_LOGO));
+        companydata.add(new Company("Spotify",SPOTIFY_LOGO));
+        companydata.add(new Company("General Motors",GENERAL_MOTORS_LOGO));
         companyAdapter = new companyAdapter(companydata,container12.getContext());
         recyclerView = view12.findViewById(R.id.company_recyclerView);
         recyclerView.setHasFixedSize(true);

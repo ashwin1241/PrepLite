@@ -5,26 +5,40 @@ import com.google.gson.annotations.SerializedName;
 public class University {
 
     @SerializedName("university_id")
-    public int university_id;
+    public int universityId;
 
     @SerializedName("name")
     public String universityName;
 
     @SerializedName("stream_name")
-    public String stream_name;
+    public String streamName;
 
-    public University(int university_id, String universityName, String stream_name) {
-        this.university_id = university_id;
+    @SerializedName("university_logo")
+    public String universityLogo;
+
+    @SerializedName("participants")
+    public int participants;
+
+    public University(int universityId, String universityName, String streamName, String universityLogo, int participants) {
+        this.universityId = universityId;
         this.universityName = universityName;
-        this.stream_name = stream_name;
+        this.streamName = streamName;
+        this.universityLogo = universityLogo;
+        this.participants = participants;
     }
 
-    public int getUniversity_id() {
-        return university_id;
+    public University(String universityName, String universityLogo, int participants) {
+        this.universityName = universityName;
+        this.universityLogo = universityLogo;
+        this.participants = participants;
     }
 
-    public void setUniversity_id(int university_id) {
-        this.university_id = university_id;
+    public int getUniversityId() {
+        return universityId;
+    }
+
+    public void setUniversityId(int universityId) {
+        this.universityId = universityId;
     }
 
     public String getUniversityName() {
@@ -35,11 +49,27 @@ public class University {
         this.universityName = universityName;
     }
 
-    public String getStream_name() {
-        return stream_name;
+    public String getStreamName() {
+        return streamName;
     }
 
-    public void setStream_name(String stream_name) {
-        this.stream_name = stream_name;
+    public void setStreamName(String streamName) {
+        this.streamName = streamName;
+    }
+
+    public String getUniversityLogo() {
+        return universityLogo;
+    }
+
+    public void setUniversityLogo(String universityLogo) {
+        this.universityLogo = universityLogo;
+    }
+
+    public int getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(int participants) {
+        this.participants = participants;
     }
 }

@@ -16,14 +16,13 @@ import com.PrepLite.Company_Preview;
 import com.PrepLite.R;
 import com.PrepLite.adapters.companyAdapter;
 import com.PrepLite.adapters.postAdapter_Home;
-import com.PrepLite.dataBindings.companyData;
-import com.PrepLite.dataBindings.postData;
+import com.PrepLite.models.Post;
 
 import java.util.ArrayList;
 
 public class FeedFragment extends Fragment {
 
-    private ArrayList<postData> postList;
+    private ArrayList<Post> postList;
     private RecyclerView recyclerView;
     private postAdapter_Home postAdapter_home;
     private ViewGroup container12;
@@ -41,9 +40,9 @@ public class FeedFragment extends Fragment {
 
     private void buildRecyclerView() {
         postList = new ArrayList<>();
-        postList.add(new postData("Ashwin","Amazon","24-11-2021","13:02","Hello 1",""));
-        postList.add(new postData("Aagam","Cisco","25-11-2021","13:02","Hello 2",""));
-        postList.add(new postData("Harsh","GE","26-11-2021","13:02","Hello 3",""));
+//        postList.add(new Post("Ashwin","Amazon","24-11-2021","13:02","Hello 1",""));
+//        postList.add(new Post("Aagam","Cisco","25-11-2021","13:02","Hello 2",""));
+//        postList.add(new Post("Harsh","GE","26-11-2021","13:02","Hello 3",""));
         postAdapter_home = new postAdapter_Home(postList, container12.getContext());
         recyclerView = view12.findViewById(R.id.feed_recyclerView);
         recyclerView.setHasFixedSize(true);

@@ -11,7 +11,7 @@ public class Post {
     public int userId;
 
     @SerializedName("company_id")
-    public int company_id;
+    public int companyId;
 
     @SerializedName("timestamp")
     public String timestamp;
@@ -24,6 +24,7 @@ public class Post {
 
     @SerializedName("content")
     public String content;
+
 
     public int getPostId() {
         return postId;
@@ -41,12 +42,12 @@ public class Post {
         this.userId = userId;
     }
 
-    public int getCompany_id() {
-        return company_id;
+    public int getCompanyId() {
+        return companyId;
     }
 
-    public void setCompany_id(int company_id) {
-        this.company_id = company_id;
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 
     public String getTimestamp() {

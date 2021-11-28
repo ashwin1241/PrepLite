@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Company {
 
     @SerializedName("company_id")
-    public int company_id;
+    public int companyId;
 
     @SerializedName("name")
     public String companyName;
@@ -13,18 +13,27 @@ public class Company {
     @SerializedName("logo")
     public String companyLogo;
 
-    public Company(int company_id, String companyName, String companyLogo) {
-        this.company_id = company_id;
+    @SerializedName("participants")
+    public int participants;
+
+    public Company(int companyId, String companyName, String companyLogo, int participants) {
+        this.companyId = companyId;
+        this.companyName = companyName;
+        this.companyLogo = companyLogo;
+        this.participants = participants;
+    }
+
+    public Company(String companyName, String companyLogo) {
         this.companyName = companyName;
         this.companyLogo = companyLogo;
     }
 
-    public int getCompany_id() {
-        return company_id;
+    public int getCompanyId() {
+        return companyId;
     }
 
-    public void setCompany_id(int company_id) {
-        this.company_id = company_id;
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 
     public String getCompanyName() {
@@ -41,5 +50,13 @@ public class Company {
 
     public void setCompanyLogo(String companyLogo) {
         this.companyLogo = companyLogo;
+    }
+
+    public int getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(int participants) {
+        this.participants = participants;
     }
 }
