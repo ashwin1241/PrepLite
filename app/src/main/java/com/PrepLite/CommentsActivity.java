@@ -13,7 +13,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.PrepLite.adapters.commentAdapter;
-import com.PrepLite.dataBindings.commentData;
+import com.PrepLite.models.Comment;
+import com.PrepLite.models.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.Date;
 
 public class CommentsActivity extends AppCompatActivity {
 
-    private ArrayList<commentData> comment_list;
+    private ArrayList<Comment> comment_list;
     private RecyclerView recyclerView;
     private commentAdapter commentAdapter;
     private String date;
@@ -50,9 +51,9 @@ public class CommentsActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-                    time = new SimpleDateFormat("HH:mm").format(new Date());
-                    comment_list.add(new commentData("Username",comment_text,date,time));
+//                    date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+//                    time = new SimpleDateFormat("HH:mm").format(new Date());
+                    comment_list.add(new Comment(new User("Username"),comment_text,"28/11/2021 19:20"));
                     //backend code to add this comment to database
                     commentAdapter.notifyItemInserted(comment_list.size());
                     comment.setText("");

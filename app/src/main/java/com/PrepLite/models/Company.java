@@ -28,6 +28,10 @@ public class Company {
         this.companyLogo = companyLogo;
     }
 
+    public Company(String companyName) {
+        this.companyName = companyName;
+    }
+
     public int getCompanyId() {
         return companyId;
     }
