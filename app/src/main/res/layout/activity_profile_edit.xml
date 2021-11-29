@@ -212,7 +212,7 @@
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/alumnus_institute_select_spinner"
+        android:id="@+id/alumnus_institute_select_tv"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_below="@id/alumnus_select_spinner"
@@ -221,7 +221,10 @@
         android:layout_toRightOf="@id/name_edit_hdg"
         android:background="@color/white"
         android:textColor="@color/black"
-        android:textSize="18dp"/>
+        android:textSize="18dp"
+        android:fontFamily="@font/amaranth"
+        android:text="Select Institute"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/alumnus_company_edit_hdg"
@@ -234,5 +237,20 @@
         android:text="Companies: "
         android:textColor="@color/black"
         android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/alumnus_company_select_tv"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/alumnus_institute_select_tv"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@id/name_edit_hdg"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:fontFamily="@font/amaranth"
+        android:text="Select Company"
+        android:gravity="center"/>
 
 </RelativeLayout>

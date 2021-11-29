@@ -1,17 +1,21 @@
 package com.PrepLite;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ProfileEditActivity extends AppCompatActivity {
 
-    private ArrayList<String[]> Company_pair;
+    private String[] Company_pair;
     private String[] pair;
     private boolean[] isSelectedCompany;
     private int company_id;
+    private TextView SelectCompany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,22 +24,23 @@ public class ProfileEditActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(false);
         getSupportActionBar().setTitle("Edit Profile");
 
-        Company_pair = new ArrayList<>();
-        pair = new String[2];
-        pair[0]="Microsoft";
-        pair[1]=Integer.toString(company_id);
-        Company_pair.add(pair);
-        pair[0]="Amazon";
-        pair[1]=Integer.toString(company_id);
-        Company_pair.add(pair);
-        pair[0]="Oracle";
-        pair[1]=Integer.toString(company_id);
-        Company_pair.add(pair);
-        pair[0]="Cisco";
-        pair[1]=Integer.toString(company_id);
-        Company_pair.add(pair);
+        Company_pair = new String[5];
+        Company_pair[0]="Microsoft";
 
-        isSelectedCompany = new boolean[Company_pair.size()];
+        isSelectedCompany = new boolean[Company_pair.length];
+        for(int i=0;i<isSelectedCompany.length;i++)
+            isSelectedCompany[i]=false;
+
+        SelectCompany = findViewById(R.id.alumnus_company_select_tv);
+        SelectCompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileEditActivity.this);
+                builder.setTitle("Select Company(s)");
+                //.setMultiChoiceItems()
+                builder.create().show();
+            }
+        });
 
     }
 }
