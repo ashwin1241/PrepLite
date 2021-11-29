@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.PrepLite.adapters.chatMainAdapter;
-import com.PrepLite.dataBindings.chatMainData;
+import com.PrepLite.models.ChatP2P;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.Date;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private ArrayList<chatMainData> messageList;
+    private ArrayList<ChatP2P> messageList;
     private String username;
     private RecyclerView recyclerView;
     private chatMainAdapter chatMainAdapter;
@@ -44,13 +44,14 @@ public class ChatActivity extends AppCompatActivity {
         send_message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 date = new SimpleDateFormat("dd/mm/yy").format(new Date());
                 time = new SimpleDateFormat("HH:mm").format(new Date());
                 message = chat_message.getText().toString().trim();
                 if(messageList.size()==0||messageList.get(messageList.size()-1).isSender())
-                messageList.add(new chatMainData(date,time,message,true,false));
+                messageList.add(new ChatP2P("28/11/2021 19:20",message,true,false));
                 else
-                messageList.add(new chatMainData(date,time,message,true,true));
+                messageList.add(new ChatP2P("28/11/2021 19:21",message,true,true));
                 chatMainAdapter.notifyItemInserted(messageList.size());
                 send_message(username,message);
                 chat_message.setText("");
@@ -62,9 +63,9 @@ public class ChatActivity extends AppCompatActivity {
     private void buildRecyclerView()
     {
         messageList = new ArrayList<>();
-        messageList.add(new chatMainData("28/11/2021","19:20","Test message 1 sender",true,true));
-        messageList.add(new chatMainData("28/11/2021","19:21","Test message 2 receiver",false,true));
-        messageList.add(new chatMainData("28/11/2021","19:22","Test message 3 receiver",false,false));
+        messageList.add(new ChatP2P("28/11/2021 19:20","Test message 1 sender",true,true));
+        messageList.add(new ChatP2P("28/11/2021 19:21","Test message 2 receiver",false,true));
+        messageList.add(new ChatP2P("28/11/2021 19:22","Test message 3 receiver",false,false));
         recyclerView = findViewById(R.id.comments_recycler_view);
         chatMainAdapter = new chatMainAdapter(messageList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

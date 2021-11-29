@@ -1,8 +1,5 @@
 package com.PrepLite;
 
-import static com.PrepLite.app.Constants.STANFORD_LOGO;
-import static com.PrepLite.app.Constants.YALE_LOGO;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,7 +9,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.PrepLite.adapters.postAdapter_CompInsti;
-import com.PrepLite.dataBindings.postData;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;

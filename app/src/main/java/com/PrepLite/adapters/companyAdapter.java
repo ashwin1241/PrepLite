@@ -11,14 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.companyData;
+import com.PrepLite.models.Company;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_ViewHolder> {
 
-    ArrayList<companyData> companydata;
+    ArrayList<Company> companydata;
     Context context;
 
     private OnCompanyClickListener cListener;
@@ -33,7 +33,7 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
         void OnItemClicked(int position);
     }
 
-    public companyAdapter(ArrayList<companyData> companydata, Context activity)   {
+    public companyAdapter(ArrayList<Company> companydata, Context activity)   {
 
         this.companydata = companydata;
         this.context=activity;
@@ -54,10 +54,10 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
 
     @Override
     public void onBindViewHolder(@NonNull Company_ViewHolder holder, int position) {
-        final companyData companyList = companydata.get(position);
+        final Company companyList = companydata.get(position);
         holder.companyTitle.setText(companyList.getCompanyName());
-        if(companyList.getCompanyImage().trim().length()>0)
-        Glide.with(context).load(companyList.getCompanyImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.companyImage);
+        if(companyList.getCompanyLogo().trim().length()>0)
+        Glide.with(context).load(companyList.getCompanyLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.companyImage);
         else
         Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.companyImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

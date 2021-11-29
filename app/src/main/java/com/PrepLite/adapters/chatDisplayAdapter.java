@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.chatDisplayData;
+import com.PrepLite.models.Chat;
 import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.chatViewHolder>{
 
-    private ArrayList<chatDisplayData> chatList;
+    private ArrayList<Chat> chats;
     private Context context;
 
     private OnChatClickListener cListener;
@@ -34,9 +34,9 @@ public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.
         void OnItemClicked(int position);
     }
 
-    public chatDisplayAdapter(ArrayList<chatDisplayData> chatList, Context context)
+    public chatDisplayAdapter(ArrayList<Chat> chats, Context context)
     {
-        this.chatList = chatList;
+        this.chats = chats;
         this.context = context;
     }
 
@@ -49,12 +49,12 @@ public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull chatViewHolder holder, int position) {
-        chatDisplayData current_chat = chatList.get(position);
-        holder.username.setText(current_chat.getUsername());
-        holder.chat_preview.setText(current_chat.getChat_first_message());
+        Chat current_chat = chats.get(position);
+        holder.username.setText(current_chat.getUser().getUsername());
+        holder.chat_preview.setText(current_chat.getChatFirstMessage());
         holder.timestamp.setText(current_chat.getTimestamp());
-        if(current_chat.getProfile_image_url().trim().length()>0)
-        Glide.with(context).load(current_chat.getProfile_image_url()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_image);
+        if(current_chat.getUser().getProfileImage().trim().length()>0)
+        Glide.with(context).load(current_chat.getUser().getProfileImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_image);
         else
         {
             Glide.with(context).load(R.drawable.ic_baseline_person_24).into(holder.profile_image);
@@ -77,7 +77,7 @@ public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.
 
     @Override
     public int getItemCount() {
-        return chatList.size();
+        return chats.size();
     }
 
     public static class chatViewHolder extends RecyclerView.ViewHolder

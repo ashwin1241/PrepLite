@@ -14,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.CommentsActivity;
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.postData;
+import com.PrepLite.models.Post;
+import com.PrepLite.models.User;
 import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -22,10 +23,10 @@ import java.util.ArrayList;
 
 public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post_ViewHolder> {
 
-    ArrayList<postData> posts;
+    ArrayList<Post> posts;
     Context context;
 
-    public postAdapter_Home(ArrayList<postData> posts, Context context)
+    public postAdapter_Home(ArrayList<Post> posts, Context context)
     {
         this.posts = posts;
         this.context = context;
@@ -40,29 +41,31 @@ public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post
 
     @Override
     public void onBindViewHolder(@NonNull Post_ViewHolder holder, int position) {
-        postData current_post = posts.get(position);
-        holder.username.setText(current_post.getUsername());
+        Post current_post = posts.get(position);
+        User user = current_post.getUser();
+        holder.username.setText(user.getUsername());
         holder.content.setText(current_post.getContent());
-        holder.date.setText(current_post.getDate());
-        holder.time.setText(current_post.getTime());
-        holder.comp_insti.setText(current_post.getComp_insti());
+        String timestamp = current_post.getTimestamp();
+        //holder.comp_insti.setText(current_post.());
         holder.post_comments.setOnClickListener(new View.OnClickListener() {
-            @Override
+            //@OverridgetComp_instie
             public void onClick(View view) {
                 Intent intent = new Intent(context, CommentsActivity.class);
                 //backend code to add data to intent as to which post comments we are viewing
                 context.startActivity(intent);
             }
         });
-        if(current_post.getImg_url().trim().length()>0)
-        Glide.with(context).load(current_post.getImg_url()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
+
+        if(current_post.getPostImage().trim().length()>0)
+        Glide.with(context).load(current_post.getPostImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
         else
         {
-            if(current_post.isCompnay())
+            if(!current_post.getCompany().getCompanyName().isEmpty())
                 Glide.with(context).load(R.drawable.ic_baseline_work_24).into(holder.compinstilogo);
-            else
+            else if(!current_post.getUniversity().getUniversityName().isEmpty())
                 Glide.with(context).load(R.drawable.ic_baseline_institute_40).into(holder.compinstilogo);
-            holder.compinstilogo.setBackgroundColor(Color.parseColor("#A0A0A0"));
+            else
+                holder.compinstilogo.setBackgroundColor(Color.parseColor("#A0A0A0"));
         }
     }
 

@@ -7,11 +7,14 @@ public class Post {
     @SerializedName("post_id")
     public int postId;
 
-    @SerializedName("user_id")
-    public int userId;
+    @SerializedName("user")
+    public User user;
 
-    @SerializedName("company_id")
-    public int company_id;
+    @SerializedName("company")
+    public Company company;
+
+    @SerializedName("university")
+    public University university;
 
     @SerializedName("timestamp")
     public String timestamp;
@@ -25,6 +28,23 @@ public class Post {
     @SerializedName("content")
     public String content;
 
+    @SerializedName("postImage")
+    public String postImage;
+
+    public Post(int postId, User user, Company company, University university, String timestamp, int upvotes, int downvotes, String content, String postImage) {
+        this.postId = postId;
+        this.user = user;
+        this.company = company;
+        this.university = university;
+        this.timestamp = timestamp;
+        this.upvotes = upvotes;
+        this.downvotes = downvotes;
+        this.content = content;
+        this.postImage = postImage;
+    }
+
+
+
     public int getPostId() {
         return postId;
     }
@@ -33,20 +53,28 @@ public class Post {
         this.postId = postId;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getCompany_id() {
-        return company_id;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompany_id(int company_id) {
-        this.company_id = company_id;
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public University getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(University university) {
+        this.university = university;
     }
 
     public String getTimestamp() {
@@ -79,5 +107,13 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getPostImage() {
+        return postImage;
+    }
+
+    public void setPostImage(String postImage) {
+        this.postImage = postImage;
     }
 }

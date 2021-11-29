@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.CommentsActivity;
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.postData;
+import com.PrepLite.models.Post;
+import com.PrepLite.models.User;
 import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -21,10 +22,10 @@ import java.util.ArrayList;
 
 public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_CompInsti.Post_ViewHolder12> {
 
-    ArrayList<postData> posts;
+    ArrayList<Post> posts;
     Context context;
 
-    public postAdapter_CompInsti(ArrayList<postData> posts, Context context)
+    public postAdapter_CompInsti(ArrayList<Post> posts, Context context)
     {
         this.posts = posts;
         this.context = context;
@@ -39,11 +40,12 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
 
     @Override
     public void onBindViewHolder(@NonNull Post_ViewHolder12 holder, int position) {
-        postData current_post = posts.get(position);
-        holder.username.setText(current_post.getUsername());
+
+        Post current_post = posts.get(position);
+        User user = current_post.getUser();
+        holder.username.setText(user.getUsername());
         holder.content.setText(current_post.getContent());
-        holder.date.setText(current_post.getDate());
-        holder.time.setText(current_post.getTime());
+        String timestamp = current_post.getTimestamp();
         holder.post_comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,8 +54,8 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
                 context.startActivity(intent);
             }
         });
-        if(current_post.getImg_url().trim().length()>0)
-        Glide.with(context).load(current_post.getImg_url()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_pic);
+        if(current_post.getPostImage().trim().length()>0)
+        Glide.with(context).load(current_post.getPostImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_pic);
         else
         {
             Glide.with(context).load(R.drawable.ic_baseline_person_24).into(holder.profile_pic);
