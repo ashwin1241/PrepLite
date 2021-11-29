@@ -23,9 +23,10 @@ public class Company {
         this.participants = participants;
     }
 
-    public Company(String companyName, String companyLogo) {
+    public Company(String companyName, String companyLogo, int participants) {
         this.companyName = companyName;
         this.companyLogo = companyLogo;
+        this.participants = participants;
     }
 
     public Company(String companyName) {

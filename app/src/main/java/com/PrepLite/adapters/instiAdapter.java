@@ -1,6 +1,7 @@
 package com.PrepLite.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,9 +43,12 @@ public class instiAdapter<OnInstiClickListener> extends RecyclerView.Adapter<ins
         final University university = universities.get(position);
         holder.universityTitle.setText(university.getUniversityName());
         if(university.getUniversityLogo().trim().length()>0)
-        Glide.with(context).load(university.getUniversityName()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.universityImage);
+        Glide.with(context).load(university.getUniversityLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.universityImage);
         else
-        Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.universityImage);
+        {
+            Glide.with(context).load(R.drawable.ic_baseline_institute_40).into(holder.universityImage);
+            holder.universityImage.setBackgroundColor(Color.parseColor("#A0A0A0"));
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

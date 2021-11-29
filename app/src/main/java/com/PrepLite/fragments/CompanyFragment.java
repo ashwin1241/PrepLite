@@ -58,14 +58,14 @@ public class CompanyFragment extends Fragment {
         retrieveCompanies();
 
         companydata = new ArrayList<>();
-        companydata.add(new Company("Microsoft",MICROSOFT_LOGO));
-        companydata.add(new Company("Amazon",AMAZON_LOGO));
-        companydata.add(new Company("Oracle",ORACLE_LOGO));
-        companydata.add(new Company("Code Nation",CODE_NATION_LOGO));
-        companydata.add(new Company("Service Now",SERVICE_NOW_LOGO));
-        companydata.add(new Company("Cisco",CISCO_LOGO));
-        companydata.add(new Company("Spotify",SPOTIFY_LOGO));
-        companydata.add(new Company("General Motors",GENERAL_MOTORS_LOGO));
+        companydata.add(new Company("Microsoft",MICROSOFT_LOGO,0));
+        companydata.add(new Company("Amazon",AMAZON_LOGO,0));
+        companydata.add(new Company("Oracle",ORACLE_LOGO,0));
+        companydata.add(new Company("Code Nation",CODE_NATION_LOGO,0));
+        companydata.add(new Company("Service Now",SERVICE_NOW_LOGO,0));
+        companydata.add(new Company("Cisco",CISCO_LOGO,0));
+        companydata.add(new Company("Spotify",SPOTIFY_LOGO,0));
+        companydata.add(new Company("General Motors",GENERAL_MOTORS_LOGO,0));
         companyAdapter = new companyAdapter(companydata,container12.getContext());
         recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
