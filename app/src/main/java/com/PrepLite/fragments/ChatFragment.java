@@ -53,7 +53,7 @@ public class ChatFragment extends Fragment {
             @Override
             public void OnItemClicked(int position) {
                 Intent intent = new Intent(container12.getContext(), ChatActivity.class);
-                intent.putExtra("username",chatList.get(position).getUser().getUsername());
+                intent.putExtra("username", chatList.get(position).getUser().getUsername());
                 startActivity(intent);
             }
         });

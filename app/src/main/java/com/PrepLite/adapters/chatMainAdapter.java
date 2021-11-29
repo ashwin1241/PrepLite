@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.R;
-import com.PrepLite.dataBindings.chatMainData;
+import com.PrepLite.models.ChatP2P;
 
 import java.util.ArrayList;
 
 public class chatMainAdapter extends RecyclerView.Adapter{
 
-    private ArrayList<chatMainData> messageList;
+    private ArrayList<ChatP2P> messageList;
     private Context context;
 
-    public chatMainAdapter(ArrayList<chatMainData> messageList, Context context) {
+    public chatMainAdapter(ArrayList<ChatP2P> messageList, Context context) {
         this.messageList = messageList;
         this.context = context;
     }
@@ -66,17 +66,15 @@ public class chatMainAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        chatMainData current_item = messageList.get(position);
+        ChatP2P current_item = messageList.get(position);
         if(current_item.isSender())
         {
-            ((senderChatViewHolder)holder).senderDate.setText(current_item.getDate());
-            ((senderChatViewHolder)holder).senderTime.setText(current_item.getTime());
+            String timestamp = current_item.getTimestamp();
             ((senderChatViewHolder)holder).senderMessage.setText(current_item.getMessage());
         }
         else
         {
-            ((receiverChatViewHolder)holder).receiverDate.setText(current_item.getDate());
-            ((receiverChatViewHolder)holder).receiverTime.setText(current_item.getTime());
+            String timestamp = current_item.getTimestamp();
             ((receiverChatViewHolder)holder).receiverMessage.setText(current_item.getMessage());
         }
     }
