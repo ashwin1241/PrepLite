@@ -1,8 +1,10 @@
-package com.PrepLite;
+package com.PrepLite.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.PrepLite.R;
 
 public class AboutPageActivity extends AppCompatActivity {
 

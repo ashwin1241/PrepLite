@@ -1,4 +1,4 @@
-package com.PrepLite;
+package com.PrepLite.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.PrepLite.ApiCalls;
+import com.PrepLite.Client;
+import com.PrepLite.R;
 import com.PrepLite.models.ServerResponse;
 
 import java.util.HashMap;

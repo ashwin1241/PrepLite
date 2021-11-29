@@ -1,4 +1,4 @@
-package com.PrepLite;
+package com.PrepLite.activities;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 
@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.PrepLite.ApiCalls;
+import com.PrepLite.Client;
+import com.PrepLite.R;
 import com.PrepLite.prefs.SharedPrefs;
 import com.PrepLite.models.ServerResponse;
 

@@ -1,4 +1,4 @@
-package com.PrepLite;
+package com.PrepLite.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.PrepLite.R;
 import com.PrepLite.adapters.chatMainAdapter;
 import com.PrepLite.models.ChatP2P;
 

@@ -6,13 +6,12 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.PrepLite.CommentsActivity;
+import com.PrepLite.activities.CommentsActivity;
 import com.PrepLite.R;
 import com.PrepLite.models.Post;
 import com.PrepLite.models.User;

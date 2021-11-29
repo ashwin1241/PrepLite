@@ -1,4 +1,4 @@
-package com.PrepLite;
+package com.PrepLite.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.PrepLite.R;
 import com.PrepLite.adapters.postAdapter_CompInsti;
 import com.PrepLite.models.Post;
 import com.bumptech.glide.Glide;

@@ -17,10 +17,9 @@ import androidx.fragment.app.Fragment;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.LoginActivity;
-import com.PrepLite.MainActivity;
-import com.PrepLite.ProfileEditActivity;
-import com.PrepLite.ProfileSettingsActivity;
+import com.PrepLite.activities.LoginActivity;
+import com.PrepLite.activities.MainActivity;
+import com.PrepLite.activities.ProfileSettingsActivity;
 import com.PrepLite.R;
 import com.PrepLite.prefs.SharedPrefs;
 import com.PrepLite.models.ServerResponse;
@@ -36,7 +35,6 @@ public class ProfileFragment extends Fragment {
     private ImageView settings;
     private View frag_view;
     private TextView logout;
-    private TextView edit_profile;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -75,14 +73,6 @@ public class ProfileFragment extends Fragment {
                     }
                 });
                 builder.create().show();
-            }
-        });
-        edit_profile = frag_view.findViewById(R.id.edit_profile);
-        edit_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(container.getContext(), ProfileEditActivity.class);
-                startActivity(intent);
             }
         });
         return frag_view;
