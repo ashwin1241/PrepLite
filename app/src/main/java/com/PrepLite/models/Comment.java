@@ -13,6 +13,12 @@ public class Comment {
     @SerializedName("timestamp")
     public String timestamp;
 
+    public Comment(User user, String content, String timestamp) {
+        this.user = user;
+        this.content = content;
+        this.timestamp = timestamp;
+    }
+
     public User getUser() {
         return user;
     }

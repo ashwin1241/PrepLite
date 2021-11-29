@@ -33,6 +33,10 @@ public class University {
         this.participants = participants;
     }
 
+    public University(String universityName) {
+        this.universityName = universityName;
+    }
+
     public int getUniversityId() {
         return universityId;
     }

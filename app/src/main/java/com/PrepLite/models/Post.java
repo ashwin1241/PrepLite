@@ -43,6 +43,14 @@ public class Post {
         this.postImage = postImage;
     }
 
+    public Post(User user, University university, Company company, String timestamp, String content, String postImage) {
+        this.user = user;
+        this.company = company;
+        this.university = university;
+        this.timestamp = timestamp;
+        this.content = content;
+        this.postImage = postImage;
+    }
 
 
     public int getPostId() {
