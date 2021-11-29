@@ -214,17 +214,18 @@
     <TextView
         android:id="@+id/alumnus_institute_select_tv"
         android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
         android:layout_below="@id/alumnus_select_spinner"
         android:layout_marginStart="70dp"
         android:layout_marginTop="22dp"
         android:layout_toRightOf="@id/name_edit_hdg"
         android:background="@color/white"
-        android:textColor="@color/black"
-        android:textSize="18dp"
         android:fontFamily="@font/amaranth"
+        android:gravity="center"
         android:text="Select Institute"
-        android:gravity="center"/>
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/alumnus_company_edit_hdg"
@@ -241,16 +242,17 @@
     <TextView
         android:id="@+id/alumnus_company_select_tv"
         android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
         android:layout_below="@id/alumnus_institute_select_tv"
         android:layout_marginStart="70dp"
         android:layout_marginTop="22dp"
         android:layout_toRightOf="@id/name_edit_hdg"
         android:background="@color/white"
-        android:textColor="@color/black"
-        android:textSize="18dp"
         android:fontFamily="@font/amaranth"
+        android:gravity="center"
         android:text="Select Company"
-        android:gravity="center"/>
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 
 </RelativeLayout>
