@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PrepLite"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ProfileEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ChatActivity"
             android:exported="false" />
         <activity
@@ -32,8 +35,7 @@
             android:parentActivityName=".activities.ProfileSettingsActivity" />
         <activity
             android:name=".activities.ProfileSettingsActivity"
-            android:exported="false"
-            android:parentActivityName=".activities.HomeActivity" />
+            android:exported="false" />
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />

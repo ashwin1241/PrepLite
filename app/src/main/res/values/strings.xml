@@ -31,8 +31,4 @@ Alumni and working professionals are an important part of the community. Student
     <string name="about">about</string>
     <string name="name">Name</string>
 
-    <string-array name="alumnus_spinner_entries">
-        <item>Yes</item>
-        <item>No</item>
-    </string-array>
 </resources>
