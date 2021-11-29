@@ -1,4 +1,4 @@
-package com.PrepLite;
+package com.PrepLite.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +15,8 @@ import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.PrepLite.R;
 
 public class ProfileSettingsActivity extends AppCompatActivity {
 
@@ -170,7 +172,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         {
             case R.id.save_changes_profile_settings://backend code to save rating and notifications status
                 Toast.makeText(ProfileSettingsActivity.this, "Changes saved successfully!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ProfileSettingsActivity.this,HomeActivity.class);
+                Intent intent = new Intent(ProfileSettingsActivity.this, HomeActivity.class);
                 startActivity(intent);
                 return true;
             default:return super.onOptionsItemSelected(item);

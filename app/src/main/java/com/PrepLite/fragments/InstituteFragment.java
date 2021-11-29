@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.InstitutePreviewActivity;
+import com.PrepLite.activities.InstitutePreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.instiAdapter;
 import com.PrepLite.models.ServerResponse;

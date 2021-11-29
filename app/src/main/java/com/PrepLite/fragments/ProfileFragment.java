@@ -17,9 +17,9 @@ import androidx.fragment.app.Fragment;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.LoginActivity;
-import com.PrepLite.MainActivity;
-import com.PrepLite.ProfileSettingsActivity;
+import com.PrepLite.activities.LoginActivity;
+import com.PrepLite.activities.MainActivity;
+import com.PrepLite.activities.ProfileSettingsActivity;
 import com.PrepLite.R;
 import com.PrepLite.prefs.SharedPrefs;
 import com.PrepLite.models.ServerResponse;
