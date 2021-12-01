@@ -1,6 +1,7 @@
 package com.PrepLite.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,11 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
         if (companyList.getCompanyLogo().trim().length() > 0)
             Glide.with(context).load(companyList.getCompanyLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.companyImage);
         else
-            Glide.with(context).load(R.drawable.ic_baseline_image_not_supported_24).into(holder.companyImage);
+        {
+            Glide.with(context).load(R.drawable.ic_baseline_company_40).into(holder.companyImage);
+            holder.companyImage.setBackgroundColor(Color.parseColor("#A0A0A0"));
+        }
+
     }
 
     @Override
