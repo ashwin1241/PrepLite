@@ -42,28 +42,16 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/comment_date"
+            android:id="@+id/comment_timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/comment_content"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/amaranth"
-            android:text="dd/mm/yyyy, "
+            android:text="dd/mm/yyyy, hh:mm"
             android:textColor="#828282"
             android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/comment_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/comment_content"
-            android:layout_toRightOf="@id/comment_date"
-            android:fontFamily="@font/amaranth"
-            android:text="hh:mm"
-            android:textColor="#828282"
-            android:textSize="16dp"
-            android:layout_marginLeft="5dp"/>
 
     </RelativeLayout>
 

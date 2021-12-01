@@ -71,11 +71,13 @@ public class chatMainAdapter extends RecyclerView.Adapter{
         {
             String timestamp = current_item.getTimestamp();
             ((senderChatViewHolder)holder).senderMessage.setText(current_item.getMessage());
+            ((senderChatViewHolder)holder).senderTimeStamp.setText(timestamp);
         }
         else
         {
             String timestamp = current_item.getTimestamp();
             ((receiverChatViewHolder)holder).receiverMessage.setText(current_item.getMessage());
+            ((receiverChatViewHolder)holder).receiverTimeStamp.setText(timestamp);
         }
     }
 
@@ -86,15 +88,13 @@ public class chatMainAdapter extends RecyclerView.Adapter{
 
     public static class senderChatViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView senderDate;
-        private TextView senderTime;
+        private TextView senderTimeStamp;
         private TextView senderMessage;
 
         public senderChatViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            senderDate = itemView.findViewById(R.id.sender_chat_message_date);
-            senderTime = itemView.findViewById(R.id.sender_chat_message_time);
+            senderTimeStamp = itemView.findViewById(R.id.sender_chat_message_timestamp);
             senderMessage = itemView.findViewById(R.id.sender_chat_text);
 
         }
@@ -102,15 +102,13 @@ public class chatMainAdapter extends RecyclerView.Adapter{
 
     public static class receiverChatViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView receiverDate;
-        private TextView receiverTime;
+        private TextView receiverTimeStamp;
         private TextView receiverMessage;
 
         public receiverChatViewHolder(@NonNull View itemView) {
             super(itemView);
 
-             receiverDate = itemView.findViewById(R.id.receiver_chat_message_date);
-             receiverTime = itemView.findViewById(R.id.receiver_chat_message_time);
+             receiverTimeStamp = itemView.findViewById(R.id.receiver_chat_message_timestamp);
              receiverMessage = itemView.findViewById(R.id.receiver_chat_text);
 
         }

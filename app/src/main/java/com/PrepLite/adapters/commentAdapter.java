@@ -52,7 +52,8 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
         User user = current_comment.getUser();
         holder.username.setText(user.getUsername());
         holder.content.setText(current_comment.getContent());
-        String timestamp = current_comment.getTimestamp();;
+        String timestamp = current_comment.getTimestamp();
+        holder.timestamp.setText(timestamp);
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -79,15 +80,13 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
     {
         private TextView username;
         private TextView content;
-        private TextView date;
-        private TextView time;
+        private TextView timestamp;
         public Comment_ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             username = itemView.findViewById(R.id.comment_layout_username);
             content = itemView.findViewById(R.id.comment_content);
-            date = itemView.findViewById(R.id.comment_date);
-            time = itemView.findViewById(R.id.comment_time);
+            timestamp = itemView.findViewById(R.id.comment_timestamp);
 
         }
     }
