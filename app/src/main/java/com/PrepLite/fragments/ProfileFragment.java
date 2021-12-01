@@ -111,6 +111,12 @@ public class ProfileFragment extends Fragment {
             }
         });
         profileImage = frag_view.findViewById(R.id.profile_pic);
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectGalleryImage();
+            }
+        });
         camera = frag_view.findViewById(R.id.camera_profile);
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +159,21 @@ public class ProfileFragment extends Fragment {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         getActivity().finish();
+    }
+
+    private void selectGalleryImage()
+    {
+        if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
+            selectGalleryImage();
+        }
+        else
+        {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("image/*");
+            startActivityForResult(Intent.createChooser(intent,"Pick image"),101);
+        }
     }
 
     private void captureProfileImage()
@@ -205,6 +226,21 @@ public class ProfileFragment extends Fragment {
             else
             {
                 Toast.makeText(getContext(), "Could not capture image properly!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        if(requestCode==101&&resultCode==RESULT_OK)
+        {
+            profileImageUri = data.getData();
+            Bitmap profilePic = null;
+            try
+            {
+                profilePic = correctedBitmap(profileImageUri);
+                Glide.with(getContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
+                profileImage.setBackgroundColor(Color.parseColor("#EFFBF7"));
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
