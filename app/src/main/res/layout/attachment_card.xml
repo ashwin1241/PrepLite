@@ -29,11 +29,12 @@
             android:paddingEnd="10dp"/>
 
         <ImageView
+            android:padding="10dp"
             android:id="@+id/attachment_download"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/attachment_title"
-            android:src="@drawable/ic_baseline_arrow_circle_down_24"/>
+            android:src="@drawable/ic_baseline_arrow_circle_down_24" />
 
     </RelativeLayout>
 
