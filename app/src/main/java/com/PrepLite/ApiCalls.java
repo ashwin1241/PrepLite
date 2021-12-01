@@ -1,9 +1,12 @@
 package com.PrepLite;
 
+import static com.PrepLite.app.Constants.ADD_COMMENT;
 import static com.PrepLite.app.Constants.LOGIN_USER;
 import static com.PrepLite.app.Constants.PROFILE_USER;
 import static com.PrepLite.app.Constants.REGISTER_USER;
+import static com.PrepLite.app.Constants.VIEW_COMMENTS;
 import static com.PrepLite.app.Constants.VIEW_COMPANIES;
+import static com.PrepLite.app.Constants.VIEW_POSTS;
 import static com.PrepLite.app.Constants.VIEW_UNIVERSITIES;
 
 import com.PrepLite.models.ServerResponse;
@@ -30,4 +33,13 @@ public interface ApiCalls {
 
     @POST(VIEW_COMPANIES)
     Call<ServerResponse> retrieveCompanies();
+
+    @POST(VIEW_POSTS)
+    Call<ServerResponse> retrievePosts();
+
+    @POST(VIEW_COMMENTS)
+    Call<ServerResponse> retrieveComments(@Body HashMap<String, Integer> postId);
+
+    @POST(ADD_COMMENT)
+    Call<ServerResponse> addComment(@Body HashMap<String, Object> comment);
 }

@@ -2,7 +2,7 @@ package com.PrepLite.app;
 
 public class Constants {
 
-    public static final String BASE_URL = "https://f86d-2409-4070-4495-3769-c5b0-65f8-a5d2-dd1a.ngrok.io";
+    public static final String BASE_URL = "https://45df-14-98-244-193.ngrok.io";
 
     public static final String REGISTER_USER = "register/";
     public static final String LOGIN_USER = "login/";
@@ -11,6 +11,9 @@ public class Constants {
     public static final String VIEW_UNIVERSITIES = "viewUniversities/";
     public static final String VIEW_COMPANIES = "viewCompanies/";
 
+    public static final String VIEW_POSTS = "viewPosts/";
+    public static final String VIEW_COMMENTS = "viewComments/";
+    public static final String ADD_COMMENT = "addComment/";
 
     public static final String MICROSOFT_LOGO = "https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80660_1280.png";
     public static final String AMAZON_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png";

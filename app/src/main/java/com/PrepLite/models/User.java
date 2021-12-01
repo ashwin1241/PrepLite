@@ -1,10 +1,31 @@
 package com.PrepLite.models;
 
-public class User {
-    int id;
-    String username, email, batch, alumni, phone, profileImage;
+import com.google.gson.annotations.SerializedName;
 
-    public User(int id, String username, String email, String batch, String alumni, String phone, String profileImage) {
+public class User {
+
+    @SerializedName("user_id")
+    public int id;
+
+    @SerializedName("name")
+    public String username;
+
+    @SerializedName("email")
+    public String email;
+
+    @SerializedName("batch")
+    public String batch;
+
+    @SerializedName("alumni")
+    public boolean alumni;
+
+    @SerializedName("phone")
+    public String phone;
+
+    @SerializedName("profileImage")
+    public String profileImage;
+
+    public User(int id, String username, String email, String batch, boolean alumni, String phone, String profileImage) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -50,11 +71,11 @@ public class User {
         this.batch = batch;
     }
 
-    public String getAlumni() {
+    public boolean isAlumni() {
         return alumni;
     }
 
-    public void setAlumni(String alumni) {
+    public void setAlumni(boolean alumni) {
         this.alumni = alumni;
     }
 

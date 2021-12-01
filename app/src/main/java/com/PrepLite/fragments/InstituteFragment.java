@@ -37,39 +37,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InstituteFragment extends Fragment {
-    private ArrayList<University> instidata;
+    private ArrayList<University> universities;
     private RecyclerView recyclerView;
     private com.PrepLite.adapters.instiAdapter instiAdapter;
-    private ViewGroup container12;
-    private View view12;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
-        container12 = container;
-        view12 = view;
-        buildRecyclerView();
-        return view;
-    }
-
-    private void buildRecyclerView() {
         retrieveUniversities();
-        instidata = new ArrayList<>();
-        instidata.add(new University("CalTech",CAL_TECH_LOGO,0));
-        instidata.add(new University("Stanford",STANFORD_LOGO,0));
-        instidata.add(new University("IIT Delhi",IIT_DELHI_LOGO,0));
-        instidata.add(new University("Tech Uni",TECH_UNI_LOGO,0));
-        instidata.add(new University("BITS Pilani",BITS_PILANI_LOGO,0));
-        instidata.add(new University("Cambridge",CAMBRIDGE_LOGO,0));
-        instidata.add(new University("Yale",YALE_LOGO,0));
-        instidata.add(new University("Tsinghua",TSINGHUA_LOGO,0));
 
-        instiAdapter = new instiAdapter(instidata, container12.getContext());
-        recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
+        universities = new ArrayList<>();
+        instiAdapter = new instiAdapter(universities, requireContext());
+        recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(instiAdapter);
 
 
@@ -77,12 +60,14 @@ public class InstituteFragment extends Fragment {
             @Override
             public void onItemClicked(int position) {
                 super.onItemClicked(position);
-                Intent intent = new Intent(container12.getContext(), InstitutePreviewActivity.class);
-                intent.putExtra("name", instidata.get(position).getUniversityName());
-                intent.putExtra("logo", instidata.get(position).getUniversityLogo());
+                Intent intent = new Intent(requireContext(), InstitutePreviewActivity.class);
+                intent.putExtra("name", universities.get(position).getUniversityName());
+                intent.putExtra("logo", universities.get(position).getUniversityLogo());
                 startActivity(intent);
             }
         });
+
+        return view;
     }
 
     private void retrieveUniversities() {
@@ -92,8 +77,10 @@ public class InstituteFragment extends Fragment {
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 ServerResponse serverResponse = response.body();
                 if (serverResponse != null) {
-                    ArrayList<University> universities = serverResponse.getResult().getUniversities();
-                    //build the recycler view here
+                    if (!serverResponse.isError()) {
+                        universities.addAll(serverResponse.getResult().getUniversities());
+                        instiAdapter.notifyItemRangeInserted(0, universities.size());
+                    }
                 }
             }
 

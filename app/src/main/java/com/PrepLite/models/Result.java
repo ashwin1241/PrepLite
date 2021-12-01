@@ -16,6 +16,12 @@ public class Result {
     @SerializedName("company")
     public ArrayList<Company> companies;
 
+    @SerializedName("post")
+    public ArrayList<Post> posts;
+
+    @SerializedName("comment")
+    public ArrayList<Comment> comments;
+
     public User getUser() {
         return user;
     }
@@ -38,5 +44,21 @@ public class Result {
 
     public void setCompanies(ArrayList<Company> companies) {
         this.companies = companies;
+    }
+
+    public ArrayList<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(ArrayList<Post> posts) {
+        this.posts = posts;
+    }
+
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
     }
 }

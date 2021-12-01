@@ -38,51 +38,35 @@ import retrofit2.Response;
 
 public class CompanyFragment extends Fragment {
 
-    private ArrayList<Company> companydata;
+    private ArrayList<Company> companies;
     private RecyclerView recyclerView;
     private companyAdapter companyAdapter;
-    private ViewGroup container12;
-    private View view12;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
-        container12 = container;
-        view12 = view;
-        buildRecyclerView();
-        return view;
-    }
-
-    private void buildRecyclerView() {
-
         retrieveCompanies();
 
-        companydata = new ArrayList<>();
-        companydata.add(new Company("Microsoft",MICROSOFT_LOGO,0));
-        companydata.add(new Company("Amazon",AMAZON_LOGO,0));
-        companydata.add(new Company("Oracle",ORACLE_LOGO,0));
-        companydata.add(new Company("Code Nation",CODE_NATION_LOGO,0));
-        companydata.add(new Company("Service Now",SERVICE_NOW_LOGO,0));
-        companydata.add(new Company("Cisco",CISCO_LOGO,0));
-        companydata.add(new Company("Spotify",SPOTIFY_LOGO,0));
-        companydata.add(new Company("General Motors",GENERAL_MOTORS_LOGO,0));
-        companyAdapter = new companyAdapter(companydata,container12.getContext());
-        recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
+        companies = new ArrayList<>();
+        companyAdapter = new companyAdapter(companies,requireContext());
+        recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(companyAdapter);
 
         companyAdapter.setOnCompanyClickListener(new OnItemClickListener() {
             @Override
             public void onItemClicked(int position) {
                 super.onItemClicked(position);
-                Intent intent = new Intent(container12.getContext(), CompanyPreviewActivity.class);
-                intent.putExtra("name", companydata.get(position).getCompanyName());
-                intent.putExtra("logo", companydata.get(position).getCompanyLogo());
+                Intent intent = new Intent(requireContext(), CompanyPreviewActivity.class);
+                intent.putExtra("name", companies.get(position).getCompanyName());
+                intent.putExtra("logo", companies.get(position).getCompanyLogo());
                 startActivity(intent);
             }
         });
+
+        return view;
     }
 
     private void retrieveCompanies() {
@@ -93,7 +77,8 @@ public class CompanyFragment extends Fragment {
                 ServerResponse serverResponse = response.body();
                 if (serverResponse != null) {
                     if (!serverResponse.isError()) {
-                        ArrayList<Company> companies = serverResponse.getResult().getCompanies();
+                        companies.addAll(serverResponse.getResult().getCompanies());
+                        companyAdapter.notifyItemRangeInserted(0, companies.size());
                         //Build the recycler view here
                     }
                 }

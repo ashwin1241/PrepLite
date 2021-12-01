@@ -6,19 +6,28 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.PrepLite.ApiCalls;
+import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.adapters.commentAdapter;
 import com.PrepLite.models.Comment;
+import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CommentsActivity extends AppCompatActivity {
 
@@ -38,22 +47,29 @@ public class CommentsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Comments");
         getSupportActionBar().setHomeButtonEnabled(false);
 
-        buildRecyclerView();
+        int postId = getIntent().getIntExtra("postId", -1);
+        retrieveComments(postId);
+
+        comment_list = new ArrayList<>();
+        recyclerView = findViewById(R.id.comments_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        commentAdapter = new commentAdapter(comment_list, this);
+        recyclerView.setAdapter(commentAdapter);
+
         comment = findViewById(R.id.comment_text);
         comment_send = findViewById(R.id.comment_send);
         comment_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 comment_text = comment.getText().toString().trim();
-                if(comment_text.length()==0)
-                {
+                if (comment_text.isEmpty()) {
                     Toast.makeText(CommentsActivity.this, "Cannot post empty comment", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
+                    addComment(postId, comment_text);
 //                    date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 //                    time = new SimpleDateFormat("HH:mm").format(new Date());
-                    comment_list.add(new Comment(new User("Username"),comment_text,"28/11/2021 19:20"));
+                    comment_list.add(new Comment(new User("Username"), comment_text, "28/11/2021 19:20"));
                     //backend code to add this comment to database
                     commentAdapter.notifyItemInserted(comment_list.size());
                     comment.setText("");
@@ -63,14 +79,8 @@ public class CommentsActivity extends AppCompatActivity {
 
     }
 
-    private void buildRecyclerView()
-    {
-        comment_list = new ArrayList<>();
-        recyclerView = findViewById(R.id.comments_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-        commentAdapter = new commentAdapter(comment_list,this);
-        recyclerView.setAdapter(commentAdapter);
+    private void buildRecyclerView() {
+
 
         commentAdapter.setOnCommentClickListener(new OnItemClickListener() {
             @Override
@@ -94,6 +104,55 @@ public class CommentsActivity extends AppCompatActivity {
                             }
                         });
                 builder.create().show();
+            }
+        });
+    }
+
+    private void retrieveComments(int postId) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("post_id", postId);
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveComments(map);
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                ServerResponse serverResponse = response.body();
+                if (serverResponse != null) {
+                    if (!serverResponse.isError()) {
+                        comment_list.addAll(serverResponse.getResult().getComments());
+                        commentAdapter.notifyItemRangeInserted(0, comment_list.size());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void addComment(int postId, String content) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("post_id", postId);
+        map.put("content", content);
+        map.put("user_id", 1);
+
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).addComment(map);
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                ServerResponse serverResponse = response.body();
+                if (serverResponse != null) {
+                    if (!serverResponse.isError()) {
+                        comment_list.addAll(serverResponse.getResult().getComments());
+                        commentAdapter.notifyItemRangeInserted(0, 1);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
             }
         });
     }

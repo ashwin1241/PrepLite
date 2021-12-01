@@ -43,13 +43,13 @@ public class instiAdapter extends RecyclerView.Adapter<instiAdapter.Insti_ViewHo
     public void onBindViewHolder(@NonNull Insti_ViewHolder holder, int position) {
         final University university = universities.get(position);
         holder.universityTitle.setText(university.getUniversityName());
-        if(university.getUniversityLogo().trim().length()>0)
-        Glide.with(context).load(university.getUniversityLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.universityImage);
-        else
-        {
-            Glide.with(context).load(R.drawable.ic_baseline_institute_40).into(holder.universityImage);
-            holder.universityImage.setBackgroundColor(Color.parseColor("#A0A0A0"));
-        }
+//        if(university.getUniversityLogo().trim().length()>0)
+//        Glide.with(context).load(university.getUniversityLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.universityImage);
+//        else
+//        {
+//            Glide.with(context).load(R.drawable.ic_baseline_institute_40).into(holder.universityImage);
+//            holder.universityImage.setBackgroundColor(Color.parseColor("#A0A0A0"));
+//        }
 
     }
 
