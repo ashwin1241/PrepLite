@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    android:elevation="10dp"
     android:layout_marginHorizontal="10dp"
-    android:layout_marginTop="10dp">
+    android:layout_marginTop="10dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:id="@+id/card_comment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,12 +59,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/comment_content"
+            android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/comment_date"
             android:fontFamily="@font/amaranth"
             android:text="hh:mm"
             android:textColor="#828282"
-            android:textSize="16dp"
-            android:layout_marginLeft="5dp"/>
+            android:textSize="16dp" />
 
     </RelativeLayout>
 

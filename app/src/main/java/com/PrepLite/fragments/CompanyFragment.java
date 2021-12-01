@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.CompanyPreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.companyAdapter;
@@ -46,9 +47,9 @@ public class CompanyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
-        container12=container;
-        view12=view;
+        View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
+        container12 = container;
+        view12 = view;
         buildRecyclerView();
         return view;
     }
@@ -58,26 +59,27 @@ public class CompanyFragment extends Fragment {
         retrieveCompanies();
 
         companydata = new ArrayList<>();
-        companydata.add(new Company("Microsoft",MICROSOFT_LOGO));
-        companydata.add(new Company("Amazon",AMAZON_LOGO));
-        companydata.add(new Company("Oracle",ORACLE_LOGO));
-        companydata.add(new Company("Code Nation",CODE_NATION_LOGO));
-        companydata.add(new Company("Service Now",SERVICE_NOW_LOGO));
-        companydata.add(new Company("Cisco",CISCO_LOGO));
-        companydata.add(new Company("Spotify",SPOTIFY_LOGO));
-        companydata.add(new Company("General Motors",GENERAL_MOTORS_LOGO));
-        companyAdapter = new companyAdapter(companydata,container12.getContext());
+        companydata.add(new Company("Microsoft", MICROSOFT_LOGO));
+        companydata.add(new Company("Amazon", AMAZON_LOGO));
+        companydata.add(new Company("Oracle", ORACLE_LOGO));
+        companydata.add(new Company("Code Nation", CODE_NATION_LOGO));
+        companydata.add(new Company("Service Now", SERVICE_NOW_LOGO));
+        companydata.add(new Company("Cisco", CISCO_LOGO));
+        companydata.add(new Company("Spotify", SPOTIFY_LOGO));
+        companydata.add(new Company("General Motors", GENERAL_MOTORS_LOGO));
+        companyAdapter = new companyAdapter(companydata, container12.getContext());
         recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
         recyclerView.setAdapter(companyAdapter);
 
-        companyAdapter.setOnCompanyClickListener(new companyAdapter.OnCompanyClickListener() {
+        companyAdapter.setOnCompanyClickListener(new OnItemClickListener() {
             @Override
-            public void OnItemClicked(int position) {
+            public void onItemClicked(int position) {
+                super.onItemClicked(position);
                 Intent intent = new Intent(container12.getContext(), CompanyPreviewActivity.class);
-                intent.putExtra("name",companydata.get(position).getCompanyName());
-                intent.putExtra("logo",companydata.get(position).getCompanyLogo());
+                intent.putExtra("name", companydata.get(position).getCompanyName());
+                intent.putExtra("logo", companydata.get(position).getCompanyLogo());
                 startActivity(intent);
             }
         });
@@ -90,7 +92,7 @@ public class CompanyFragment extends Fragment {
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 ServerResponse serverResponse = response.body();
                 if (serverResponse != null) {
-                    if(!serverResponse.isError()) {
+                    if (!serverResponse.isError()) {
                         ArrayList<Company> companies = serverResponse.getResult().getCompanies();
                         //Build the recycler view here
                     }
