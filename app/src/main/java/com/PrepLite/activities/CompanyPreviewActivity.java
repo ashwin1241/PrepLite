@@ -5,7 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.PrepLite.R;
@@ -24,6 +27,8 @@ public class CompanyPreviewActivity extends AppCompatActivity {
     private String title;
     private String logo;
     private ImageView company_logo;
+    private ImageButton add_post;
+    private ImageButton attachments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,24 @@ public class CompanyPreviewActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(false);
 
         buildrecyclerView();
+
+        add_post = findViewById(R.id.add_company_post);
+        add_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CompanyPreviewActivity.this,AddPostActivity.class);
+                startActivity(intent);
+            }
+        });
+        attachments = findViewById(R.id.company_attachments);
+        attachments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CompanyPreviewActivity.this,CompInstiAttachmentsActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void buildrecyclerView()

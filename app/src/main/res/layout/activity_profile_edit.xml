@@ -175,7 +175,9 @@
             android:background="@color/white"
             android:fontFamily="@font/amaranth"
             android:hint="About"
-            android:maxLines="7"
+            android:minLines="3"
+            android:gravity="start"
+            android:maxLines="8"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textSize="18dp" />

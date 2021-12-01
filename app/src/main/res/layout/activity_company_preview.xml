@@ -52,12 +52,37 @@
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/company_post_recycler_view"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#EFFBF7"/>
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/company_post_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EFFBF7"/>
+
+        </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <ImageButton
+        android:id="@+id/add_company_post"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/add_custom_button_shape"
+        android:src="@drawable/ic_baseline_add_24"
+        android:layout_marginVertical="90dp"/>
+
+    <ImageButton
+        android:id="@+id/company_attachments"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:background="@drawable/add_custom_button_shape"
+        android:src="@drawable/ic_baseline_attach_file_24"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

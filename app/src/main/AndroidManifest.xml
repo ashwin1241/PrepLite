@@ -13,6 +13,12 @@
         android:theme="@style/Theme.PrepLite"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.CompInstiAttachmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddPostActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ProfileEditActivity"
             android:exported="false" />
         <activity

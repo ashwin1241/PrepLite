@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_bar">#0E9E9F</color>
     <color name="highlight_icon">#FDB600</color>
+    <color name="orange">#ff9933</color>
 </resources>
