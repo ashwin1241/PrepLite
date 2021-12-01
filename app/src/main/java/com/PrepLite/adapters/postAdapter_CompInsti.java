@@ -47,6 +47,7 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
         holder.username.setText(user.getUsername());
         holder.content.setText(current_post.getContent());
         String timestamp = current_post.getTimestamp();
+        holder.timestamp.setText(current_post.getTimestamp());
         holder.post_comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,8 +74,7 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
     {
         private TextView username;
         private TextView content;
-        private TextView date;
-        private TextView time;
+        private TextView timestamp;
         private TextView post_comments;
         private ShapeableImageView profile_pic;
         private ImageView upvote;
@@ -84,8 +84,7 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
 
             username = itemView.findViewById(R.id.post_layout_username);
             content = itemView.findViewById(R.id.post_content);
-            date = itemView.findViewById(R.id.post_date);
-            time = itemView.findViewById(R.id.post_time);
+            timestamp = itemView.findViewById(R.id.post_timestamp);
             post_comments = itemView.findViewById(R.id.post_comments);
             profile_pic = itemView.findViewById(R.id.ind_post_profile_pic);
             upvote = itemView.findViewById(R.id.post_upvote);

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.adapters.commentAdapter;
 import com.PrepLite.models.Comment;
@@ -71,26 +72,27 @@ public class CommentsActivity extends AppCompatActivity {
         commentAdapter = new commentAdapter(comment_list,this);
         recyclerView.setAdapter(commentAdapter);
 
-        commentAdapter.setOnCommentClickListener(new commentAdapter.OnCommentClickListener() {
+        commentAdapter.setOnCommentClickListener(new OnItemClickListener() {
             @Override
             public void OnItemLongClicked(int position) {
+                super.OnItemLongClicked(position);
                 AlertDialog.Builder builder = new AlertDialog.Builder(CommentsActivity.this);
                 builder.setTitle("Delete comment")
-                .setMessage("Are you sure you want to delete this comment?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //backend code to delete this comment from db
-                        commentAdapter.notifyItemRemoved(position);
-                        comment_list.remove(position);
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                        .setMessage("Are you sure you want to delete this comment?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //backend code to delete this comment from db
+                                commentAdapter.notifyItemRemoved(position);
+                                comment_list.remove(position);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                });
+                            }
+                        });
                 builder.create().show();
             }
         });

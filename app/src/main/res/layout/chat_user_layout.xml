@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_chat_user"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp"
     android:paddingHorizontal="10dp"
-    android:paddingVertical="5dp"
-    android:elevation="10dp">
+    android:paddingVertical="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <View
             android:id="@+id/chat_top_segregator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#DEDEDE"
             android:layout_alignParentTop="true"
-            />
+            android:background="#DEDEDE" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/chat_profile_image"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginHorizontal="10dp"
             android:layout_below="@id/chat_top_segregator"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="10dp"
             android:background="#A0A0A0"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_person_24"
-            app:shapeAppearanceOverlay="@style/circular"
-            android:layout_centerVertical="true"/>
+            app:shapeAppearanceOverlay="@style/circular" />
 
         <TextView
             android:id="@+id/chat_person_username"
@@ -41,8 +40,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:layout_toRightOf="@id/chat_profile_image"
             android:layout_toLeftOf="@id/chat_last_timestamp"
+            android:layout_toRightOf="@id/chat_profile_image"
             android:ellipsize="end"
             android:fontFamily="@font/amaranth"
             android:maxLines="1"

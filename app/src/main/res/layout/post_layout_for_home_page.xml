@@ -87,26 +87,14 @@
             android:textSize="16dp" />
 
         <TextView
-            android:id="@+id/post_date"
+            android:id="@+id/post_timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/post_layout_username"
             android:layout_marginStart="5dp"
             android:layout_toRightOf="@id/post_timestamp_hdg"
             android:fontFamily="@font/amaranth"
-            android:text="dd/mm/yyyy"
-            android:textColor="#828282"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/post_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/post_layout_username"
-            android:layout_marginStart="5dp"
-            android:layout_toEndOf="@id/post_date"
-            android:fontFamily="@font/amaranth"
-            android:text="hh:mm"
+            android:text="dd/mm/yyyy, hh:mm"
             android:textColor="#828282"
             android:textSize="16dp" />
 

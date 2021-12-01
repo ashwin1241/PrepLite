@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.models.Comment;
 import com.PrepLite.models.User;
@@ -20,20 +21,14 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
     ArrayList<Comment> comments;
     Context context;
 
-    private OnCommentClickListener cListener;
+    private OnItemClickListener listener;
 
-    public void setOnCommentClickListener(OnCommentClickListener listener)
-    {
-        this.cListener = listener;
+    public void setOnCommentClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
-    public interface OnCommentClickListener
-    {
-        void OnItemLongClicked(int position);
-    }
 
-    public commentAdapter(ArrayList<Comment> comments, Context context)
-    {
+    public commentAdapter(ArrayList<Comment> comments, Context context) {
         this.comments = comments;
         this.context = context;
     }
@@ -41,8 +36,8 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
     @NonNull
     @Override
     public Comment_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_layout,parent,false);
-        return new Comment_ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_layout, parent, false);
+        return new Comment_ViewHolder(view, listener);
     }
 
     @Override
@@ -55,20 +50,6 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
         String timestamp = current_comment.getTimestamp();
         holder.timestamp.setText(timestamp);
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if(cListener!=null)
-                {
-                    int position = holder.getAdapterPosition();
-                    if(position!=RecyclerView.NO_POSITION)
-                    {
-                        cListener.OnItemLongClicked(position);
-                    }
-                }
-                return true;
-            }
-        });
     }
 
     @Override
@@ -76,18 +57,34 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
         return comments.size();
     }
 
-    public static class Comment_ViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class Comment_ViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
         private TextView username;
         private TextView content;
         private TextView timestamp;
-        public Comment_ViewHolder(@NonNull View itemView) {
+        OnItemClickListener listener;
+
+        public Comment_ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
+
+            this.listener = listener;
 
             username = itemView.findViewById(R.id.comment_layout_username);
             content = itemView.findViewById(R.id.comment_content);
             timestamp = itemView.findViewById(R.id.comment_timestamp);
 
+            itemView.findViewById(R.id.card_comment).setOnLongClickListener(this);
+
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            if (listener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.OnItemLongClicked(position);
+                }
+            }
+            return true;
         }
     }
 

@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.InstitutePreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.instiAdapter;
@@ -46,15 +47,14 @@ public class InstituteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
-        container12=container;
-        view12=view;
+        View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
+        container12 = container;
+        view12 = view;
         buildRecyclerView();
         return view;
     }
 
-    private void buildRecyclerView()
-    {
+    private void buildRecyclerView() {
         retrieveUniversities();
         instidata = new ArrayList<>();
         instidata.add(new University("CalTech",CAL_TECH_LOGO,0));
@@ -66,18 +66,20 @@ public class InstituteFragment extends Fragment {
         instidata.add(new University("Yale",YALE_LOGO,0));
         instidata.add(new University("Tsinghua",TSINGHUA_LOGO,0));
 
-        instiAdapter = new instiAdapter(instidata,container12.getContext());
+        instiAdapter = new instiAdapter(instidata, container12.getContext());
         recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
         recyclerView.setAdapter(instiAdapter);
 
-        instiAdapter.setOnInstiClickListener(new instiAdapter.OnInstiClickListener() {
+
+        instiAdapter.setOnInstiClickListener(new OnItemClickListener() {
             @Override
-            public void OnItemClicked(int position) {
+            public void onItemClicked(int position) {
+                super.onItemClicked(position);
                 Intent intent = new Intent(container12.getContext(), InstitutePreviewActivity.class);
-                intent.putExtra("name",instidata.get(position).getUniversityName());
-                intent.putExtra("logo",instidata.get(position).getUniversityLogo());
+                intent.putExtra("name", instidata.get(position).getUniversityName());
+                intent.putExtra("logo", instidata.get(position).getUniversityLogo());
                 startActivity(intent);
             }
         });

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.ChatActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.chatDisplayAdapter;
@@ -49,9 +50,10 @@ public class ChatFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(chatDisplayAdapter);
 
-        chatDisplayAdapter.setOnChatClickListener(new chatDisplayAdapter.OnChatClickListener() {
+        chatDisplayAdapter.setOnChatClickListener(new OnItemClickListener() {
             @Override
-            public void OnItemClicked(int position) {
+            public void onItemClicked(int position) {
+                super.onItemClicked(position);
                 Intent intent = new Intent(container12.getContext(), ChatActivity.class);
                 intent.putExtra("username", chatList.get(position).getUser().getUsername());
                 startActivity(intent);

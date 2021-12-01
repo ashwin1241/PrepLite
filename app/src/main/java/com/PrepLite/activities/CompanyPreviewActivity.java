@@ -13,7 +13,10 @@ import android.widget.ImageView;
 
 import com.PrepLite.R;
 import com.PrepLite.adapters.postAdapter_CompInsti;
+import com.PrepLite.models.Company;
 import com.PrepLite.models.Post;
+import com.PrepLite.models.University;
+import com.PrepLite.models.User;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -72,9 +75,9 @@ public class CompanyPreviewActivity extends AppCompatActivity {
     {
         //while fetching the posts from backend, make sure to fetch only those related to this company
         post_List = new ArrayList<>();
-//        post_List.add(new postData("Ashwin","Amazon","24-11-2021","13:02","Hello 1","",true));
-//        post_List.add(new postData("Aagam","Cisco","25-11-2021","13:02","Hello 2","",true));
-//        post_List.add(new postData("Harsh","GE","26-11-2021","13:02","Hello 3","",true));
+        post_List.add(new Post(new User("Ashwin"),new University(""), new Company("Amazon"), "24-11-2021 13:02","Hello 1",""));
+        post_List.add(new Post(new User("Aagam"),new University(""), new Company("Cisco"), "25-11-2021 13:02","Hello 2",""));
+        post_List.add(new Post(new User("Harsh"),new University(""),new Company("GE"), "26-11-2021 13:02","Hello 3",""));
         postAdapter_compInsti = new postAdapter_CompInsti(post_List,this);
         recyclerView = findViewById(R.id.company_post_recycler_view);
         recyclerView.setHasFixedSize(true);

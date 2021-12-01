@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.models.Chat;
 import com.bumptech.glide.Glide;
@@ -17,25 +18,18 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
-public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.chatViewHolder>{
+public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.chatViewHolder> {
 
     private ArrayList<Chat> chats;
     private Context context;
 
-    private OnChatClickListener cListener;
+    private OnItemClickListener listener;
 
-    public void setOnChatClickListener(OnChatClickListener listener)
-    {
-        this.cListener = listener;
+    public void setOnChatClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
-    public interface OnChatClickListener
-    {
-        void OnItemClicked(int position);
-    }
-
-    public chatDisplayAdapter(ArrayList<Chat> chats, Context context)
-    {
+    public chatDisplayAdapter(ArrayList<Chat> chats, Context context) {
         this.chats = chats;
         this.context = context;
     }
@@ -43,8 +37,8 @@ public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.
     @NonNull
     @Override
     public chatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_user_layout,parent,false);
-        return new chatViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_user_layout, parent, false);
+        return new chatViewHolder(view, listener);
     }
 
     @Override
@@ -53,26 +47,13 @@ public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.
         holder.username.setText(current_chat.getUser().getUsername());
         holder.chat_preview.setText(current_chat.getChatFirstMessage());
         holder.timestamp.setText(current_chat.getTimestamp());
-        if(current_chat.getUser().getProfileImage().trim().length()>0)
-        Glide.with(context).load(current_chat.getUser().getProfileImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_image);
-        else
-        {
+        if (current_chat.getUser().getProfileImage().trim().length() > 0)
+            Glide.with(context).load(current_chat.getUser().getProfileImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_image);
+        else {
             Glide.with(context).load(R.drawable.ic_baseline_person_24).into(holder.profile_image);
             holder.profile_image.setBackgroundColor(Color.parseColor("#A0A0A0"));
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cListener!=null)
-                {
-                    int position = holder.getAdapterPosition();
-                    if(position!=RecyclerView.NO_POSITION)
-                    {
-                        cListener.OnItemClicked(position);
-                    }
-                }
-            }
-        });
+
     }
 
     @Override
@@ -80,19 +61,36 @@ public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.
         return chats.size();
     }
 
-    public static class chatViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class chatViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ShapeableImageView profile_image;
         private TextView username;
         private TextView chat_preview;
         private TextView timestamp;
+        OnItemClickListener listener;
 
-        public chatViewHolder(@NonNull View itemView) {
+        public chatViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
+
+            this.listener = listener;
+
             profile_image = itemView.findViewById(R.id.chat_profile_image);
             username = itemView.findViewById(R.id.chat_person_username);
             chat_preview = itemView.findViewById(R.id.chat_text_preview);
             timestamp = itemView.findViewById(R.id.chat_last_timestamp);
+
+            itemView.findViewById(R.id.card_chat_user).setOnClickListener(this);
+
+        }
+
+
+        @Override
+        public void onClick(View view) {
+            if (listener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClicked(position);
+                }
+            }
         }
     }
 

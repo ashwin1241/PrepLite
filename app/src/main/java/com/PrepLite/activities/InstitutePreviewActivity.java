@@ -51,7 +51,7 @@ public class InstitutePreviewActivity extends AppCompatActivity {
 
         buildrecyclerView();
 
-        add_post = findViewById(R.id.add_company_post);
+        add_post = findViewById(R.id.add_institute_post);
         add_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +59,7 @@ public class InstitutePreviewActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        attachments = findViewById(R.id.company_attachments);
+        attachments = findViewById(R.id.institute_attachments);
         attachments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

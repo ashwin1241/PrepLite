@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.models.Company;
 import com.bumptech.glide.Glide;
@@ -22,22 +23,16 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
     ArrayList<Company> companydata;
     Context context;
 
-    private OnCompanyClickListener cListener;
+    private OnItemClickListener listener;
 
-    public void setOnCompanyClickListener(OnCompanyClickListener listener)
-    {
-        this.cListener = listener;
+    public void setOnCompanyClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
-    public interface OnCompanyClickListener
-    {
-        void OnItemClicked(int position);
-    }
-
-    public companyAdapter(ArrayList<Company> companydata, Context activity)   {
+    public companyAdapter(ArrayList<Company> companydata, Context activity) {
 
         this.companydata = companydata;
-        this.context=activity;
+        this.context = activity;
 
 
     }
@@ -47,8 +42,8 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
     public Company_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from((parent.getContext()));
-        View view = layoutInflater.inflate(R.layout.compinsti_card,parent,false);
-        Company_ViewHolder companyViewHolder = new Company_ViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.compinsti_card, parent, false);
+        Company_ViewHolder companyViewHolder = new Company_ViewHolder(view, listener);
 
         return companyViewHolder;
     }
@@ -57,26 +52,14 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
     public void onBindViewHolder(@NonNull Company_ViewHolder holder, int position) {
         final Company companyList = companydata.get(position);
         holder.companyTitle.setText(companyList.getCompanyName());
-        if(companyList.getCompanyLogo().trim().length()>0)
-        Glide.with(context).load(companyList.getCompanyLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.companyImage);
+        if (companyList.getCompanyLogo().trim().length() > 0)
+            Glide.with(context).load(companyList.getCompanyLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.companyImage);
         else
         {
             Glide.with(context).load(R.drawable.ic_baseline_company_40).into(holder.companyImage);
             holder.companyImage.setBackgroundColor(Color.parseColor("#A0A0A0"));
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(cListener!=null)
-                {
-                    int position = holder.getAdapterPosition();
-                    if(position!=RecyclerView.NO_POSITION)
-                    {
-                        cListener.OnItemClicked(position);
-                    }
-                }
-            }
-        });
+
     }
 
     @Override
@@ -85,14 +68,33 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
         return companydata.size();
     }
 
-    public static class Company_ViewHolder extends RecyclerView.ViewHolder{
+    public static class Company_ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView companyImage;
         TextView companyTitle;
-        public Company_ViewHolder(@NonNull View itemView) {
+
+        OnItemClickListener listener;
+
+        public Company_ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
+
+            this.listener = listener;
+
             companyImage = itemView.findViewById(R.id.companyImage);
             companyTitle = itemView.findViewById(R.id.companyTitle);
+
+            itemView.findViewById(R.id.card_comp_insti).setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View view) {
+            if (listener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClicked(position);
+                }
+            }
         }
     }
 }
