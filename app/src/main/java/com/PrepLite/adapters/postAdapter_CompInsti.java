@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -76,6 +77,8 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
         private TextView time;
         private TextView post_comments;
         private ShapeableImageView profile_pic;
+        private ImageView upvote;
+        private ImageView downvote;
         public Post_ViewHolder12(@NonNull View itemView) {
             super(itemView);
 
@@ -85,6 +88,8 @@ public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_Comp
             time = itemView.findViewById(R.id.post_time);
             post_comments = itemView.findViewById(R.id.post_comments);
             profile_pic = itemView.findViewById(R.id.ind_post_profile_pic);
+            upvote = itemView.findViewById(R.id.post_upvote);
+            downvote = itemView.findViewById(R.id.post_downvote);
 
         }
     }

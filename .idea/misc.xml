@@ -20,6 +20,7 @@
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_baseline_user_40.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_baseline_work_24.xml" value="0.22631578947368422" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_outline_thumb_up_24.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_send.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/ic_user__1_.xml" value="0.22631578947368422" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/drawable/logout_button_theme.xml" value="0.22631578947368422" />
@@ -51,8 +52,8 @@
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/insti_card.xml" value="0.21271929824561403" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/password_change_view.xml" value="0.21271929824561403" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/post_layout.xml" value="0.264" />
-        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/post_layout_for_home_page.xml" value="0.4" />
-        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/post_layout_for_individual_pages.xml" value="0.4" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/post_layout_for_home_page.xml" value="0.264" />
+        <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/post_layout_for_individual_pages.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/pswrd_et.xml" value="0.264" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/receiver_chat_message.xml" value="0.4" />
         <entry key="..\:/Android_Projects/PrepLite/app/src/main/res/layout/receiver_first_chat_message.xml" value="0.21271929824561403" />
