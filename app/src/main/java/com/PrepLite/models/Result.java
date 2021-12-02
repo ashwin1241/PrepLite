@@ -22,6 +22,9 @@ public class Result {
     @SerializedName("comment")
     public ArrayList<Comment> comments;
 
+    @SerializedName("chat")
+    public ArrayList<Chat> chats;
+
     public User getUser() {
         return user;
     }
@@ -60,5 +63,13 @@ public class Result {
 
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
+    }
+
+    public ArrayList<Chat> getChats() {
+        return chats;
+    }
+
+    public void setChats(ArrayList<Chat> chats) {
+        this.chats = chats;
     }
 }

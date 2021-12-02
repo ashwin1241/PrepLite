@@ -2,6 +2,8 @@ package com.PrepLite.fragments;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -88,9 +90,6 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         logout_action();
-                        Intent intent = new Intent(requireContext(), LoginActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(requireContext(), "Logged out successfully!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -129,7 +128,7 @@ public class ProfileFragment extends Fragment {
 
     private void getProfile() {
         HashMap<String, Integer> map = new HashMap<>();
-        map.put("user_id", /*SharedPrefs.getIntParams(requireContext(), ID)*/ 1);
+        map.put("user_id", SharedPrefs.getIntParams(requireContext(), ID));
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).profile(map);
 
         call.enqueue(new Callback<ServerResponse>() {

@@ -43,9 +43,8 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.Company_
 
         LayoutInflater layoutInflater = LayoutInflater.from((parent.getContext()));
         View view = layoutInflater.inflate(R.layout.compinsti_card, parent, false);
-        Company_ViewHolder companyViewHolder = new Company_ViewHolder(view, listener);
 
-        return companyViewHolder;
+        return new Company_ViewHolder(view, listener);
     }
 
     @Override
@@ -54,8 +53,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.Company_
         holder.companyTitle.setText(companyList.getCompanyName());
         if (companyList.getCompanyLogo().trim().length() > 0)
             Glide.with(context).load(companyList.getCompanyLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.companyImage);
-        else
-        {
+        else {
             Glide.with(context).load(R.drawable.ic_baseline_company_40).into(holder.companyImage);
             holder.companyImage.setBackgroundColor(Color.parseColor("#A0A0A0"));
         }

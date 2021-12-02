@@ -4,6 +4,7 @@ import static com.PrepLite.app.Constants.ADD_COMMENT;
 import static com.PrepLite.app.Constants.LOGIN_USER;
 import static com.PrepLite.app.Constants.PROFILE_USER;
 import static com.PrepLite.app.Constants.REGISTER_USER;
+import static com.PrepLite.app.Constants.VIEW_CHATS;
 import static com.PrepLite.app.Constants.VIEW_COMMENTS;
 import static com.PrepLite.app.Constants.VIEW_COMPANIES;
 import static com.PrepLite.app.Constants.VIEW_POSTS;
@@ -42,4 +43,7 @@ public interface ApiCalls {
 
     @POST(ADD_COMMENT)
     Call<ServerResponse> addComment(@Body HashMap<String, Object> comment);
+
+    @POST(VIEW_CHATS)
+    Call<ServerResponse> retrieveChats(@Body HashMap<String, Integer> userId);
 }
