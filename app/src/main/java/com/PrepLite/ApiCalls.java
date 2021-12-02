@@ -11,8 +11,10 @@ import static com.PrepLite.app.Constants.VIEW_COMPANIES;
 import static com.PrepLite.app.Constants.VIEW_POSTS;
 import static com.PrepLite.app.Constants.VIEW_UNIVERSITIES;
 
+import com.PrepLite.models.Attachment;
 import com.PrepLite.models.ServerResponse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import okhttp3.MultipartBody;
@@ -42,12 +44,16 @@ public interface ApiCalls {
     @POST(VIEW_POSTS)
     Call<ServerResponse> retrievePosts();
 
-    @Multipart
     @POST(CREATE_POST)
     Call<ServerResponse> createPost(
-            @Body HashMap<String, Object> post,
-            @Part MultipartBody.Part file
-    );
+            @Body HashMap<String, Object> post);
+
+    @Multipart
+    @POST
+    Call<ServerResponse> uploadMaterial(
+
+            @Part ArrayList<MultipartBody.Part> attachments
+            );
 
     @POST(VIEW_COMMENTS)
     Call<ServerResponse> retrieveComments(@Body HashMap<String, Integer> postId);

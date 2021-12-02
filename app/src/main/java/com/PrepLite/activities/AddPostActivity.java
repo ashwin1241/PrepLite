@@ -2,8 +2,11 @@ package com.PrepLite.activities;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -11,7 +14,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,8 +25,10 @@ import android.widget.Toast;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.FileHelper;
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
+import com.PrepLite.adapters.AddPostAttachmentAdapter;
+import com.PrepLite.models.Attachment;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.University;
@@ -32,12 +38,10 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,11 +51,9 @@ public class AddPostActivity extends AppCompatActivity {
     private TextView send_post;
     private EditText post_content;
     private String content;
-    private ImageButton addAttachments;
-    private String attachments="";
-    private ArrayList<String> attachmentList;
-    private TextView attachmentTextView;
-
+    private ArrayList<Attachment> attachments124;
+    private RecyclerView recyclerView;
+    private AddPostAttachmentAdapter adapter;
     private Company company;
     private University university;
     private MultipartBody.Part multipartBody;
@@ -62,9 +64,11 @@ public class AddPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_post);
         getSupportActionBar().setTitle("Create a Post");
 
-        attachmentList = new ArrayList<>();
+        attachments124 = new ArrayList<>();
         company = getIntent().getParcelableExtra("company");
         university = getIntent().getParcelableExtra("university");
+
+        buildrecyclerView();
 
         post_content = findViewById(R.id.add_post_et);
         send_post = findViewById(R.id.add_post_post);
@@ -80,17 +84,24 @@ public class AddPostActivity extends AppCompatActivity {
                 addPost(content, company, university);
             }
         });
-        attachmentTextView = findViewById(R.id.add_post_attachment_list);
-        addAttachments = findViewById(R.id.file_attachments);
-        addAttachments.setOnClickListener(new View.OnClickListener() {
+
+    }
+
+    private void buildrecyclerView()
+    {
+        recyclerView = findViewById(R.id.add_post_attachment_list);
+        adapter = new AddPostAttachmentAdapter(attachments124,this);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListenerAttachment(new OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                startActivityForResult(Intent.createChooser(intent,"Select files: "),103);
+            public void onItemClicked(int position) {
+                attachments124.remove(position);
+                adapter.notifyItemRemoved(position);
             }
         });
-
     }
 
     private void addPost(String content, Company company, University university) {
@@ -129,20 +140,18 @@ public class AddPostActivity extends AppCompatActivity {
         {
             try
             {
-//                Uri fileData = data.getData();
-//                String filePath = fileData.getPath();
-//                String fileName = queryName(getContentResolver(),fileData);
-//                attachments+=fileName+"\n";
-//                attachmentTextView.setText(attachments);
-//                attachmentList.add(filePath);
                 assert data != null;
-                File file = new File(data.getData().getPath());
+                Uri fileData = data.getData();
+                String filePath = fileData.getPath();
 
-                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), data.getData().getPath());
+                String fileName = queryName(getContentResolver(),fileData);
+                attachments124.add(new Attachment(fileName,true,fileData,filePath));
+                adapter.notifyItemInserted(attachments124.size()-1);
 
-                multipartBody = MultipartBody.Part.createFormData("file",file.getName(),requestFile);
+                //File file = new File(filePath);
 
-
+                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), filePath);
+                multipartBody = MultipartBody.Part.createFormData("file", fileName, requestFile);
 
             }
             catch (Exception e)
@@ -163,4 +172,20 @@ public class AddPostActivity extends AppCompatActivity {
         return name;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.add_post_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.file_attachments) {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");
+            startActivityForResult(Intent.createChooser(intent, "Select files: "), 103);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
