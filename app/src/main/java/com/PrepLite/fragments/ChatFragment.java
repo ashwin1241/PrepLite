@@ -22,6 +22,7 @@ import com.PrepLite.OnItemClickListener;
 import com.PrepLite.Progress;
 import com.PrepLite.activities.ChatActivity;
 import com.PrepLite.R;
+import com.PrepLite.activities.ChatWithUsersActivity;
 import com.PrepLite.adapters.ChatDisplayAdapter;
 import com.PrepLite.models.Chat;
 import com.PrepLite.models.ServerResponse;
@@ -65,7 +66,13 @@ public class ChatFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        chat_with_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), ChatWithUsersActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
