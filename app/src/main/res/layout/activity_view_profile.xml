@@ -73,7 +73,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/work_sans_semi_bold"
                         android:maxWidth="160dp"
-                        android:maxLines="2"
+                        android:inputType="textMultiLine"
                         android:text="@string/name"
                         android:textColor="#FF9900"
                         android:textSize="22dp"
@@ -122,12 +122,10 @@
                         android:layout_below="@id/user_name_separator"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
-                        android:ellipsize="end"
                         android:fontFamily="@font/work_sans_medium"
-                        android:maxWidth="160dp"
-                        android:maxLines="1"
+                        android:layout_marginEnd="5dp"
                         android:text="email"
-                        android:inputType="textEmailAddress"
+                        android:inputType="textEmailAddress|textMultiLine"
                         android:textColor="#FF9900"
                         android:textSize="18dp"/>
 
