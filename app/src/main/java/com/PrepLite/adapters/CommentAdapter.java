@@ -48,7 +48,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.Comment_
 
         Comment current_comment = comments.get(position);
         User user = current_comment.getUser();
-        holder.username.setText(SharedPrefs.getStringParams(context, NAME, ""));
+        holder.username.setText(user.getUsername());
         holder.content.setText(current_comment.getContent());
         String timestamp = current_comment.getTimestamp();
         holder.timestamp.setText(timestamp);

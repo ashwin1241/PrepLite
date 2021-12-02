@@ -71,7 +71,9 @@ public class ProfileFragment extends Fragment {
         frag_view = inflater.inflate(R.layout.fragment_profile,container,false);
         settings = frag_view.findViewById(R.id.profile_settings);
 
-        getProfile();
+
+
+        //getProfile();
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

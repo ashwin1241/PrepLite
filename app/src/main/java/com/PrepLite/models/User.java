@@ -22,7 +22,7 @@ public class User {
     @SerializedName("phone")
     public String phone;
 
-    @SerializedName("profileImage")
+    @SerializedName("profile_image")
     public String profileImage;
 
     public User(int id, String username, String email, String batch, boolean alumni, String phone, String profileImage) {

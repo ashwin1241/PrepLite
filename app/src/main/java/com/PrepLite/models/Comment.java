@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Comment {
 
+    @SerializedName("comment_id")
+    public int commentId;
+
     @SerializedName("user")
     public User user;
 
@@ -41,5 +44,13 @@ public class Comment {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public int getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(int commentId) {
+        this.commentId = commentId;
     }
 }
