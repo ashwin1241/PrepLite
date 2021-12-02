@@ -132,6 +132,8 @@ public class RegisterActivity extends AppCompatActivity {
                         finish();
                     }
                 }
+                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                startActivity(intent);
                 Toast.makeText(RegisterActivity.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
