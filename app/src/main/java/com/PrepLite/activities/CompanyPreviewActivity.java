@@ -90,9 +90,21 @@ public class CompanyPreviewActivity extends AppCompatActivity {
                 //need to add backend code here to check if the user is the one who posted this post
                 deletePost(position);
             }
-        });
 
+            @Override
+            public void OnCommentClicked(int position, int flag) {
+                super.OnCommentClicked(position, flag);
+                Intent intent = new Intent(CompanyPreviewActivity.this, CommentsActivity.class);
+                intent.putExtra("postId", post_List.get(position).getPostId());
+                startActivity(intent);
+            }
+        });
         retrievePosts();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
     }
 
@@ -130,7 +142,7 @@ public class CompanyPreviewActivity extends AppCompatActivity {
                 if (serverResponse != null) {
                     if (!serverResponse.isError()) {
                         post_List.addAll(serverResponse.getResult().getPosts());
-                        postAdapter_compInsti.notifyItemRangeInserted(0, post_List.size());
+                        postAdapter_compInsti.notifyDataSetChanged();
                     }
                 }
             }

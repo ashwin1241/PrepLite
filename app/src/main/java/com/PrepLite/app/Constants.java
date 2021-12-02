@@ -4,7 +4,7 @@ import java.security.PublicKey;
 
 public class Constants {
 
-    public static final String BASE_URL = "https://2810-2409-4070-4495-3769-147a-ea09-c36c-a590.ngrok.io";
+    public static final String BASE_URL = "https://b1fc-2409-4070-4495-3769-147a-ea09-c36c-a590.ngrok.io";
 
     public static final String REGISTER_USER = "register/";
     public static final String LOGIN_USER = "login/";
@@ -18,6 +18,7 @@ public class Constants {
     public static final String VIEW_UNIVERSITY_POSTS = "viewUniversityPosts/";
     public static final String VIEW_COMMENTS = "viewComments/";
     public static final String ADD_COMMENT = "addComment/";
+    public static final String DELETE_COMMENT = "deleteComment/";
 
     public static final String VIEW_CHATS = "viewChats/";
     public static final String CREATE_POST = "createPost/";

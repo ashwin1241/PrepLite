@@ -31,13 +31,11 @@ public class Post {
     @SerializedName("content")
     public String content;
 
-    @SerializedName("postImage")
-    public String postImage;
 
     @SerializedName("postMaterials")
     private ArrayList<String> postMaterials;
 
-    public Post(int postId, User user, Company company, University university, String timestamp, int upvotes, int downvotes, String content, String postImage, ArrayList<String> postMaterials) {
+    public Post(int postId, User user, Company company, University university, String timestamp, int upvotes, int downvotes, String content, ArrayList<String> postMaterials) {
         this.postId = postId;
         this.user = user;
         this.company = company;
@@ -46,17 +44,15 @@ public class Post {
         this.upvotes = upvotes;
         this.downvotes = downvotes;
         this.content = content;
-        this.postImage = postImage;
         this.postMaterials = postMaterials;
     }
 
-    public Post(User user, University university, Company company, String timestamp, String content, String postImage) {
+    public Post(User user, University university, Company company, String timestamp, String content) {
         this.user = user;
         this.company = company;
         this.university = university;
         this.timestamp = timestamp;
         this.content = content;
-        this.postImage = postImage;
     }
 
 
@@ -124,11 +120,4 @@ public class Post {
         this.content = content;
     }
 
-    public String getPostImage() {
-        return postImage;
-    }
-
-    public void setPostImage(String postImage) {
-        this.postImage = postImage;
-    }
 }

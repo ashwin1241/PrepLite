@@ -2,6 +2,7 @@ package com.PrepLite;
 
 import static com.PrepLite.app.Constants.ADD_COMMENT;
 import static com.PrepLite.app.Constants.CREATE_POST;
+import static com.PrepLite.app.Constants.DELETE_COMMENT;
 import static com.PrepLite.app.Constants.LOGIN_USER;
 import static com.PrepLite.app.Constants.PROFILE_USER;
 import static com.PrepLite.app.Constants.REGISTER_USER;
@@ -66,6 +67,9 @@ public interface ApiCalls {
 
     @POST(ADD_COMMENT)
     Call<ServerResponse> addComment(@Body HashMap<String, Object> comment);
+
+    @POST(DELETE_COMMENT)
+    Call<ServerResponse> deleteComment(@Body HashMap<String, Integer> comment_id);
 
     @POST(VIEW_CHATS)
     Call<ServerResponse> retrieveChats(@Body HashMap<String, Integer> userId);

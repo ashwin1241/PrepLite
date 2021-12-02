@@ -54,16 +54,9 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
         holder.content.setText(current_post.getContent());
         String timestamp = current_post.getTimestamp();
         holder.timestamp.setText(current_post.getTimestamp());
-        holder.post_comments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, CommentsActivity.class);
-                //backend code to add data to intent as to which post comments we are viewing
-                context.startActivity(intent);
-            }
-        });
-        if (current_post.getPostImage().trim().length() > 0)
-            Glide.with(context).load(current_post.getPostImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_pic);
+
+        if (current_post.getUser().getProfileImage().trim().length() > 0)
+            Glide.with(context).load(current_post.getUser().getProfileImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_pic);
         else {
             Glide.with(context).load(R.drawable.ic_baseline_person_24).into(holder.profile_pic);
             holder.profile_pic.setBackgroundColor(Color.parseColor("#A0A0A0"));
@@ -97,6 +90,8 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
 
             itemView.findViewById(R.id.card_individual_page).setOnClickListener(this);
             itemView.findViewById(R.id.card_individual_page).setOnLongClickListener(this);
+
+            post_comments.setOnClickListener(this);
 
         }
 

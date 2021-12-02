@@ -16,6 +16,7 @@ import com.PrepLite.models.ChatP2P;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -46,8 +47,8 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                date = new SimpleDateFormat("dd/mm/yy").format(new Date());
-                time = new SimpleDateFormat("HH:mm").format(new Date());
+                date = new SimpleDateFormat("dd/mm/yy", Locale.getDefault()).format(new Date());
+                time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
                 message = chat_message.getText().toString().trim();
                 if(messageList.size()==0||messageList.get(messageList.size()-1).isSender())
                 messageList.add(new ChatP2P("28/11/2021 19:20",message,true,false));
