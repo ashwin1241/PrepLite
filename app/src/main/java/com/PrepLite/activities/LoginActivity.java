@@ -1,6 +1,7 @@
 package com.PrepLite.activities;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+import static com.PrepLite.prefs.SharedPrefsConstants.NAME;
 import static com.PrepLite.prefs.SharedPrefsConstants.SESSION_FLAG;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         if (SharedPrefs.getIntParams(this, SESSION_FLAG)==1) {
-            startActivity(new Intent());
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
         }
 
         login = findViewById(R.id.login_button);
@@ -108,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         SharedPrefs.setIntParams(LoginActivity.this, ID, serverResponse.getResult().getUser().getId());
                         SharedPrefs.setIntParams(LoginActivity.this, SESSION_FLAG, 1);
+
+                        SharedPrefs.setStringParams(LoginActivity.this, NAME, serverResponse.getResult().getUser().getUsername());
 
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

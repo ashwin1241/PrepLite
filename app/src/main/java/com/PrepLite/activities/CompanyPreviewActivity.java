@@ -48,12 +48,13 @@ public class CompanyPreviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_preview);
 
+        company = getIntent().getParcelableExtra("company");
+
         toolbar = findViewById(R.id.toolbar_title_company);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(company.getCompanyName());
         getSupportActionBar().setHomeButtonEnabled(false);
 
-        company = getIntent().getParcelableExtra("company");
 
         company_logo = findViewById(R.id.toolbar_image_company);
         Glide.with(this).load(company.getCompanyLogo()).fitCenter().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(company_logo);
@@ -76,6 +77,7 @@ public class CompanyPreviewActivity extends AppCompatActivity {
             }
         });
 
+        post_List = new ArrayList<>();
         postAdapter_compInsti = new PostAdapterCompInsti(post_List,this);
         recyclerView = findViewById(R.id.company_post_recycler_view);
         recyclerView.setHasFixedSize(true);
