@@ -17,7 +17,10 @@ import com.PrepLite.models.Comment;
 import com.PrepLite.models.User;
 import com.PrepLite.prefs.SharedPrefs;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.Comment_ViewHolder> {
 
@@ -48,13 +51,20 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.Comment_
 
         Comment current_comment = comments.get(position);
         User user = current_comment.getUser();
-        if (user == null)
+        String timestamp = "0";
+        if (user == null) {
+            timestamp = (System.currentTimeMillis() / 1000)+"";
             holder.username.setText(SharedPrefs.getStringParams(context, NAME, ""));
-        else
+        }
+        else {
             holder.username.setText(user.getUsername());
+            timestamp = current_comment.getTimestamp();
+        }
         holder.content.setText(current_comment.getContent());
-        String timestamp = current_comment.getTimestamp();
-        holder.timestamp.setText(timestamp);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        String dateString = simpleDateFormat.format(Long.parseLong(timestamp)*1000);
+        holder.timestamp.setText(dateString);
 
     }
 

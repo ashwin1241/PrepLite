@@ -58,7 +58,7 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
         holder.content.setText(current_post.getContent());
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        String dateString = simpleDateFormat.format(new Date());
+        String dateString = simpleDateFormat.format(Long.parseLong(current_post.getTimestamp())*1000);
         holder.timestamp.setText(dateString);
 
         //holder.comp_insti.setText(current_post.());
