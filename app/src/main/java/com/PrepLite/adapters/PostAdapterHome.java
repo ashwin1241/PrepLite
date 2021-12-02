@@ -89,8 +89,6 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
         private TextView timestamp;
         private TextView post_comments;
         private ShapeableImageView compinstilogo;
-        private ImageView upvote;
-        private ImageView downvote;
 
         OnItemClickListener postListener;
 
@@ -105,8 +103,6 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
             timestamp = itemView.findViewById(R.id.post_timestamp);
             post_comments = itemView.findViewById(R.id.post_comments);
             compinstilogo = itemView.findViewById(R.id.feed_post_compinsti_pic);
-            upvote = itemView.findViewById(R.id.post_upvote);
-            downvote = itemView.findViewById(R.id.post_downvote);
 
             itemView.findViewById(R.id.card_home).setOnClickListener(this);
             itemView.findViewById(R.id.card_home).setOnLongClickListener(this);

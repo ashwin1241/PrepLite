@@ -74,8 +74,6 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
         private TextView timestamp;
         private TextView post_comments;
         private ShapeableImageView profile_pic;
-        private ImageView upvote;
-        private ImageView downvote;
 
         OnItemClickListener postListener;
 
@@ -89,8 +87,6 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
             timestamp = itemView.findViewById(R.id.post_timestamp);
             post_comments = itemView.findViewById(R.id.post_comments);
             profile_pic = itemView.findViewById(R.id.ind_post_profile_pic);
-            upvote = itemView.findViewById(R.id.post_upvote);
-            downvote = itemView.findViewById(R.id.post_downvote);
 
             itemView.findViewById(R.id.card_individual_page).setOnClickListener(this);
             itemView.findViewById(R.id.card_individual_page).setOnLongClickListener(this);
