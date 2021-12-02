@@ -98,6 +98,17 @@ public class CompanyPreviewActivity extends AppCompatActivity {
                 intent.putExtra("postId", post_List.get(position).getPostId());
                 startActivity(intent);
             }
+
+            @Override
+            public void OnItemClicked(int position, int flag) {
+                super.OnItemClicked(position, flag);
+                if(flag==1)
+                {
+                    Intent intent = new Intent(CompanyPreviewActivity.this,ViewProfileActivity.class);
+                    intent.putExtra("user",post_List.get(position).getUser());
+                    startActivity(intent);
+                }
+            }
         });
     }
 

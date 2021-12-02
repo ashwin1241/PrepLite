@@ -4,7 +4,7 @@ import java.security.PublicKey;
 
 public class Constants {
 
-    public static final String BASE_URL = "https://a1df-2409-4070-4495-3769-147a-ea09-c36c-a590.ngrok.io";
+    public static final String BASE_URL = "https://ae1e-2409-4070-4495-3769-215b-acf5-c20a-b939.ngrok.io";
 
     public static final String REGISTER_USER = "register/";
     public static final String LOGIN_USER = "login/";
