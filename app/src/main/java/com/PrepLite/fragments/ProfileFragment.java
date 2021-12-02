@@ -3,6 +3,7 @@ package com.PrepLite.fragments;
 import static android.app.Activity.RESULT_OK;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+import static com.PrepLite.prefs.SharedPrefsConstants.SESSION_FLAG;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -154,7 +155,7 @@ public class ProfileFragment extends Fragment {
     private void logout_action()
     {
         SharedPrefs.clearPrefsEditor(requireContext());
-        SharedPrefs.setIntParams(requireContext(), ID, -1);
+        SharedPrefs.setIntParams(requireContext(), SESSION_FLAG, 0);
         Intent intent = new Intent(requireContext(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

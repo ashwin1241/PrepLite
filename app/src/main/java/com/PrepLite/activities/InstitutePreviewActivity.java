@@ -13,16 +13,24 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.PrepLite.ApiCalls;
+import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.adapters.PostAdapterCompInsti;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.Post;
+import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.University;
 import com.PrepLite.models.User;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class InstitutePreviewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -50,8 +58,6 @@ public class InstitutePreviewActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(university.getUniversityName());
         getSupportActionBar().setHomeButtonEnabled(false);
 
-        buildrecyclerView();
-
         add_post = findViewById(R.id.add_institute_post);
         add_post.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +76,7 @@ public class InstitutePreviewActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void buildrecyclerView()
-    {
-
         post_List = new ArrayList<>();
-        post_List.add(new Post(new User("Ashwin"),new University("Stanford"), new Company(""), "24-11-2021 13:02","Hello 1",""));
-        post_List.add(new Post(new User("Aagam"),new University("Yale"), new Company(""), "25-11-2021 13:02","Hello 2",""));
-        post_List.add(new Post(new User("Harsh"),new University("Oxford"),new Company(""), "26-11-2021 13:02","Hello 3",""));
         postAdapter_compInsti = new PostAdapterCompInsti(post_List,this);
         recyclerView = findViewById(R.id.institute_post_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -92,7 +90,33 @@ public class InstitutePreviewActivity extends AppCompatActivity {
                 deletePost(position);
             }
         });
+        retrievePosts();
 
+    }
+
+
+    private void retrievePosts() {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("university_id", university.getUniversityId());
+
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveUniversityPosts(map);
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                ServerResponse serverResponse = response.body();
+                if (serverResponse != null) {
+                    if (!serverResponse.isError()) {
+                        post_List.addAll(serverResponse.getResult().getPosts());
+                        postAdapter_compInsti.notifyItemRangeInserted(0, post_List.size());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     private void deletePost(int position)

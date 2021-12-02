@@ -13,16 +13,24 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.PrepLite.ApiCalls;
+import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.adapters.PostAdapterCompInsti;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.Post;
+import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.University;
 import com.PrepLite.models.User;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CompanyPreviewActivity extends AppCompatActivity {
 
@@ -42,16 +50,13 @@ public class CompanyPreviewActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar_title_company);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(company.getCompanyName());
+        getSupportActionBar().setHomeButtonEnabled(false);
 
         company = getIntent().getParcelableExtra("company");
 
         company_logo = findViewById(R.id.toolbar_image_company);
         Glide.with(this).load(company.getCompanyLogo()).fitCenter().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(company_logo);
-
-        getSupportActionBar().setTitle(company.getCompanyName());
-        getSupportActionBar().setHomeButtonEnabled(false);
-
-        buildrecyclerView();
 
         add_post = findViewById(R.id.add_company_post);
         add_post.setOnClickListener(new View.OnClickListener() {
@@ -71,15 +76,6 @@ public class CompanyPreviewActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void buildrecyclerView()
-    {
-        //while fetching the posts from backend, make sure to fetch only those related to this company
-        post_List = new ArrayList<>();
-        post_List.add(new Post(new User("Ashwin"),new University(""), new Company("Amazon"), "24-11-2021 13:02","Hello 1",""));
-        post_List.add(new Post(new User("Aagam"),new University(""), new Company("Cisco"), "25-11-2021 13:02","Hello 2",""));
-        post_List.add(new Post(new User("Harsh"),new University(""),new Company("GE"), "26-11-2021 13:02","Hello 3",""));
         postAdapter_compInsti = new PostAdapterCompInsti(post_List,this);
         recyclerView = findViewById(R.id.company_post_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -93,6 +89,8 @@ public class CompanyPreviewActivity extends AppCompatActivity {
                 deletePost(position);
             }
         });
+
+        retrievePosts();
 
     }
 
@@ -116,6 +114,30 @@ public class CompanyPreviewActivity extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    private void retrievePosts() {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("company_id", company.getCompanyId());
+
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveCompanyPosts(map);
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                ServerResponse serverResponse = response.body();
+                if (serverResponse != null) {
+                    if (!serverResponse.isError()) {
+                        post_List.addAll(serverResponse.getResult().getPosts());
+                        postAdapter_compInsti.notifyItemRangeInserted(0, post_List.size());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+            }
+        });
     }
 
 }

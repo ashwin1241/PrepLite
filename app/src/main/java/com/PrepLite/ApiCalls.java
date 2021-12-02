@@ -5,11 +5,14 @@ import static com.PrepLite.app.Constants.CREATE_POST;
 import static com.PrepLite.app.Constants.LOGIN_USER;
 import static com.PrepLite.app.Constants.PROFILE_USER;
 import static com.PrepLite.app.Constants.REGISTER_USER;
+import static com.PrepLite.app.Constants.UPLOAD_MATERIALS;
 import static com.PrepLite.app.Constants.VIEW_CHATS;
 import static com.PrepLite.app.Constants.VIEW_COMMENTS;
 import static com.PrepLite.app.Constants.VIEW_COMPANIES;
+import static com.PrepLite.app.Constants.VIEW_COMPANY_POSTS;
 import static com.PrepLite.app.Constants.VIEW_POSTS;
 import static com.PrepLite.app.Constants.VIEW_UNIVERSITIES;
+import static com.PrepLite.app.Constants.VIEW_UNIVERSITY_POSTS;
 
 import com.PrepLite.models.Attachment;
 import com.PrepLite.models.ServerResponse;
@@ -44,16 +47,19 @@ public interface ApiCalls {
     @POST(VIEW_POSTS)
     Call<ServerResponse> retrievePosts();
 
+    @POST(VIEW_COMPANY_POSTS)
+    Call<ServerResponse> retrieveCompanyPosts(@Body HashMap<String, Integer> company_id);
+
+    @POST(VIEW_UNIVERSITY_POSTS)
+    Call<ServerResponse> retrieveUniversityPosts(@Body HashMap<String, Integer> university_id);
+
     @POST(CREATE_POST)
     Call<ServerResponse> createPost(
             @Body HashMap<String, Object> post);
 
     @Multipart
-    @POST
-    Call<ServerResponse> uploadMaterial(
-
-            @Part ArrayList<MultipartBody.Part> attachments
-            );
+    @POST(UPLOAD_MATERIALS)
+    Call<ServerResponse> uploadMaterial(@Part ArrayList<MultipartBody.Part> attachments);
 
     @POST(VIEW_COMMENTS)
     Call<ServerResponse> retrieveComments(@Body HashMap<String, Integer> postId);

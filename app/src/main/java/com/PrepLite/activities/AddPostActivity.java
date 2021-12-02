@@ -128,6 +128,7 @@ public class AddPostActivity extends AppCompatActivity {
                 ServerResponse serverResponse = response.body();
                 if(serverResponse != null) {
                     if (!serverResponse.isError()) {
+                        addAttachments();
                         Toast.makeText(AddPostActivity.this, "Post is up!", Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -139,6 +140,10 @@ public class AddPostActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void addAttachments() {
+
     }
 
     private void openFile(Attachment attachment)
