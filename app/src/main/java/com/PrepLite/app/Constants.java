@@ -24,6 +24,8 @@ public class Constants {
     public static final String CREATE_POST = "createPost/";
     public static final String UPLOAD_MATERIALS = "uploadMaterials/";
 
+    public static final String VIEW_USERS = "viewUsers/";
+
     public static final String MICROSOFT_LOGO = "https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80660_1280.png";
     public static final String AMAZON_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png";
     public static final String ORACLE_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/1280px-Oracle_logo.svg.png";

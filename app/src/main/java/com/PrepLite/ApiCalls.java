@@ -14,6 +14,7 @@ import static com.PrepLite.app.Constants.VIEW_COMPANY_POSTS;
 import static com.PrepLite.app.Constants.VIEW_POSTS;
 import static com.PrepLite.app.Constants.VIEW_UNIVERSITIES;
 import static com.PrepLite.app.Constants.VIEW_UNIVERSITY_POSTS;
+import static com.PrepLite.app.Constants.VIEW_USERS;
 
 import com.PrepLite.models.Attachment;
 import com.PrepLite.models.ServerResponse;
@@ -73,4 +74,7 @@ public interface ApiCalls {
 
     @POST(VIEW_CHATS)
     Call<ServerResponse> retrieveChats(@Body HashMap<String, Integer> userId);
+
+    @POST(VIEW_USERS)
+    Call<ServerResponse> retrieveUsers(@Body HashMap<String, Integer> userId);
 }

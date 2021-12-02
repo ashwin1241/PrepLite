@@ -99,13 +99,13 @@ public class CompanyPreviewActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        retrievePosts();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        post_List.clear();
+        retrievePosts();
     }
 
     private void deletePost(int position)
