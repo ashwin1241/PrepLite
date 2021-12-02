@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,16 +39,18 @@ public class ChatFragment extends Fragment {
     private ArrayList<Chat> chatList;
     private ChatDisplayAdapter chatDisplayAdapter;
     private ProgressDialog progress;
+    private ImageButton chat_with_user;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
+        View view = inflater.inflate(R.layout.fragment_chat,container,false);
+        chat_with_user = view.findViewById(R.id.chat_with_users);
         progress = Progress.getProgressDialog(requireContext());
         Progress.showProgress(true,"Fetching Chats...");
         retrieveChats();
         chatList = new ArrayList<>();
-        RecyclerView recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.chat_first_recyclerView);
         chatDisplayAdapter = new ChatDisplayAdapter(chatList,requireContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setHasFixedSize(true);

@@ -39,7 +39,7 @@ public class InstituteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
+        View view = inflater.inflate(R.layout.fragment_compinsti, container, false);
         progress = Progress.getProgressDialog(requireContext());
         Progress.showProgress(true,"Fetching Institutes...");
         retrieveUniversities();
