@@ -3,8 +3,8 @@
     package="com.PrepLite">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PrepLite"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activities.ChatWithUsersActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.CompInstiAttachmentsActivity"
             android:exported="false" />
@@ -65,14 +68,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
-            android:authorities="com.PrepLite.fileprovider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.PrepLite.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 

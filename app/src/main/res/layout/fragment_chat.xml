@@ -14,12 +14,12 @@
         android:id="@+id/chat_with_users"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:background="@drawable/add_custom_button_shape"
-        android:src="@drawable/ic_baseline_add_24"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
-        android:elevation="10dp"/>
+        android:background="@drawable/add_custom_button_shape"
+        android:elevation="10dp"
+        android:src="@drawable/ic_baseline_add_24" />
 
 </RelativeLayout>
