@@ -32,5 +32,9 @@ Alumni and working professionals are an important part of the community. Student
     <string name="name">Name</string>
 
     <string name="Attach">Attach files</string>
+    <string name="posts">Posts</string>
+    <string name="institutes">Institutes</string>
+    <string name="companies">Companies</string>
+    <string name="about">about</string>
 
 </resources>

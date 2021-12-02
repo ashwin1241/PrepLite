@@ -18,6 +18,9 @@
             android:name=".activities.ChatWithUsersActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.ViewProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.CompInstiAttachmentsActivity"
             android:exported="false" />
         <activity
