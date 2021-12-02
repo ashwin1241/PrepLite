@@ -1,5 +1,6 @@
 package com.PrepLite.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
+import com.PrepLite.Progress;
 import com.PrepLite.activities.InstitutePreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.InstiAdapter;
@@ -31,12 +33,15 @@ public class InstituteFragment extends Fragment {
     private ArrayList<University> universities;
     private RecyclerView recyclerView;
     private InstiAdapter instiAdapter;
+    private ProgressDialog progress;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
+        progress = Progress.getProgressDialog(requireContext());
+        Progress.showProgress(true,"Fetching Institutes...");
         retrieveUniversities();
 
         universities = new ArrayList<>();
@@ -71,6 +76,7 @@ public class InstituteFragment extends Fragment {
                     if (!serverResponse.isError()) {
                         universities.addAll(serverResponse.getResult().getUniversities());
                         instiAdapter.notifyItemRangeInserted(0, universities.size());
+                        Progress.dismissProgress(progress);
                     }
                 }
             }

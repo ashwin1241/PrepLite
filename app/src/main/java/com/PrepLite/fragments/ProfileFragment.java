@@ -6,6 +6,7 @@ import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 import static com.PrepLite.prefs.SharedPrefsConstants.SESSION_FLAG;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -36,6 +37,7 @@ import androidx.fragment.app.Fragment;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
+import com.PrepLite.Progress;
 import com.PrepLite.activities.HomeActivity;
 import com.PrepLite.activities.LoginActivity;
 import com.PrepLite.activities.MainActivity;
@@ -69,12 +71,15 @@ public class ProfileFragment extends Fragment {
     private TextView username;
     private TextView email;
     private TextView contact;
+    private ProgressDialog progress;
 
     private Uri profileImageUri;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         frag_view = inflater.inflate(R.layout.fragment_profile,container,false);
+        //progress = Progress.getProgressDialog(requireContext());
+        //Progress.showProgress(true,"Fetching Profile Details...");
         settings = frag_view.findViewById(R.id.profile_settings);
 
 

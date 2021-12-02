@@ -1,5 +1,6 @@
 package com.PrepLite.fragments;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
+import com.PrepLite.Progress;
 import com.PrepLite.R;
 import com.PrepLite.activities.CommentsActivity;
 import com.PrepLite.adapters.PostAdapterHome;
@@ -36,11 +38,14 @@ public class FeedFragment extends Fragment {
 
     private ArrayList<Post> postList;
     private PostAdapterHome postAdapter_home;
+    private ProgressDialog progress;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed,container,false);
+        progress = Progress.getProgressDialog(requireContext());
+        Progress.showProgress(true,"Fetching feed...");
         retrievePosts();
 
         postList = new ArrayList<>();
@@ -98,6 +103,7 @@ public class FeedFragment extends Fragment {
                     if (!serverResponse.isError()) {
                         postList.addAll(serverResponse.getResult().getPosts());
                         postAdapter_home.notifyItemRangeInserted(0, postList.size());
+                        Progress.dismissProgress(progress);
                     }
                 }
             }
