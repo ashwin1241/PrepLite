@@ -44,7 +44,7 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
     @Override
     public Post_ViewHolder12 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout_for_individual_pages,parent,false);
-        return new Post_ViewHolder12(view);
+        return new Post_ViewHolder12(view,listener);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
         return posts.size();
     }
 
-    public static class Post_ViewHolder12 extends RecyclerView.ViewHolder
+    public static class Post_ViewHolder12 extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener
     {
         private TextView username;
         private TextView content;
@@ -87,8 +87,13 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
         private ShapeableImageView profile_pic;
         private ImageView upvote;
         private ImageView downvote;
-        public Post_ViewHolder12(@NonNull View itemView) {
+
+        OnItemClickListener postListener;
+
+        public Post_ViewHolder12(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
+
+            this.postListener = listener;
 
             username = itemView.findViewById(R.id.post_layout_username);
             content = itemView.findViewById(R.id.post_content);
@@ -98,7 +103,41 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
             upvote = itemView.findViewById(R.id.post_upvote);
             downvote = itemView.findViewById(R.id.post_downvote);
 
+            itemView.findViewById(R.id.card_home).setOnClickListener(this);
+            itemView.findViewById(R.id.card_home).setOnLongClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (postListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    int id = view.getId();
+                    if (id == R.id.card_home) {
+                        postListener.OnItemClicked(position, 0);
+                    } else if (id == R.id.post_comments) {
+                        postListener.OnCommentClicked(position, 0);
+                    }
+                }
+            }
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            if (postListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    int id = view.getId();
+                    if (id == R.id.card_home) {
+                        postListener.OnItemLongClicked(position);
+                    }
+                }
+            }
+            return true;
         }
     }
+
+
 
 }

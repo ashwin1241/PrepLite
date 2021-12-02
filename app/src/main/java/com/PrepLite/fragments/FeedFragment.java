@@ -20,8 +20,11 @@ import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.activities.CommentsActivity;
 import com.PrepLite.adapters.PostAdapterHome;
+import com.PrepLite.models.Company;
 import com.PrepLite.models.Post;
 import com.PrepLite.models.ServerResponse;
+import com.PrepLite.models.University;
+import com.PrepLite.models.User;
 
 import java.util.ArrayList;
 
@@ -115,7 +118,7 @@ public class FeedFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //backend code to actually delete this post
-                        postList.remove(i);
+                        postList.remove(position);
                         postAdapter_home.notifyItemRemoved(position);
                     }
                 })

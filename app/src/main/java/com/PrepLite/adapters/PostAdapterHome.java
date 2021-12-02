@@ -1,7 +1,6 @@
 package com.PrepLite.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.PrepLite.OnItemClickListener;
-import com.PrepLite.activities.CommentsActivity;
 import com.PrepLite.R;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.Post;
 import com.PrepLite.models.University;
 import com.PrepLite.models.User;
+import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_ViewHolder> {
@@ -58,18 +58,10 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
         holder.content.setText(current_post.getContent());
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        String dateString = simpleDateFormat.format(Long.parseLong(current_post.getTimestamp())*1000);
+        String dateString = simpleDateFormat.format(new Date());
         holder.timestamp.setText(dateString);
 
         //holder.comp_insti.setText(current_post.());
-        holder.post_comments.setOnClickListener(new View.OnClickListener() {
-            //@OverridgetComp_instie
-            public void onClick(View view) {
-                Intent intent = new Intent(context, CommentsActivity.class);
-                //backend code to add data to intent as to which post comments we are viewing
-                context.startActivity(intent);
-            }
-        });
 
 //        if(current_post.getPostImage().trim().length()>0)
 //        Glide.with(context).load(current_post.getPostImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
@@ -89,7 +81,7 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
         return posts.size();
     }
 
-    public static class Post_ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+    public static class Post_ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener
     {
         private TextView username;
         private TextView comp_insti;
@@ -100,12 +92,12 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
         private ImageView upvote;
         private ImageView downvote;
 
-        OnItemClickListener listener;
+        OnItemClickListener postListener;
 
         public Post_ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
 
-            this.listener = listener;
+            this.postListener = listener;
 
             username = itemView.findViewById(R.id.post_layout_username);
             comp_insti = itemView.findViewById(R.id.post_layout_comp_insti);
@@ -117,22 +109,37 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
             downvote = itemView.findViewById(R.id.post_downvote);
 
             itemView.findViewById(R.id.card_home).setOnClickListener(this);
+            itemView.findViewById(R.id.card_home).setOnLongClickListener(this);
             post_comments.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            if (listener != null) {
+            if (postListener != null) {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     int id = view.getId();
                     if (id == R.id.card_home) {
-                        listener.OnItemClicked(position, 0);
+                        postListener.OnItemClicked(position, 0);
                     } else if (id == R.id.post_comments) {
-                        listener.OnCommentClicked(position, 0);
+                        postListener.OnCommentClicked(position, 0);
                     }
                 }
             }
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            if (postListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    int id = view.getId();
+                    if (id == R.id.card_home) {
+                        postListener.OnItemLongClicked(position);
+                    }
+                }
+            }
+            return true;
         }
     }
 

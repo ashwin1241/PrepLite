@@ -106,7 +106,7 @@ public class CompanyPreviewActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //backend code to actually delete this post
-                post_List.remove(i);
+                post_List.remove(position);
                 postAdapter_compInsti.notifyItemRemoved(position);
             }
         })
