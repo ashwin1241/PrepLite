@@ -7,11 +7,21 @@ public class Attachment {
     private String title;
     private boolean downloadStat;
     private Uri downloadedFile;
+    private String filePath;
 
-    public Attachment(String title, boolean downloadStat, Uri downloadedFile) {
+    public Attachment(String title, boolean downloadStat, Uri downloadedFile, String filePath) {
         this.title = title;
         this.downloadStat = downloadStat;
         this.downloadedFile = downloadedFile;
+        this.filePath = filePath;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public String getTitle() {
