@@ -80,7 +80,6 @@ public class HomeActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             finish();
-                            System.exit(0);
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
