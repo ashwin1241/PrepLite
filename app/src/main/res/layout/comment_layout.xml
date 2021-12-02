@@ -37,10 +37,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/work_sans_medium"
+            android:fontFamily="@font/work_sans_regular"
             android:text="Comment content"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/comment_timestamp"

@@ -1,5 +1,6 @@
 package com.PrepLite.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
+import com.PrepLite.Progress;
 import com.PrepLite.activities.CompanyPreviewActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.CompanyAdapter;
@@ -32,11 +34,14 @@ public class CompanyFragment extends Fragment {
     private ArrayList<Company> companies;
     private RecyclerView recyclerView;
     private CompanyAdapter companyAdapter;
+    private ProgressDialog progress;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
+        progress = Progress.getProgressDialog(requireContext());
+        Progress.showProgress(true,"Fetching Companies...");
         retrieveCompanies();
 
         companyAdapter = new CompanyAdapter(companies,requireContext());
@@ -69,6 +74,7 @@ public class CompanyFragment extends Fragment {
                     if (!serverResponse.isError()) {
                         companies.addAll(serverResponse.getResult().getCompanies());
                         companyAdapter.notifyItemRangeInserted(0, companies.size());
+                        Progress.dismissProgress(progress);
                         //Build the recycler view here
                     }
                 }

@@ -2,6 +2,7 @@ package com.PrepLite.fragments;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
+import com.PrepLite.Progress;
 import com.PrepLite.activities.ChatActivity;
 import com.PrepLite.R;
 import com.PrepLite.adapters.ChatDisplayAdapter;
@@ -35,11 +37,14 @@ public class ChatFragment extends Fragment {
 
     private ArrayList<Chat> chatList;
     private ChatDisplayAdapter chatDisplayAdapter;
+    private ProgressDialog progress;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
+        progress = Progress.getProgressDialog(requireContext());
+        Progress.showProgress(true,"Fetching Chats...");
         retrieveChats();
         chatList = new ArrayList<>();
         RecyclerView recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
@@ -74,6 +79,7 @@ public class ChatFragment extends Fragment {
                     if (!serverResponse.isError()) {
                         chatList.addAll(serverResponse.getResult().getChats());
                         chatDisplayAdapter.notifyItemRangeInserted(0, chatList.size());
+                        Progress.dismissProgress(progress);
                     }
                 }
 

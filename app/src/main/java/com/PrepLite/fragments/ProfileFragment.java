@@ -6,6 +6,7 @@ import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 import static com.PrepLite.prefs.SharedPrefsConstants.SESSION_FLAG;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -36,6 +37,7 @@ import androidx.fragment.app.Fragment;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
+import com.PrepLite.Progress;
 import com.PrepLite.activities.HomeActivity;
 import com.PrepLite.activities.LoginActivity;
 import com.PrepLite.activities.MainActivity;
@@ -63,12 +65,21 @@ public class ProfileFragment extends Fragment {
     private TextView edit_profile;
     private ImageView camera;
     private String profileImagePath;
+
     private ImageView profileImage;
+    private TextView name;
+    private TextView username;
+    private TextView email;
+    private TextView contact;
+    private ProgressDialog progress;
+
     private Uri profileImageUri;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         frag_view = inflater.inflate(R.layout.fragment_profile,container,false);
+        //progress = Progress.getProgressDialog(requireContext());
+        //Progress.showProgress(true,"Fetching Profile Details...");
         settings = frag_view.findViewById(R.id.profile_settings);
 
 
@@ -126,6 +137,11 @@ public class ProfileFragment extends Fragment {
                 captureProfileImage();
             }
         });
+
+        name = frag_view.findViewById(R.id.full_name_profile);
+        username = frag_view.findViewById(R.id.username_profile);
+        email = frag_view.findViewById(R.id.email_profile);
+        contact = frag_view.findViewById(R.id.contact_profile);
         return frag_view;
     }
 
