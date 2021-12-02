@@ -8,21 +8,60 @@
     android:background="#EFFBF7"
     >
 
-    <EditText
-        android:id="@+id/add_post_et"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minLines="10"
-        android:maxLines="20"
-        android:layout_marginHorizontal="10dp"
-        android:padding="10dp"
-        android:background="@color/white"
-        android:fontFamily="@font/amaranth"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:hint="What's on your mind.."
-        android:gravity="start"
-        android:layout_marginTop="50dp"/>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/add_post_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/white"
+                android:fontFamily="@font/amaranth"
+                android:gravity="start"
+                android:hint="Post out your brainss!!"
+                android:minLines="10"
+                android:maxLines="15"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/add_post_attachment_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/add_post_et"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="20dp"
+                android:background="@color/white"
+                android:fontFamily="@font/amaranth"
+                android:padding="10dp"
+                android:textColor="#0000FF"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/file_attachments"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/add_custom_button_shape"
+        android:elevation="10dp"
+        android:src="@drawable/ic_baseline_attach_file_24" />
 
     <TextView
         android:id="@+id/add_post_post"

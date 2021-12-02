@@ -2,6 +2,9 @@ package com.PrepLite.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class Post {
 
     @SerializedName("post_id")
@@ -31,7 +34,10 @@ public class Post {
     @SerializedName("postImage")
     public String postImage;
 
-    public Post(int postId, User user, Company company, University university, String timestamp, int upvotes, int downvotes, String content, String postImage) {
+    @SerializedName("postMaterials")
+    private ArrayList<String> postMaterials;
+
+    public Post(int postId, User user, Company company, University university, String timestamp, int upvotes, int downvotes, String content, String postImage, ArrayList<String> postMaterials) {
         this.postId = postId;
         this.user = user;
         this.company = company;
@@ -41,6 +47,7 @@ public class Post {
         this.downvotes = downvotes;
         this.content = content;
         this.postImage = postImage;
+        this.postMaterials = postMaterials;
     }
 
     public Post(User user, University university, Company company, String timestamp, String content, String postImage) {
