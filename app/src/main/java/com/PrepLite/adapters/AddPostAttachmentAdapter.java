@@ -43,7 +43,7 @@ public class AddPostAttachmentAdapter extends RecyclerView.Adapter<AddPostAttach
     @Override
     public void onBindViewHolder(@NonNull AddPostAttachmentViewHolder holder, int position) {
         Attachment currentAttachment = attachmentList.get(position);
-        holder.cancelImage.setImageResource(R.drawable.ic_outline_cancel_24);
+        holder.cancelImage.setImageResource(R.drawable.ic_baseline_close_24);
         holder.title.setText(currentAttachment.getTitle());
     }
 

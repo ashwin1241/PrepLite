@@ -2,6 +2,7 @@ package com.PrepLite.activities;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -45,9 +48,6 @@ public class AddPostActivity extends AppCompatActivity {
     private TextView send_post;
     private EditText post_content;
     private String content;
-    private ImageButton addAttachments;
-    private String attachments="";
-    private ArrayList<String> attachmentList;
     private ArrayList<Attachment> attachments124;
     private RecyclerView recyclerView;
     private AddPostAttachmentAdapter adapter;
@@ -60,7 +60,6 @@ public class AddPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_post);
         getSupportActionBar().setTitle("Create a Post");
 
-        attachmentList = new ArrayList<>();
         attachments124 = new ArrayList<>();
         company = getIntent().getParcelableExtra("company");
         university = getIntent().getParcelableExtra("university");
@@ -82,16 +81,6 @@ public class AddPostActivity extends AppCompatActivity {
             }
         });
 
-        addAttachments = findViewById(R.id.file_attachments);
-        addAttachments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                startActivityForResult(Intent.createChooser(intent,"Select files: "),103);
-            }
-        });
-
     }
 
     private void buildrecyclerView()
@@ -106,7 +95,6 @@ public class AddPostActivity extends AppCompatActivity {
             @Override
             public void onItemClicked(int position) {
                 attachments124.remove(position);
-                attachmentList.remove(position);
                 adapter.notifyItemRemoved(position);
             }
         });
@@ -151,11 +139,9 @@ public class AddPostActivity extends AppCompatActivity {
                 Uri fileData = data.getData();
                 String filePath = fileData.getPath();
                 String fileName = queryName(getContentResolver(),fileData);
-                attachments+=fileName+"\n";
                 attachments124.add(new Attachment(fileName,true,fileData,filePath));
-                attachmentList.add(filePath);
                 adapter.notifyItemInserted(attachments124.size()-1);
-                Toast.makeText(this, "File attached "+attachments124.size(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "File attached "+attachments124.size(), Toast.LENGTH_SHORT).show();
 
             }
             catch (Exception e)
@@ -176,4 +162,22 @@ public class AddPostActivity extends AppCompatActivity {
         return name;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.add_post_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.file_attachments:
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                startActivityForResult(Intent.createChooser(intent,"Select files: "),103);
+                return true;
+            default:return super.onOptionsItemSelected(item);
+        }
+    }
 }
