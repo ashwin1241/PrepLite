@@ -1,6 +1,7 @@
 package com.PrepLite.activities;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+import static com.PrepLite.prefs.SharedPrefsConstants.SESSION_FLAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,7 +39,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //SharedPrefs.
+        if (SharedPrefs.getIntParams(this, SESSION_FLAG)==1) {
+            startActivity(new Intent());
+        }
 
         login = findViewById(R.id.login_button);
         email = findViewById(R.id.lemail);
@@ -102,7 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                 ServerResponse serverResponse = response.body();
                 if (serverResponse != null) {
                     if (!serverResponse.isError()) {
+
                         SharedPrefs.setIntParams(LoginActivity.this, ID, serverResponse.getResult().getUser().getId());
+                        SharedPrefs.setIntParams(LoginActivity.this, SESSION_FLAG, 1);
 
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

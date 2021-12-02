@@ -1,5 +1,7 @@
 package com.PrepLite.app;
 
+import java.security.PublicKey;
+
 public class Constants {
 
     public static final String BASE_URL = "https://3737-2409-4070-4495-3769-147a-ea09-c36c-a590.ngrok.io";
@@ -12,11 +14,14 @@ public class Constants {
     public static final String VIEW_COMPANIES = "viewCompanies/";
 
     public static final String VIEW_POSTS = "viewPosts/";
+    public static final String VIEW_COMPANY_POSTS = "viewCompanyPosts/";
+    public static final String VIEW_UNIVERSITY_POSTS = "viewUniversityPosts/";
     public static final String VIEW_COMMENTS = "viewComments/";
     public static final String ADD_COMMENT = "addComment/";
 
     public static final String VIEW_CHATS = "viewChats/";
     public static final String CREATE_POST = "createPost/";
+    public static final String UPLOAD_MATERIALS = "uploadMaterials/";
 
     public static final String MICROSOFT_LOGO = "https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80660_1280.png";
     public static final String AMAZON_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png";
