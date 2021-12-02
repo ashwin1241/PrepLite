@@ -158,6 +158,7 @@
                             android:maxWidth="160dp"
                             android:maxLines="1"
                             android:text="email"
+                            android:inputType="textEmailAddress"
                             android:textColor="#FF9900"
                             android:textSize="18dp"/>
 
@@ -172,7 +173,7 @@
                             android:background="#dedede" />
 
                         <TextView
-                            android:id="@+id/about_profile"
+                            android:id="@+id/contact_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/email_separator"
@@ -182,7 +183,8 @@
                             android:fontFamily="@font/work_sans_regular"
                             android:maxWidth="160dp"
                             android:maxLines="5"
-                            android:text="@string/about"
+                            android:text="@string/contact"
+                            android:inputType="phone"
                             android:textColor="#FF9900"
                             android:textSize="18dp"
                             android:layout_marginBottom="5dp"/>

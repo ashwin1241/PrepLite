@@ -63,7 +63,13 @@ public class ProfileFragment extends Fragment {
     private TextView edit_profile;
     private ImageView camera;
     private String profileImagePath;
+
     private ImageView profileImage;
+    private TextView name;
+    private TextView username;
+    private TextView email;
+    private TextView contact;
+
     private Uri profileImageUri;
     @Nullable
     @Override
@@ -126,6 +132,11 @@ public class ProfileFragment extends Fragment {
                 captureProfileImage();
             }
         });
+
+        name = frag_view.findViewById(R.id.full_name_profile);
+        username = frag_view.findViewById(R.id.username_profile);
+        email = frag_view.findViewById(R.id.email_profile);
+        contact = frag_view.findViewById(R.id.contact_profile);
         return frag_view;
     }
 
