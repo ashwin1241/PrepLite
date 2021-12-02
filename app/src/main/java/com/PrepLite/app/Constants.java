@@ -2,7 +2,7 @@ package com.PrepLite.app;
 
 public class Constants {
 
-    public static final String BASE_URL = "https://d840-182-75-45-1.ngrok.io";
+    public static final String BASE_URL = "https://3737-2409-4070-4495-3769-147a-ea09-c36c-a590.ngrok.io";
 
     public static final String REGISTER_USER = "register/";
     public static final String LOGIN_USER = "login/";
