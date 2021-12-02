@@ -54,7 +54,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
-    private ImageView settings;
     private View frag_view;
     private TextView logout;
     private TextView edit_profile;
@@ -75,19 +74,8 @@ public class ProfileFragment extends Fragment {
         frag_view = inflater.inflate(R.layout.fragment_profile,container,false);
         //progress = Progress.getProgressDialog(requireContext());
         //Progress.showProgress(true,"Fetching Profile Details...");
-        settings = frag_view.findViewById(R.id.profile_settings);
-
-
-
         //getProfile();
 
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(requireContext(), ProfileSettingsActivity.class);
-                startActivity(intent);
-            }
-        });
         logout = frag_view.findViewById(R.id.logout_button_profile);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -40,7 +40,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     private EditText username_edit;
     private EditText contact_edit;
     private EditText email_edit;
-    private EditText dob_edit;
+    private EditText batch_edit_et;
     private EditText about_edit;
 
     @Override
@@ -50,18 +50,12 @@ public class ProfileEditActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(false);
         getSupportActionBar().setTitle("Edit Profile");
 
-        SelectInstitute = findViewById(R.id.alumnus_institute_select_tv);
-        SelectCompany = findViewById(R.id.alumnus_company_select_tv);
-        insti_hdg = findViewById(R.id.alumnus_insti_edit_hdg);
-        company_hdg = findViewById(R.id.alumnus_company_edit_hdg);
         alumnusSeletorGroup = findViewById(R.id.alumnus_select_spinner);
 
-        name_edit = findViewById(R.id.name_edit_et);
-        username_edit = findViewById(R.id.username_edit_et);
+        username_edit = findViewById(R.id.name_edit_et);
         contact_edit = findViewById(R.id.contact_edit_et);
         email_edit = findViewById(R.id.email_edit_et);
-        dob_edit = findViewById(R.id.dob_edit_et);
-        about_edit = findViewById(R.id.about_edit_et);
+        batch_edit_et = findViewById(R.id.batch_edit_et);
 
     }
 
