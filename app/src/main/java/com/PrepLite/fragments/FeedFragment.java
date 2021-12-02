@@ -33,7 +33,6 @@ import retrofit2.Response;
 public class FeedFragment extends Fragment {
 
     private ArrayList<Post> postList;
-    private RecyclerView recyclerView;
     private postAdapter_Home postAdapter_home;
 
     @Nullable
@@ -44,7 +43,7 @@ public class FeedFragment extends Fragment {
 
         postList = new ArrayList<>();
         postAdapter_home = new postAdapter_Home(postList, requireContext());
-        recyclerView = view.findViewById(R.id.feed_recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.feed_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(postAdapter_home);
