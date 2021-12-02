@@ -90,10 +90,15 @@ public class InstitutePreviewActivity extends AppCompatActivity {
                 deletePost(position);
             }
         });
-        retrievePosts();
+
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        retrievePosts();
+    }
 
     private void retrievePosts() {
         HashMap<String, Integer> map = new HashMap<>();

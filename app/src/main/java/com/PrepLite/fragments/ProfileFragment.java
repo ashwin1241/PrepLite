@@ -140,7 +140,7 @@ public class ProfileFragment extends Fragment {
                 if (serverResponse != null) {
                     if (!serverResponse.isError()) {
                         User user = serverResponse.getResult().getUser();
-                        //Update the UI here
+
                     }
                 }
             }

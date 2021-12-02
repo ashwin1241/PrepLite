@@ -1,5 +1,7 @@
 package com.PrepLite.adapters;
 
+import static com.PrepLite.prefs.SharedPrefsConstants.NAME;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.models.Comment;
 import com.PrepLite.models.User;
+import com.PrepLite.prefs.SharedPrefs;
 
 import java.util.ArrayList;
 
@@ -45,7 +48,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.Comment_
 
         Comment current_comment = comments.get(position);
         User user = current_comment.getUser();
-        holder.username.setText(user.getUsername());
+        holder.username.setText(SharedPrefs.getStringParams(context, NAME, ""));
         holder.content.setText(current_comment.getContent());
         String timestamp = current_comment.getTimestamp();
         holder.timestamp.setText(timestamp);

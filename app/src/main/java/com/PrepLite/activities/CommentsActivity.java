@@ -68,10 +68,10 @@ public class CommentsActivity extends AppCompatActivity {
                     addComment(postId, comment_text);
 //                    date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 //                    time = new SimpleDateFormat("HH:mm").format(new Date());
-                    comment_list.add(new Comment(new User("Username"), comment_text, "28/11/2021 19:20"));
-                    //backend code to add this comment to database
-                    commentAdapter.notifyItemInserted(comment_list.size());
-                    comment.setText("");
+//                    comment_list.add(new Comment(new User("Username"), comment_text, "28/11/2021 19:20"));
+//                    //backend code to add this comment to database
+//                    commentAdapter.notifyItemInserted(comment_list.size());
+
                 }
             }
         });
@@ -144,7 +144,9 @@ public class CommentsActivity extends AppCompatActivity {
                 if (serverResponse != null) {
                     if (!serverResponse.isError()) {
                         comment_list.addAll(serverResponse.getResult().getComments());
-                        commentAdapter.notifyItemRangeInserted(0, 1);
+                        Toast.makeText(CommentsActivity.this, serverResponse.getResult().getComments().get(0).getContent(), Toast.LENGTH_SHORT).show();
+                        commentAdapter.notifyDataSetChanged();
+                        comment.setText("");
                     }
                 }
             }
