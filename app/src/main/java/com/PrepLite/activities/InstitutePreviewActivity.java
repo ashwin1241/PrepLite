@@ -1,16 +1,19 @@
 package com.PrepLite.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.adapters.PostAdapterCompInsti;
 import com.PrepLite.models.Company;
@@ -83,5 +86,36 @@ public class InstitutePreviewActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(postAdapter_compInsti);
 
+        postAdapter_compInsti.setOnPostCompInstiClickListener(new OnItemClickListener() {
+            @Override
+            public void OnItemLongClicked(int position) {
+                //need to add backend code here to check if the user is the one who posted this post
+                deletePost(position);
+            }
+        });
+
     }
+
+    private void deletePost(int position)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Post")
+                .setMessage("Are you sure you want to delete this post?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //backend code to actually delete this post
+                        post_List.remove(i);
+                        postAdapter_compInsti.notifyItemRemoved(position);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        builder.create().show();
+    }
+
 }
