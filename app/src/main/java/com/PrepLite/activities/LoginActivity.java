@@ -1,7 +1,12 @@
 package com.PrepLite.activities;
 
+import static com.PrepLite.prefs.SharedPrefsConstants.ALUMNI;
+import static com.PrepLite.prefs.SharedPrefsConstants.BATCH;
+import static com.PrepLite.prefs.SharedPrefsConstants.EMAIL;
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+import static com.PrepLite.prefs.SharedPrefsConstants.IMAGE;
 import static com.PrepLite.prefs.SharedPrefsConstants.NAME;
+import static com.PrepLite.prefs.SharedPrefsConstants.PHONE;
 import static com.PrepLite.prefs.SharedPrefsConstants.SESSION_FLAG;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -110,8 +115,13 @@ public class LoginActivity extends AppCompatActivity {
 
                         SharedPrefs.setIntParams(LoginActivity.this, ID, serverResponse.getResult().getUser().getId());
                         SharedPrefs.setIntParams(LoginActivity.this, SESSION_FLAG, 1);
-
                         SharedPrefs.setStringParams(LoginActivity.this, NAME, serverResponse.getResult().getUser().getUsername());
+
+                        SharedPrefs.setStringParams(LoginActivity.this, EMAIL, serverResponse.getResult().getUser().getEmail());
+                        SharedPrefs.setStringParams(LoginActivity.this, BATCH, serverResponse.getResult().getUser().getBatch());
+                        SharedPrefs.setStringParams(LoginActivity.this, ALUMNI, serverResponse.getResult().getUser().getUsername());
+                        SharedPrefs.setStringParams(LoginActivity.this, PHONE, serverResponse.getResult().getUser().getUsername());
+                        SharedPrefs.setStringParams(LoginActivity.this, IMAGE, serverResponse.getResult().getUser().getProfileImage());
 
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
