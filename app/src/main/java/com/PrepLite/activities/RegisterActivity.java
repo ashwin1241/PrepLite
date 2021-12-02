@@ -24,7 +24,7 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
 
     private TextView lgn_link;
-    EditText email,name,password,year,alumni;
+    EditText email, name, password, year, alumni;
     TextView register;
 
 
@@ -58,50 +58,48 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-
-
     }
+
     private void registerUser() {
 
-        String userName=name.getText().toString().trim();
-        String userEmail=email.getText().toString().trim();
-        String userPassword=password.getText().toString().trim();
-        String userYear=year.getText().toString().trim();
-        String userAlumni=alumni.getText().toString().trim();
+        String userName = name.getText().toString().trim();
+        String userEmail = email.getText().toString().trim();
+        String userPassword = password.getText().toString().trim();
+        String userYear = year.getText().toString().trim();
+        String userAlumni = alumni.getText().toString().trim();
 
 
-
-        if(userEmail.isEmpty()){
+        if (userEmail.isEmpty()) {
             email.requestFocus();
             email.setError("Please enter your email");
             return;
         }
-        if(userName.isEmpty()){
+        if (userName.isEmpty()) {
             name.requestFocus();
             name.setError("Enter your name");
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
             email.requestFocus();
             email.setError("Enter valid email");
             return;
         }
-        if(userYear.isEmpty()){
+        if (userYear.isEmpty()) {
             year.requestFocus();
             year.setError("Enter your year");
             return;
         }
-        if(userAlumni.isEmpty()){
+        if (userAlumni.isEmpty()) {
             alumni.requestFocus();
             alumni.setError("Are you an alumni ?");
             return;
         }
-        if(userPassword.isEmpty()){
+        if (userPassword.isEmpty()) {
             password.requestFocus();
             password.setError("Enter your password");
             return;
         }
-        if(userPassword.length()<6){
+        if (userPassword.length() < 6) {
             password.requestFocus();
             password.setError("Enter atleast 6 characters");
             return;
@@ -117,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
         map.put("profile_image", "");
 
 
-        Call<ServerResponse> call= Client
+        Call<ServerResponse> call = Client
                 .getRetrofitInstance()
                 .create(ApiCalls.class)
                 .register(map);
@@ -126,11 +124,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
 
-                ServerResponse registerResponse=response.body();
-                if(registerResponse != null){
-
-                    Toast.makeText(RegisterActivity.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
-
+                ServerResponse registerResponse = response.body();
+                if (registerResponse != null) {
+                    if (!registerResponse.isError()) {
+                        Toast.makeText(RegisterActivity.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        finish();
+                    }
                 }
                 Toast.makeText(RegisterActivity.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
