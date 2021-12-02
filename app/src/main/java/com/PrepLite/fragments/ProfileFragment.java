@@ -156,7 +156,7 @@ public class ProfileFragment extends Fragment {
     {
         SharedPrefs.clearPrefsEditor(requireContext());
         SharedPrefs.setIntParams(requireContext(), SESSION_FLAG, 0);
-        Intent intent = new Intent(requireContext(), MainActivity.class);
+        Intent intent = new Intent(requireContext(), LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         getActivity().finish();
