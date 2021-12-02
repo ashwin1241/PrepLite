@@ -73,7 +73,7 @@ public class ProfileFragment extends Fragment {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProfileSettingsActivity.class);
+                Intent intent = new Intent(requireContext(), ProfileSettingsActivity.class);
                 startActivity(intent);
             }
         });
@@ -81,16 +81,16 @@ public class ProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                 builder.setTitle("Logout")
                 .setMessage("Are you sure you want to logout?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         logout_action();
-                        Intent intent = new Intent(getContext(), LoginActivity.class);
+                        Intent intent = new Intent(requireContext(), LoginActivity.class);
                         startActivity(intent);
-                        Toast.makeText(getContext(), "Logged out successfully!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), "Logged out successfully!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -106,7 +106,7 @@ public class ProfileFragment extends Fragment {
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ProfileEditActivity.class);
+                Intent intent = new Intent(requireContext(), ProfileEditActivity.class);
                 startActivity(intent);
             }
         });
@@ -155,7 +155,7 @@ public class ProfileFragment extends Fragment {
     private void logout_action()
     {
         SharedPrefs.clearPrefsEditor(requireContext());
-        Intent intent = new Intent(getContext(), MainActivity.class);
+        Intent intent = new Intent(requireContext(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         getActivity().finish();
@@ -163,9 +163,9 @@ public class ProfileFragment extends Fragment {
 
     private void selectGalleryImage()
     {
-        if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+        if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
+            ActivityCompat.requestPermissions(requireActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
             selectGalleryImage();
         }
         else
@@ -178,9 +178,9 @@ public class ProfileFragment extends Fragment {
 
     private void captureProfileImage()
     {
-        if(ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
+        if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.CAMERA},100);
+            ActivityCompat.requestPermissions(requireActivity(),new String[]{Manifest.permission.CAMERA},100);
             captureProfileImage();
         }
         else
@@ -188,9 +188,9 @@ public class ProfileFragment extends Fragment {
             try
             {
                 String filename = Long.toString(System.currentTimeMillis());
-                File storageDirectory = getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+                File storageDirectory = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
                 File imgFile = File.createTempFile(filename,".jpg",storageDirectory);
-                Uri imgUri = FileProvider.getUriForFile(getContext(),"com.PrepLite.fileprovider",imgFile);
+                Uri imgUri = FileProvider.getUriForFile(requireContext(),"com.PrepLite.fileprovider",imgFile);
                 this.profileImageUri = imgUri;
                 profileImagePath = imgFile.getAbsolutePath();
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -199,7 +199,7 @@ public class ProfileFragment extends Fragment {
             }
             catch (Exception e)
             {
-                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();;
+                Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();;
             }
         }
     }
@@ -212,20 +212,20 @@ public class ProfileFragment extends Fragment {
             {
                 try
                 {
-                    cameracorrection(profileImagePath,MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),profileImageUri));
-                    Glide.with(getContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
+                    cameracorrection(profileImagePath,MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(),profileImageUri));
+                    Glide.with(requireContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
                     profileImage.setBackgroundColor(Color.parseColor("#EFFBF7"));
 
                     //fetch path for profile image from here t upload to db or use profilePic
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
             else
             {
-                Toast.makeText(getContext(), "Could not capture image properly!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Could not capture image properly!", Toast.LENGTH_SHORT).show();
             }
         }
         if(requestCode==101&&resultCode==RESULT_OK)
@@ -235,12 +235,12 @@ public class ProfileFragment extends Fragment {
             try
             {
                 profilePic = correctedBitmap(profileImageUri);
-                Glide.with(getContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
+                Glide.with(requireContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
                 profileImage.setBackgroundColor(Color.parseColor("#EFFBF7"));
             }
             catch (Exception e)
             {
-                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -270,7 +270,7 @@ public class ProfileFragment extends Fragment {
         }
         catch (Exception e)
         {
-            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -279,9 +279,9 @@ public class ProfileFragment extends Fragment {
         try
         {
             Matrix matrix = new Matrix();
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), uri);
             int orientation;
-            Cursor cursor = getContext().getContentResolver().query(uri, new String[] { MediaStore.Images.ImageColumns.ORIENTATION }, null, null, null);
+            Cursor cursor = requireContext().getContentResolver().query(uri, new String[] { MediaStore.Images.ImageColumns.ORIENTATION }, null, null, null);
             if (cursor.getCount() != 1) {
                 orientation = -1;
             }
@@ -301,7 +301,7 @@ public class ProfileFragment extends Fragment {
         }
         catch (Exception e)
         {
-            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return  null;
     }

@@ -43,8 +43,8 @@ public class ChatFragment extends Fragment {
 //        chatList.add(new Chat("Harsh","","","26/11/21"));
 //        chatList.add(new Chat("Prathamesh","","","14/11/21"));
         recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
-        chatDisplayAdapter = new chatDisplayAdapter(chatList,getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        chatDisplayAdapter = new chatDisplayAdapter(chatList,requireContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(chatDisplayAdapter);
 
@@ -52,7 +52,7 @@ public class ChatFragment extends Fragment {
             @Override
             public void onItemClicked(int position) {
                 super.onItemClicked(position);
-                Intent intent = new Intent(getContext(), ChatActivity.class);
+                Intent intent = new Intent(requireContext(), ChatActivity.class);
                 intent.putExtra("username", chatList.get(position).getUser().getUsername());
                 startActivity(intent);
             }

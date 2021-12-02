@@ -49,10 +49,10 @@ public class InstituteFragment extends Fragment {
         retrieveUniversities();
 
         universities = new ArrayList<>();
-        instiAdapter = new instiAdapter(universities, getContext());
+        instiAdapter = new instiAdapter(universities, requireContext());
         recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(instiAdapter);
 
 
@@ -60,7 +60,7 @@ public class InstituteFragment extends Fragment {
             @Override
             public void onItemClicked(int position) {
                 super.onItemClicked(position);
-                Intent intent = new Intent(getContext(), InstitutePreviewActivity.class);
+                Intent intent = new Intent(requireContext(), InstitutePreviewActivity.class);
                 intent.putExtra("name", universities.get(position).getUniversityName());
                 intent.putExtra("logo", universities.get(position).getUniversityLogo());
                 startActivity(intent);

@@ -43,10 +43,10 @@ public class FeedFragment extends Fragment {
         retrievePosts();
 
         postList = new ArrayList<>();
-        postAdapter_home = new postAdapter_Home(postList, getContext());
+        postAdapter_home = new postAdapter_Home(postList, requireContext());
         recyclerView = view.findViewById(R.id.feed_recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(postAdapter_home);
 
         postAdapter_home.setOnPostHomeClickListener(new OnItemClickListener() {
@@ -67,7 +67,7 @@ public class FeedFragment extends Fragment {
                 super.OnCommentClicked(position, flag);
                 switch (flag) {
                     case 0:
-                        Intent intent = new Intent(getContext(), CommentsActivity.class);
+                        Intent intent = new Intent(requireContext(), CommentsActivity.class);
                         intent.putExtra("postId", postList.get(position).getPostId());
                         startActivity(intent);
                         break;
