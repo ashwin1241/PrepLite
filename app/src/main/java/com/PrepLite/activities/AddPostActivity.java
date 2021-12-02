@@ -5,6 +5,7 @@ import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -97,9 +98,16 @@ public class AddPostActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListenerAttachment(new OnItemClickListener() {
             @Override
-            public void onItemClicked(int position) {
-                attachments124.remove(position);
-                adapter.notifyItemRemoved(position);
+            public void OnItemClicked(int position, int flag) {
+                switch (flag)
+                {
+                    case 0:
+                        attachments124.remove(position);
+                        adapter.notifyItemRemoved(position);
+                        break;
+                    case 1:
+                        openFile(attachments124.get(position));
+                }
             }
         });
     }
@@ -131,6 +139,21 @@ public class AddPostActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void openFile(Attachment attachment)
+    {
+        try
+        {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(attachment.getDownloadedFile());
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(intent,"Open file with:"));
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

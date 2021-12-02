@@ -1,6 +1,7 @@
 package com.PrepLite.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class AddPostAttachmentAdapter extends RecyclerView.Adapter<AddPostAttach
         Attachment currentAttachment = attachmentList.get(position);
         holder.cancelImage.setImageResource(R.drawable.ic_baseline_close_24);
         holder.title.setText(currentAttachment.getTitle());
+        holder.title.setTextColor(Color.parseColor("#0000FF"));
     }
 
     @Override
@@ -64,6 +66,7 @@ public class AddPostAttachmentAdapter extends RecyclerView.Adapter<AddPostAttach
             title = itemView.findViewById(R.id.attachment_title);
             cancelImage = itemView.findViewById(R.id.attachment_download);
             cancelImage.setOnClickListener(this);
+            title.setOnClickListener(this);
         }
 
         @Override
@@ -71,7 +74,14 @@ public class AddPostAttachmentAdapter extends RecyclerView.Adapter<AddPostAttach
             if (attlistener != null) {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
-                    attlistener.onItemClicked(position);
+                    int id = view.getId();
+                    if (id == R.id.attachment_download) {
+                        attlistener.OnItemClicked(position,0);
+                    }
+                    else if(id == R.id.attachment_title)
+                    {
+                        attlistener.OnItemClicked(position,1);
+                    }
                 }
             }
         }

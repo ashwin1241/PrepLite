@@ -60,8 +60,8 @@ public class CompInstiAttachmentsActivity extends AppCompatActivity {
                     //code to view the attachment using appropriate app
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(attachmentList.get(position).getDownloadedFile());
-                    intent.setType("*/*");
-                    startActivity(Intent.createChooser(intent,"Open file with"));
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    startActivity(Intent.createChooser(intent,"Open file with:"));
                 }
             }
         });
