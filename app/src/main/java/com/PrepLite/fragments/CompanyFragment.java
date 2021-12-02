@@ -49,17 +49,17 @@ public class CompanyFragment extends Fragment {
         retrieveCompanies();
 
         companies = new ArrayList<>();
-        companyAdapter = new companyAdapter(companies,requireContext());
+        companyAdapter = new companyAdapter(companies,getContext());
         recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(companyAdapter);
 
         companyAdapter.setOnCompanyClickListener(new OnItemClickListener() {
             @Override
             public void onItemClicked(int position) {
                 super.onItemClicked(position);
-                Intent intent = new Intent(requireContext(), CompanyPreviewActivity.class);
+                Intent intent = new Intent(getContext(), CompanyPreviewActivity.class);
                 intent.putExtra("name", companies.get(position).getCompanyName());
                 intent.putExtra("logo", companies.get(position).getCompanyLogo());
                 startActivity(intent);

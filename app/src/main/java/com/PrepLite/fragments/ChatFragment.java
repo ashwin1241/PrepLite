@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class ChatFragment extends Fragment {
 
     private View view12;
-    private ViewGroup container12;
     private RecyclerView recyclerView;
     private ArrayList<Chat> chatList;
     private chatDisplayAdapter chatDisplayAdapter;
@@ -33,7 +32,6 @@ public class ChatFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
         this.view12 = view;
-        this.container12 = container;
         buildRecyclerView();
         return view;
     }
@@ -45,8 +43,8 @@ public class ChatFragment extends Fragment {
 //        chatList.add(new Chat("Harsh","","","26/11/21"));
 //        chatList.add(new Chat("Prathamesh","","","14/11/21"));
         recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
-        chatDisplayAdapter = new chatDisplayAdapter(chatList,container12.getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(container12.getContext()));
+        chatDisplayAdapter = new chatDisplayAdapter(chatList,getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(chatDisplayAdapter);
 
@@ -54,7 +52,7 @@ public class ChatFragment extends Fragment {
             @Override
             public void onItemClicked(int position) {
                 super.onItemClicked(position);
-                Intent intent = new Intent(container12.getContext(), ChatActivity.class);
+                Intent intent = new Intent(getContext(), ChatActivity.class);
                 intent.putExtra("username", chatList.get(position).getUser().getUsername());
                 startActivity(intent);
             }
