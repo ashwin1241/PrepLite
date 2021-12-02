@@ -8,19 +8,19 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.PrepLite.R;
+import com.PrepLite.models.User;
+import com.bumptech.glide.Glide;
 
 public class ViewProfileActivity extends AppCompatActivity {
 
-    private TextView user_companies;
-    private TextView user_institutes;
+    private TextView name;
+    private TextView batch;
+    private TextView email;
+    private TextView contact;
     private TextView user_posts;
     private TextView send_messages;
-    private String userImagePath;
     private ImageView userImage;
-    private Uri userImageUri;
-
-
-
+    private User user;
 
 
     @Override
@@ -28,26 +28,21 @@ public class ViewProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
 
+        user = getIntent().getParcelableExtra("user");
 
-        user_companies= findViewById(R.id.user_companies);
-        user_institutes=findViewById(R.id.user_institutes);
-        user_posts= findViewById(R.id.user_posts);
-        send_messages=findViewById(R.id.send_messages);
-        userImage=findViewById(R.id.user_pic);
+        user_posts= findViewById(R.id.user_posts_view);
+        send_messages=findViewById(R.id.send_messages_view);
+        userImage=findViewById(R.id.profile_pic);
+        name = findViewById(R.id.full_name_profile);
+        batch = findViewById(R.id.batch_profile);
+        email = findViewById(R.id.email_profile);
+        contact = findViewById(R.id.contact_profile);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        name.setText(user.getUsername());
+        batch.setText(user.getBatch());
+        email.setText(user.getEmail());
+        contact.setText(user.getPhone());
+        Glide.with(this).load(user.getProfileImage()).placeholder(R.drawable.ic_baseline_person_24).into(userImage);
 
     }
 

@@ -1,8 +1,11 @@
 package com.PrepLite.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+public class User implements Parcelable {
 
     @SerializedName("user_id")
     public int id;
@@ -38,6 +41,28 @@ public class User {
     public User(String username) {
         this.username = username;
     }
+
+    protected User(Parcel in) {
+        id = in.readInt();
+        username = in.readString();
+        email = in.readString();
+        batch = in.readString();
+        alumni = in.readByte() != 0;
+        phone = in.readString();
+        profileImage = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -93,5 +118,21 @@ public class User {
 
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(username);
+        parcel.writeString(email);
+        parcel.writeString(batch);
+        parcel.writeByte((byte) (alumni ? 1 : 0));
+        parcel.writeString(phone);
+        parcel.writeString(profileImage);
     }
 }

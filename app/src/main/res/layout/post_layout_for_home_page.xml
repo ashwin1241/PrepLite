@@ -26,9 +26,9 @@
             android:background="@color/white"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_work_24"
-            app:shapeAppearanceOverlay="@style/circular"
+            app:shapeAppearanceOverlay="@style/logo"
             app:strokeColor="#FF9900"
-            app:strokeWidth="1.5dp" />
+            app:strokeWidth="0.0dp" />
 
         <TextView
             android:id="@+id/post_layout_username"

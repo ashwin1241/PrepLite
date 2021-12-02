@@ -89,6 +89,25 @@ public class InstitutePreviewActivity extends AppCompatActivity {
                 //need to add backend code here to check if the user is the one who posted this post
                 deletePost(position);
             }
+
+            @Override
+            public void OnCommentClicked(int position, int flag) {
+                super.OnCommentClicked(position, flag);
+                Intent intent = new Intent(InstitutePreviewActivity.this, CommentsActivity.class);
+                intent.putExtra("postId", post_List.get(position).getPostId());
+                startActivity(intent);
+            }
+
+            @Override
+            public void OnItemClicked(int position, int flag) {
+                super.OnItemClicked(position, flag);
+                if(flag==1)
+                {
+                    Intent intent = new Intent(InstitutePreviewActivity.this,ViewProfileActivity.class);
+                    intent.putExtra("user",post_List.get(position).getUser());
+                    startActivity(intent);
+                }
+            }
         });
 
 
@@ -97,6 +116,7 @@ public class InstitutePreviewActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        post_List.clear();
         retrievePosts();
     }
 
@@ -112,7 +132,7 @@ public class InstitutePreviewActivity extends AppCompatActivity {
                 if (serverResponse != null) {
                     if (!serverResponse.isError()) {
                         post_List.addAll(serverResponse.getResult().getPosts());
-                        postAdapter_compInsti.notifyItemRangeInserted(0, post_List.size());
+                        postAdapter_compInsti.notifyDataSetChanged();
                     }
                 }
             }
