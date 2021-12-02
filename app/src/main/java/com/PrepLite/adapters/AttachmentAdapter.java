@@ -16,7 +16,7 @@ import com.PrepLite.models.Attachment;
 
 import java.util.ArrayList;
 
-public class attachmentAdapter extends RecyclerView.Adapter<attachmentAdapter.attachmentViewHolder>{
+public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.attachmentViewHolder>{
 
     private ArrayList<Attachment> attachmentList;
     private Context context;
@@ -28,7 +28,7 @@ public class attachmentAdapter extends RecyclerView.Adapter<attachmentAdapter.at
         this.listener = listener;
     }
 
-    public attachmentAdapter(ArrayList<Attachment> attachmentList, Context context) {
+    public AttachmentAdapter(ArrayList<Attachment> attachmentList, Context context) {
         this.attachmentList = attachmentList;
         this.context = context;
     }

@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.PrepLite.R;
-import com.PrepLite.adapters.postAdapter_CompInsti;
+import com.PrepLite.adapters.PostAdapterCompInsti;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.Post;
 import com.PrepLite.models.University;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class InstitutePreviewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private postAdapter_CompInsti postAdapter_compInsti;
+    private PostAdapterCompInsti postAdapter_compInsti;
     private ArrayList<Post> post_List;
     private Toolbar toolbar;
     private String title;
@@ -77,7 +77,7 @@ public class InstitutePreviewActivity extends AppCompatActivity {
         post_List.add(new Post(new User("Ashwin"),new University("Stanford"), new Company(""), "24-11-2021 13:02","Hello 1",""));
         post_List.add(new Post(new User("Aagam"),new University("Yale"), new Company(""), "25-11-2021 13:02","Hello 2",""));
         post_List.add(new Post(new User("Harsh"),new University("Oxford"),new Company(""), "26-11-2021 13:02","Hello 3",""));
-        postAdapter_compInsti = new postAdapter_CompInsti(post_List,this);
+        postAdapter_compInsti = new PostAdapterCompInsti(post_List,this);
         recyclerView = findViewById(R.id.institute_post_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

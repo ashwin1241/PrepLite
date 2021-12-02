@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.PrepLite.R;
-import com.PrepLite.adapters.chatMainAdapter;
+import com.PrepLite.adapters.ChatMainAdapter;
 import com.PrepLite.models.ChatP2P;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +22,7 @@ public class ChatActivity extends AppCompatActivity {
     private ArrayList<ChatP2P> messageList;
     private String username;
     private RecyclerView recyclerView;
-    private chatMainAdapter chatMainAdapter;
+    private ChatMainAdapter chatMainAdapter;
     private ImageButton send_message;
     private EditText chat_message;
     private String message;
@@ -68,7 +68,7 @@ public class ChatActivity extends AppCompatActivity {
         messageList.add(new ChatP2P("28/11/2021 19:21","Test message 2 receiver",false,true));
         messageList.add(new ChatP2P("28/11/2021 19:22","Test message 3 receiver",false,false));
         recyclerView = findViewById(R.id.comments_recycler_view);
-        chatMainAdapter = new chatMainAdapter(messageList,this);
+        chatMainAdapter = new ChatMainAdapter(messageList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(chatMainAdapter);

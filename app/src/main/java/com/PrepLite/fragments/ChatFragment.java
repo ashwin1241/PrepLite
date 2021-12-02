@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.ChatActivity;
 import com.PrepLite.R;
-import com.PrepLite.adapters.chatDisplayAdapter;
+import com.PrepLite.adapters.ChatDisplayAdapter;
 import com.PrepLite.models.Chat;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ChatFragment extends Fragment {
     private View view12;
     private RecyclerView recyclerView;
     private ArrayList<Chat> chatList;
-    private chatDisplayAdapter chatDisplayAdapter;
+    private ChatDisplayAdapter chatDisplayAdapter;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public class ChatFragment extends Fragment {
 //        chatList.add(new Chat("Harsh","","","26/11/21"));
 //        chatList.add(new Chat("Prathamesh","","","14/11/21"));
         recyclerView = view12.findViewById(R.id.compinatichat_recyclerView);
-        chatDisplayAdapter = new chatDisplayAdapter(chatList,requireContext());
+        chatDisplayAdapter = new ChatDisplayAdapter(chatList,requireContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(chatDisplayAdapter);

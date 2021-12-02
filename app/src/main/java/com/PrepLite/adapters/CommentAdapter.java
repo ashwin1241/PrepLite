@@ -16,7 +16,7 @@ import com.PrepLite.models.User;
 
 import java.util.ArrayList;
 
-public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_ViewHolder> {
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.Comment_ViewHolder> {
 
     ArrayList<Comment> comments;
     Context context;
@@ -28,7 +28,7 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.Comment_
     }
 
 
-    public commentAdapter(ArrayList<Comment> comments, Context context) {
+    public CommentAdapter(ArrayList<Comment> comments, Context context) {
         this.comments = comments;
         this.context = context;
     }

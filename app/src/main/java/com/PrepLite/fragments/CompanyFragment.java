@@ -1,14 +1,5 @@
 package com.PrepLite.fragments;
 
-import static com.PrepLite.app.Constants.AMAZON_LOGO;
-import static com.PrepLite.app.Constants.CISCO_LOGO;
-import static com.PrepLite.app.Constants.CODE_NATION_LOGO;
-import static com.PrepLite.app.Constants.GENERAL_MOTORS_LOGO;
-import static com.PrepLite.app.Constants.MICROSOFT_LOGO;
-import static com.PrepLite.app.Constants.ORACLE_LOGO;
-import static com.PrepLite.app.Constants.SERVICE_NOW_LOGO;
-import static com.PrepLite.app.Constants.SPOTIFY_LOGO;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,7 +17,7 @@ import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.CompanyPreviewActivity;
 import com.PrepLite.R;
-import com.PrepLite.adapters.companyAdapter;
+import com.PrepLite.adapters.CompanyAdapter;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.ServerResponse;
 
@@ -40,7 +31,7 @@ public class CompanyFragment extends Fragment {
 
     private ArrayList<Company> companies;
     private RecyclerView recyclerView;
-    private companyAdapter companyAdapter;
+    private CompanyAdapter companyAdapter;
 
     @Nullable
     @Override
@@ -49,7 +40,7 @@ public class CompanyFragment extends Fragment {
         retrieveCompanies();
 
         companies = new ArrayList<>();
-        companyAdapter = new companyAdapter(companies,requireContext());
+        companyAdapter = new CompanyAdapter(companies,requireContext());
         recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));

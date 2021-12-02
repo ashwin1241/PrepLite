@@ -18,7 +18,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
-public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.chatViewHolder> {
+public class ChatDisplayAdapter extends RecyclerView.Adapter<ChatDisplayAdapter.chatViewHolder> {
 
     private ArrayList<Chat> chats;
     private Context context;
@@ -29,7 +29,7 @@ public class chatDisplayAdapter extends RecyclerView.Adapter<chatDisplayAdapter.
         this.listener = listener;
     }
 
-    public chatDisplayAdapter(ArrayList<Chat> chats, Context context) {
+    public ChatDisplayAdapter(ArrayList<Chat> chats, Context context) {
         this.chats = chats;
         this.context = context;
     }

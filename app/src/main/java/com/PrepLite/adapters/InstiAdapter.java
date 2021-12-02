@@ -1,7 +1,6 @@
 package com.PrepLite.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.models.University;
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class instiAdapter extends RecyclerView.Adapter<instiAdapter.Insti_ViewHolder> {
+public class InstiAdapter extends RecyclerView.Adapter<InstiAdapter.Insti_ViewHolder> {
 
     ArrayList<University> universities;
     Context context;
 
-    public instiAdapter(ArrayList<University> universities, Context activity) {
+    public InstiAdapter(ArrayList<University> universities, Context activity) {
         this.universities = universities;
         this.context = activity;
     }

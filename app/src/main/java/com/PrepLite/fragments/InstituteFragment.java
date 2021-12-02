@@ -1,14 +1,5 @@
 package com.PrepLite.fragments;
 
-import static com.PrepLite.app.Constants.BITS_PILANI_LOGO;
-import static com.PrepLite.app.Constants.CAL_TECH_LOGO;
-import static com.PrepLite.app.Constants.CAMBRIDGE_LOGO;
-import static com.PrepLite.app.Constants.IIT_DELHI_LOGO;
-import static com.PrepLite.app.Constants.STANFORD_LOGO;
-import static com.PrepLite.app.Constants.TECH_UNI_LOGO;
-import static com.PrepLite.app.Constants.TSINGHUA_LOGO;
-import static com.PrepLite.app.Constants.YALE_LOGO;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,7 +17,7 @@ import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.InstitutePreviewActivity;
 import com.PrepLite.R;
-import com.PrepLite.adapters.instiAdapter;
+import com.PrepLite.adapters.InstiAdapter;
 import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.University;
 
@@ -39,7 +30,7 @@ import retrofit2.Response;
 public class InstituteFragment extends Fragment {
     private ArrayList<University> universities;
     private RecyclerView recyclerView;
-    private com.PrepLite.adapters.instiAdapter instiAdapter;
+    private InstiAdapter instiAdapter;
 
 
     @Nullable
@@ -49,7 +40,7 @@ public class InstituteFragment extends Fragment {
         retrieveUniversities();
 
         universities = new ArrayList<>();
-        instiAdapter = new instiAdapter(universities, requireContext());
+        instiAdapter = new InstiAdapter(universities, requireContext());
         recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));

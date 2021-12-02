@@ -1,8 +1,5 @@
 package com.PrepLite.fragments;
 
-import static com.PrepLite.app.Constants.AMAZON_LOGO;
-import static com.PrepLite.app.Constants.CISCO_LOGO;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +17,7 @@ import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.activities.CommentsActivity;
-import com.PrepLite.adapters.postAdapter_Home;
+import com.PrepLite.adapters.PostAdapterHome;
 import com.PrepLite.models.Post;
 import com.PrepLite.models.ServerResponse;
 
@@ -34,7 +31,7 @@ public class FeedFragment extends Fragment {
 
     private ArrayList<Post> postList;
     private RecyclerView recyclerView;
-    private postAdapter_Home postAdapter_home;
+    private PostAdapterHome postAdapter_home;
 
     @Nullable
     @Override
@@ -43,7 +40,7 @@ public class FeedFragment extends Fragment {
         retrievePosts();
 
         postList = new ArrayList<>();
-        postAdapter_home = new postAdapter_Home(postList, requireContext());
+        postAdapter_home = new PostAdapterHome(postList, requireContext());
         recyclerView = view.findViewById(R.id.feed_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
