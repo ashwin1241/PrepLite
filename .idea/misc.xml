@@ -77,7 +77,6 @@
         <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/chat_user_layout.xml" value="0.13994565217391305" />
         <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/comment_layout.xml" value="0.13994565217391305" />
         <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/compinsti_card.xml" value="0.13994565217391305" />
-        <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/fragment_chat.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/fragment_compinstichat.xml" value="0.13043478260869565" />
         <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/fragment_feed.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/Aagam Shah/AndroidStudioProjects/PrepLite/app/src/main/res/layout/fragment_profile.xml" value="0.17552083333333332" />
@@ -90,6 +89,7 @@
         <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/fragment_chat.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/fragment_company.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/fragment_profile.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/stark/StudioProjects/PrepLite/app/src/main/res/layout/post_layout_for_home_page.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>
