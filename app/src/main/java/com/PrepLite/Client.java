@@ -14,13 +14,6 @@ public class Client {
             new HttpLoggingInterceptor();
     private static OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
-    private Client(){
-//     retrofit =  new Retrofit.Builder()
-//                    .baseUrl(BASE_URL)
-//                    .addConverterFactory(GsonConverterFactory.create())
-//                    .build();
-    }
-
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -37,15 +30,4 @@ public class Client {
         return retrofit;
     }
 
-//    public static synchronized Client getInstance(){
-//
-//        if(client == null){
-//            client= new Client();
-//        }
-//        return  client;
-//    }
-
-//    public ApiCalls getApi(){
-//        return retrofit.create(ApiCalls.class);
-//    }
 }
