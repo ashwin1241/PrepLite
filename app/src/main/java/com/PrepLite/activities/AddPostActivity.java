@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
+import com.PrepLite.FileHelper;
 import com.PrepLite.R;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.ServerResponse;
@@ -30,7 +32,12 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,6 +54,7 @@ public class AddPostActivity extends AppCompatActivity {
 
     private Company company;
     private University university;
+    private MultipartBody.Part multipartBody;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +102,7 @@ public class AddPostActivity extends AppCompatActivity {
             map.put("university_id", university.getUniversityId());
         map.put("content", content);
 
-        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).createPost(map);
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).createPost(map, multipartBody);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
@@ -117,16 +125,24 @@ public class AddPostActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==103&&resultCode==RESULT_OK)
+        if(requestCode == 103 && resultCode == RESULT_OK)
         {
             try
             {
-                Uri fileData = data.getData();
-                String filePath = fileData.getPath();
-                String fileName = queryName(getContentResolver(),fileData);
-                attachments+=fileName+"\n";
-                attachmentTextView.setText(attachments);
-                attachmentList.add(filePath);
+//                Uri fileData = data.getData();
+//                String filePath = fileData.getPath();
+//                String fileName = queryName(getContentResolver(),fileData);
+//                attachments+=fileName+"\n";
+//                attachmentTextView.setText(attachments);
+//                attachmentList.add(filePath);
+                assert data != null;
+                File file = new File(data.getData().getPath());
+
+                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), data.getData().getPath());
+
+                multipartBody = MultipartBody.Part.createFormData("file",file.getName(),requestFile);
+
+
 
             }
             catch (Exception e)
