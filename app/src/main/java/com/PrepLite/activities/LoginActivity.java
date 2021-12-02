@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView login_button;
     private EditText email, password;
     private TextView login;
-    private ImageView login_bypass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +64,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 userLogin();
-            }
-        });
-        login_bypass = findViewById(R.id.login_bypass);
-        login_bypass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
             }
         });
 
