@@ -32,7 +32,11 @@ A platform for users to communicate, find mentors and get resources to prepare f
 #### Retrofit
 
 > Retrofit is a type-safe REST client for Android application which is a powerful framework for authenticating and interacting with APIs and sending API requests. This library used for downloading JSON  data from a web API . Once the data is downloaded then it is parsed into a Plain Old Java Object (POJO).
-![Retrofit](https://github.com/ashwin1241/PrepLite/blob/master/app/src/main/res/retrofitimg.png?raw=true)
+> ![Retrofit](https://github.com/ashwin1241/PrepLite/blob/master/app/src/main/res/retrofitimg.png?raw=true)
 #### Shared Preferances
 > Shared preferences is used to store  data in key-value pairs in a module on the android device. The Android framework manages the shared preferences modules. The module is accessible to all the components of related app, but other applications on devices are restricted to access data from the shared preferences module.
 
+#### Glide
+> Glide is an Image Loader Library for Android applications. Glide down-samples the image without loading the whole image into the memory. Due to Glide, bitmap takes less memory, and the out of memory errors can be solved.
+
+![glide](https://github.com/ashwin1241/PrepLite/blob/master/app/src/main/res/drawable/glide.png?raw=true)
