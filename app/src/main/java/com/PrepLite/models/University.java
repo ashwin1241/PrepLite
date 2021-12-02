@@ -16,7 +16,7 @@ public class University implements Parcelable {
     @SerializedName("stream_name")
     public String streamName;
 
-    @SerializedName("university_logo")
+    @SerializedName("logo")
     public String universityLogo;
 
     @SerializedName("participants")
