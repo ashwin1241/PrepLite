@@ -20,7 +20,6 @@ import com.PrepLite.R;
 
 public class ProfileSettingsActivity extends AppCompatActivity {
 
-    private Switch notifs;
     private RatingBar rating;
     private String rating_value;
     private TextView feedback;
@@ -35,7 +34,6 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(false);
         getSupportActionBar().setTitle("Settings");
 
-        notifs = findViewById(R.id.notif_switch);
         rating = findViewById(R.id.rating);
         rating_value=String.valueOf(rating.getRating());
         feedback = findViewById(R.id.feedback);

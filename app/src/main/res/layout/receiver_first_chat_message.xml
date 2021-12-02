@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/work_sans_medium"
         android:text="Your message printed here and extending it just to check the final layout"
         android:textColor="@color/black"
         android:textSize="18dp" />
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/receiver_chat_text"
         android:layout_alignParentEnd="true"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/work_sans_regular"
         android:textSize="14dp"
         android:textColor="#828282"
         android:text="28/11/2021, 17:01"/>

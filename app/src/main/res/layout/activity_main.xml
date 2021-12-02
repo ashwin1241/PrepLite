@@ -22,7 +22,7 @@
         android:layout_below="@id/logo_splashscreen"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-80dp"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/work_sans_medium"
         android:text="@string/tagline"
         android:textAlignment="center"
         android:textColor="@color/black"
