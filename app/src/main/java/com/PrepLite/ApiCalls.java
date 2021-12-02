@@ -1,6 +1,7 @@
 package com.PrepLite;
 
 import static com.PrepLite.app.Constants.ADD_COMMENT;
+import static com.PrepLite.app.Constants.CREATE_POST;
 import static com.PrepLite.app.Constants.LOGIN_USER;
 import static com.PrepLite.app.Constants.PROFILE_USER;
 import static com.PrepLite.app.Constants.REGISTER_USER;
@@ -37,6 +38,9 @@ public interface ApiCalls {
 
     @POST(VIEW_POSTS)
     Call<ServerResponse> retrievePosts();
+
+    @POST(CREATE_POST)
+    Call<ServerResponse> createPost(@Body HashMap<String, Object> post);
 
     @POST(VIEW_COMMENTS)
     Call<ServerResponse> retrieveComments(@Body HashMap<String, Integer> postId);

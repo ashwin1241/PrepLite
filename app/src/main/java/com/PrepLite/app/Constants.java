@@ -16,6 +16,7 @@ public class Constants {
     public static final String ADD_COMMENT = "addComment/";
 
     public static final String VIEW_CHATS = "viewChats/";
+    public static final String CREATE_POST = "createPost/";
 
     public static final String MICROSOFT_LOGO = "https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80660_1280.png";
     public static final String AMAZON_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png";
