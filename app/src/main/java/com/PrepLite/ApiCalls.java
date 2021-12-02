@@ -17,6 +17,7 @@ import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 
 public interface ApiCalls {
@@ -39,6 +40,7 @@ public interface ApiCalls {
     @POST(VIEW_POSTS)
     Call<ServerResponse> retrievePosts();
 
+    @Multipart
     @POST(CREATE_POST)
     Call<ServerResponse> createPost(@Body HashMap<String, Object> post);
 
