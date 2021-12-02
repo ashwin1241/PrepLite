@@ -104,6 +104,8 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
             itemView.findViewById(R.id.card_home).setOnClickListener(this);
             itemView.findViewById(R.id.card_home).setOnLongClickListener(this);
             post_comments.setOnClickListener(this);
+            username.setOnClickListener(this);
+            comp_insti.setOnClickListener(this);
         }
 
         @Override
@@ -116,6 +118,14 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
                         postListener.OnItemClicked(position, 0);
                     } else if (id == R.id.post_comments) {
                         postListener.OnCommentClicked(position, 0);
+                    }
+                    else if(id == R.id.post_layout_username)
+                    {
+                        postListener.OnItemClicked(position,1);
+                    }
+                    else if(id == R.id.post_layout_comp_insti)
+                    {
+                        postListener.OnItemClicked(position,2);
                     }
                 }
             }

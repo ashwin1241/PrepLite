@@ -21,6 +21,9 @@ import com.PrepLite.OnItemClickListener;
 import com.PrepLite.Progress;
 import com.PrepLite.R;
 import com.PrepLite.activities.CommentsActivity;
+import com.PrepLite.activities.CompanyPreviewActivity;
+import com.PrepLite.activities.InstitutePreviewActivity;
+import com.PrepLite.activities.ViewProfileActivity;
 import com.PrepLite.adapters.PostAdapterHome;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.Post;
@@ -60,10 +63,24 @@ public class FeedFragment extends Fragment {
             public void OnItemClicked(int position, int flag) {
                 super.OnItemClicked(position, flag);
                 switch (flag) {
-                    case 0:
-
-                        break;
                     case 1:
+                        Intent intent = new Intent(requireContext(), ViewProfileActivity.class);
+                        intent.putExtra("user",postList.get(position).getUser());
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        if(postList.get(position).getCompany().getCompanyName()==null)
+                        {
+                            Intent intent1 = new Intent(requireContext(), InstitutePreviewActivity.class);
+                            intent1.putExtra("university",postList.get(position).getUniversity());
+                            startActivity(intent1);
+                        }
+                        else if(postList.get(position).getUniversity().getUniversityName()==null)
+                        {
+                            Intent intent1 = new Intent(requireContext(), CompanyPreviewActivity.class);
+                            intent1.putExtra("company",postList.get(position).getCompany());
+                            startActivity(intent1);
+                        }
                         break;
                 }
             }
