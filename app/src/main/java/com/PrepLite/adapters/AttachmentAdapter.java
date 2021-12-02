@@ -1,6 +1,7 @@
 package com.PrepLite.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.at
         if(currentAttachment.isDownloadStat())
         {
             holder.downloadButton.setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
+            holder.attachmentTitle.setTextColor(Color.parseColor("#0000FF"));
         }
         else
         {

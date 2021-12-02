@@ -10,7 +10,7 @@
         android:layout_margin="10dp"
         android:padding="10dp"
         android:hint="Feedback goes here"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/work_sans_regular"
         android:textSize="20dp"/>
 
 </RelativeLayout>
