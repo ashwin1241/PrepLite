@@ -15,10 +15,12 @@ import com.PrepLite.models.ServerResponse;
 
 import java.util.HashMap;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface ApiCalls {
 
@@ -42,7 +44,10 @@ public interface ApiCalls {
 
     @Multipart
     @POST(CREATE_POST)
-    Call<ServerResponse> createPost(@Body HashMap<String, Object> post);
+    Call<ServerResponse> createPost(
+            @Body HashMap<String, Object> post,
+            @Part MultipartBody.Part file
+    );
 
     @POST(VIEW_COMMENTS)
     Call<ServerResponse> retrieveComments(@Body HashMap<String, Integer> postId);
