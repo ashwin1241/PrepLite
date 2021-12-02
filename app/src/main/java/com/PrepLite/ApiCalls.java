@@ -11,14 +11,18 @@ import static com.PrepLite.app.Constants.VIEW_COMPANIES;
 import static com.PrepLite.app.Constants.VIEW_POSTS;
 import static com.PrepLite.app.Constants.VIEW_UNIVERSITIES;
 
+import com.PrepLite.models.Attachment;
 import com.PrepLite.models.ServerResponse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface ApiCalls {
 
@@ -40,9 +44,16 @@ public interface ApiCalls {
     @POST(VIEW_POSTS)
     Call<ServerResponse> retrievePosts();
 
-    @Multipart
     @POST(CREATE_POST)
-    Call<ServerResponse> createPost(@Body HashMap<String, Object> post);
+    Call<ServerResponse> createPost(
+            @Body HashMap<String, Object> post);
+
+    @Multipart
+    @POST
+    Call<ServerResponse> uploadMaterial(
+
+            @Part ArrayList<MultipartBody.Part> attachments
+            );
 
     @POST(VIEW_COMMENTS)
     Call<ServerResponse> retrieveComments(@Body HashMap<String, Integer> postId);

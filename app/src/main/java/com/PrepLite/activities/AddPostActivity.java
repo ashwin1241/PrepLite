@@ -40,6 +40,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,6 +57,7 @@ public class AddPostActivity extends AppCompatActivity {
     private AddPostAttachmentAdapter adapter;
     private Company company;
     private University university;
+    private MultipartBody.Part multipartBody;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,16 +159,22 @@ public class AddPostActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==103&&resultCode==RESULT_OK)
+        if(requestCode == 103 && resultCode == RESULT_OK)
         {
             try
             {
+                assert data != null;
                 Uri fileData = data.getData();
                 String filePath = fileData.getPath();
+
                 String fileName = queryName(getContentResolver(),fileData);
                 attachments124.add(new Attachment(fileName,true,fileData,filePath));
                 adapter.notifyItemInserted(attachments124.size()-1);
-                //Toast.makeText(this, "File attached "+attachments124.size(), Toast.LENGTH_SHORT).show();
+
+                //File file = new File(filePath);
+
+                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), filePath);
+                multipartBody = MultipartBody.Part.createFormData("file", fileName, requestFile);
 
             }
             catch (Exception e)
@@ -193,14 +203,12 @@ public class AddPostActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.file_attachments:
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
-                startActivityForResult(Intent.createChooser(intent,"Select files: "),103);
-                return true;
-            default:return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.file_attachments) {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");
+            startActivityForResult(Intent.createChooser(intent, "Select files: "), 103);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

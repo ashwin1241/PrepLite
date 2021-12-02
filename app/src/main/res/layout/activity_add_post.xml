@@ -9,20 +9,20 @@
     >
 
     <EditText
-                android:id="@+id/add_post_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="50dp"
-                android:background="@color/white"
-                android:fontFamily="@font/amaranth"
-                android:gravity="start"
-                android:hint="Post out your brainss!!"
-                android:minLines="10"
-                android:maxLines="15"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+        android:id="@+id/add_post_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:fontFamily="@font/amaranth"
+        android:gravity="start"
+        android:hint="Post out your brainss!!"
+        android:minLines="10"
+        android:maxLines="15"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/add_post_attachment_list"
