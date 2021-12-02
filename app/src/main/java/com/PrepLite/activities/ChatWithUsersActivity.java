@@ -1,5 +1,7 @@
 package com.PrepLite.activities;
 
+import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
 import com.PrepLite.R;
 import com.PrepLite.models.ServerResponse;
+import com.PrepLite.prefs.SharedPrefs;
 
 import java.util.HashMap;
 
@@ -27,8 +30,9 @@ public class ChatWithUsersActivity extends AppCompatActivity {
     }
 
     private void retrieveUsers() {
-
         HashMap<String, Integer> map = new HashMap<>();
+        map.put("user_id", SharedPrefs.getIntParams(this, ID));
+
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveUsers(map);
         call.enqueue(new Callback<ServerResponse>() {
             @Override

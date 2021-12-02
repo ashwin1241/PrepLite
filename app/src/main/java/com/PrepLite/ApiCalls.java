@@ -6,6 +6,7 @@ import static com.PrepLite.app.Constants.DELETE_COMMENT;
 import static com.PrepLite.app.Constants.LOGIN_USER;
 import static com.PrepLite.app.Constants.PROFILE_USER;
 import static com.PrepLite.app.Constants.REGISTER_USER;
+import static com.PrepLite.app.Constants.UPDATE_PROFILE_PIC;
 import static com.PrepLite.app.Constants.UPLOAD_MATERIALS;
 import static com.PrepLite.app.Constants.VIEW_CHATS;
 import static com.PrepLite.app.Constants.VIEW_COMMENTS;
@@ -17,6 +18,7 @@ import static com.PrepLite.app.Constants.VIEW_UNIVERSITY_POSTS;
 import static com.PrepLite.app.Constants.VIEW_USERS;
 
 import com.PrepLite.models.Attachment;
+import com.PrepLite.models.ImageResponse;
 import com.PrepLite.models.ServerResponse;
 
 import java.util.ArrayList;
@@ -25,6 +27,9 @@ import java.util.HashMap;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -77,4 +82,13 @@ public interface ApiCalls {
 
     @POST(VIEW_USERS)
     Call<ServerResponse> retrieveUsers(@Body HashMap<String, Integer> userId);
+
+    @FormUrlEncoded
+    @POST("https://api.imgur.com/3/image")
+    Call<ImageResponse> postImage(@Header("Authorization") String auth,
+                                  @Field("image") String encoded);
+
+    @POST(UPDATE_PROFILE_PIC)
+    Call<ServerResponse> updateProfilePic(@Body HashMap<String, Object> map);
+
 }

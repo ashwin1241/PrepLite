@@ -4,7 +4,7 @@ import java.security.PublicKey;
 
 public class Constants {
 
-    public static final String BASE_URL = "https://a1df-2409-4070-4495-3769-147a-ea09-c36c-a590.ngrok.io";
+    public static final String BASE_URL = "https://ae1e-2409-4070-4495-3769-215b-acf5-c20a-b939.ngrok.io/";
 
     public static final String REGISTER_USER = "register/";
     public static final String LOGIN_USER = "login/";
@@ -26,6 +26,11 @@ public class Constants {
 
     public static final String VIEW_USERS = "viewUsers/";
 
+    public static final String UPDATE_PROFILE_PIC = "updateProfilePic/";
+
+    public static final String IMGUR_CLIENT_ID = "7ae967176c2283f";
+    public static final String IMGUR_CLIENT_SECRET = "573005ea0dc8cab46f642413bebeb808bc7905be";
+
     public static final String MICROSOFT_LOGO = "https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80660_1280.png";
     public static final String AMAZON_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png";
     public static final String ORACLE_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/1280px-Oracle_logo.svg.png";
@@ -43,5 +48,9 @@ public class Constants {
     public static final String CAMBRIDGE_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/University_of_Cambridge_coat_of_arms.svg/1200px-University_of_Cambridge_coat_of_arms.svg.png";
     public static final String YALE_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Yale_Bulldogs_script.svg/1045px-Yale_Bulldogs_script.svg.png";
     public static final String TSINGHUA_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Tsinghua_University_Logo.svg/1200px-Tsinghua_University_Logo.svg.png";
+
+    public static String getImgurClientId() {
+        return "Client-ID " + IMGUR_CLIENT_ID;
+    }
 
 }

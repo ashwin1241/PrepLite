@@ -3,6 +3,7 @@ package com.PrepLite.fragments;
 import static android.app.Activity.RESULT_OK;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+import static com.PrepLite.prefs.SharedPrefsConstants.IMAGE;
 import static com.PrepLite.prefs.SharedPrefsConstants.SESSION_FLAG;
 
 import android.Manifest;
@@ -37,6 +38,7 @@ import androidx.fragment.app.Fragment;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
+import com.PrepLite.ImageHelper;
 import com.PrepLite.Progress;
 import com.PrepLite.activities.HomeActivity;
 import com.PrepLite.activities.LoginActivity;
@@ -44,6 +46,8 @@ import com.PrepLite.activities.MainActivity;
 import com.PrepLite.activities.ProfileEditActivity;
 import com.PrepLite.activities.ProfileSettingsActivity;
 import com.PrepLite.R;
+import com.PrepLite.app.Constants;
+import com.PrepLite.models.ImageResponse;
 import com.PrepLite.prefs.SharedPrefs;
 import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.User;
@@ -78,8 +82,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         frag_view = inflater.inflate(R.layout.fragment_profile,container,false);
-        //progress = Progress.getProgressDialog(requireContext());
-        //Progress.showProgress(true,"Fetching Profile Details...");
+        progress = Progress.getProgressDialog(requireContext());
         settings = frag_view.findViewById(R.id.profile_settings);
 
 
@@ -185,7 +188,7 @@ public class ProfileFragment extends Fragment {
         if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(requireActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},101);
-            selectGalleryImage();
+            //selectGalleryImage();
         }
         else
         {
@@ -200,7 +203,7 @@ public class ProfileFragment extends Fragment {
         if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(requireActivity(),new String[]{Manifest.permission.CAMERA},100);
-            captureProfileImage();
+            //captureProfileImage();
         }
         else
         {
@@ -231,11 +234,14 @@ public class ProfileFragment extends Fragment {
             {
                 try
                 {
-                    cameracorrection(profileImagePath,MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(),profileImageUri));
-                    Glide.with(requireContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
-                    profileImage.setBackgroundColor(Color.parseColor("#EFFBF7"));
 
-                    //fetch path for profile image from here t upload to db or use profilePic
+                    cameracorrection(profileImagePath,MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(),profileImageUri));
+                    //Glide.with(requireContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
+                    profileImage.setBackgroundColor(Color.parseColor("#EFFBF7"));
+                    String encoded = ImageHelper.getBase64FormBitmap(ImageHelper.getBitmapFromUri(requestCode, data, requireContext()));
+                    createUpload(encoded);
+
+                    //fetch path for profile image from here to upload to db or use profilePic
                 }
                 catch (Exception e)
                 {
@@ -254,8 +260,10 @@ public class ProfileFragment extends Fragment {
             try
             {
                 profilePic = correctedBitmap(profileImageUri);
-                Glide.with(requireContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
+                //Glide.with(requireContext()).load(profileImageUri).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(profileImage);
                 profileImage.setBackgroundColor(Color.parseColor("#EFFBF7"));
+                String encoded = ImageHelper.getBase64FormBitmap(profilePic);
+                createUpload(encoded);
             }
             catch (Exception e)
             {
@@ -323,6 +331,55 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return  null;
+    }
+
+    private void updateProfilePic(String image) {
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("user_id", SharedPrefs.getIntParams(requireContext(), ID));
+        map.put("profile_image", image);
+
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).updateProfilePic(
+                map
+        );
+        call.enqueue(new Callback<ServerResponse>() {
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void createUpload(String encoded) {
+        Progress.showProgress(true, "Uploading profile, may take a while....");
+        Call<ImageResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).postImage(Constants.getImgurClientId(), encoded);
+        call.enqueue(new Callback<ImageResponse>() {
+            @Override
+            public void onResponse(Call<ImageResponse> call, Response<ImageResponse> response) {
+                ImageResponse mImageResponse = response.body();
+                if (mImageResponse != null) {
+                    if (mImageResponse.isSuccess()) {
+                        ImageResponse.UploadedImage data = mImageResponse.getData();
+                        Glide.with(requireContext()).load(data.link).into(profileImage);
+                        SharedPrefs.setStringParams(requireContext(), IMAGE, data.link);
+
+                        Progress.dismissProgress(progress);
+
+                        updateProfilePic(data.link);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ImageResponse> call, Throwable t) {
+
+            }
+        });
     }
 
 }
