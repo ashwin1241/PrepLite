@@ -121,7 +121,7 @@ public class AddPostActivity extends AppCompatActivity {
             map.put("university_id", university.getUniversityId());
         map.put("content", content);
 
-        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).createPost(map, multipartBody);
+        Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).createPost(map);
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
