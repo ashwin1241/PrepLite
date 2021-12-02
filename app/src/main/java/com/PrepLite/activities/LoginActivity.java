@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //SharedPrefs.
+
         login = findViewById(R.id.login_button);
         email = findViewById(R.id.lemail);
         password = findViewById(R.id.lpassword);
@@ -98,17 +100,18 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
 
                 ServerResponse serverResponse = response.body();
+                if (serverResponse != null) {
+                    if (!serverResponse.isError()) {
+                        SharedPrefs.setIntParams(LoginActivity.this, ID, serverResponse.getResult().getUser().getId());
 
-                if (!serverResponse.isError()) {
-                    SharedPrefs.setIntParams(LoginActivity.this, ID, serverResponse.getResult().getUser().getId());
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        Toast.makeText(LoginActivity.this, serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    Toast.makeText(LoginActivity.this, serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
-
-                } else
-                    Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                }
 
             }
 

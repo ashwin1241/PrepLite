@@ -29,13 +29,11 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
 
     private OnItemClickListener listener;
 
-    public void setOnPostCompInstiClickListener(OnItemClickListener listener)
-    {
+    public void setOnPostCompInstiClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 
-    public PostAdapterCompInsti(ArrayList<Post> posts, Context context)
-    {
+    public PostAdapterCompInsti(ArrayList<Post> posts, Context context) {
         this.posts = posts;
         this.context = context;
     }
@@ -43,8 +41,8 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
     @NonNull
     @Override
     public Post_ViewHolder12 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout_for_individual_pages,parent,false);
-        return new Post_ViewHolder12(view,listener);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_layout_for_individual_pages, parent, false);
+        return new Post_ViewHolder12(view, listener);
     }
 
     @Override
@@ -64,10 +62,9 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
                 context.startActivity(intent);
             }
         });
-        if(current_post.getPostImage().trim().length()>0)
-        Glide.with(context).load(current_post.getPostImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_pic);
-        else
-        {
+        if (current_post.getPostImage().trim().length() > 0)
+            Glide.with(context).load(current_post.getPostImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.profile_pic);
+        else {
             Glide.with(context).load(R.drawable.ic_baseline_person_24).into(holder.profile_pic);
             holder.profile_pic.setBackgroundColor(Color.parseColor("#A0A0A0"));
         }
@@ -78,8 +75,7 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
         return posts.size();
     }
 
-    public static class Post_ViewHolder12 extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener
-    {
+    public static class Post_ViewHolder12 extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         private TextView username;
         private TextView content;
         private TextView timestamp;
@@ -103,8 +99,8 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
             upvote = itemView.findViewById(R.id.post_upvote);
             downvote = itemView.findViewById(R.id.post_downvote);
 
-            itemView.findViewById(R.id.card_home).setOnClickListener(this);
-            itemView.findViewById(R.id.card_home).setOnLongClickListener(this);
+            itemView.findViewById(R.id.card_individual_page).setOnClickListener(this);
+            itemView.findViewById(R.id.card_individual_page).setOnLongClickListener(this);
 
         }
 
@@ -114,7 +110,7 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     int id = view.getId();
-                    if (id == R.id.card_home) {
+                    if (id == R.id.card_individual_page) {
                         postListener.OnItemClicked(position, 0);
                     } else if (id == R.id.post_comments) {
                         postListener.OnCommentClicked(position, 0);
@@ -129,7 +125,7 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     int id = view.getId();
-                    if (id == R.id.card_home) {
+                    if (id == R.id.card_individual_page) {
                         postListener.OnItemLongClicked(position);
                     }
                 }
@@ -137,7 +133,6 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
             return true;
         }
     }
-
 
 
 }
