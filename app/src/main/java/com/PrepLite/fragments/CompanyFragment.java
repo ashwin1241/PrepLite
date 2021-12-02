@@ -39,7 +39,6 @@ public class CompanyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
         retrieveCompanies();
 
-        companies = new ArrayList<>();
         companyAdapter = new CompanyAdapter(companies,requireContext());
         recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -61,6 +60,7 @@ public class CompanyFragment extends Fragment {
     }
 
     private void retrieveCompanies() {
+        companies = new ArrayList<>();
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveCompanies();
         call.enqueue(new Callback<ServerResponse>() {
             @Override

@@ -1,5 +1,6 @@
 package com.PrepLite.fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +41,6 @@ public class FeedFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_feed,container,false);
         retrievePosts();
 
-        postList = new ArrayList<>();
         postAdapter_home = new PostAdapterHome(postList, requireContext());
         recyclerView = view.findViewById(R.id.feed_recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -72,12 +73,19 @@ public class FeedFragment extends Fragment {
                         break;
                 }
             }
+
+            @Override
+            public void OnItemLongClicked(int position) {
+                //need to add backend code here to check if the user is the one who posted this post
+                deletePost(position);
+            }
         });
 
         return view;
     }
 
     private void retrievePosts() {
+        postList = new ArrayList<>();
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrievePosts();
         call.enqueue(new Callback<ServerResponse>() {
             @Override
@@ -96,6 +104,28 @@ public class FeedFragment extends Fragment {
 
             }
         });
+    }
+
+    private void deletePost(int position)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Delete Post")
+                .setMessage("Are you sure you want to delete this post?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //backend code to actually delete this post
+                        postList.remove(i);
+                        postAdapter_home.notifyItemRemoved(position);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        builder.create().show();
     }
 
 }

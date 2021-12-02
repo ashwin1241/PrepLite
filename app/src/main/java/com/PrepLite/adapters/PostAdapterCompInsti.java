@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.CommentsActivity;
 import com.PrepLite.R;
 import com.PrepLite.models.Post;
@@ -25,6 +26,13 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
 
     ArrayList<Post> posts;
     Context context;
+
+    private OnItemClickListener listener;
+
+    public void setOnPostCompInstiClickListener(OnItemClickListener listener)
+    {
+        this.listener = listener;
+    }
 
     public PostAdapterCompInsti(ArrayList<Post> posts, Context context)
     {
