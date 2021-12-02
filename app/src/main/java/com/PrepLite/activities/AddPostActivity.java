@@ -2,11 +2,14 @@ package com.PrepLite.activities;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,8 @@ public class AddPostActivity extends AppCompatActivity {
     private TextView send_post;
     private EditText post_content;
     private String content;
+    private ImageButton addAttachments;
+    private String attachments;
 
     private Company company;
     private University university;
@@ -54,6 +59,15 @@ public class AddPostActivity extends AppCompatActivity {
                     return;
                 }
                 addPost(content, company, university);
+            }
+        });
+        addAttachments = findViewById(R.id.file_attachments);
+        addAttachments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("*/*");
+                startActivityForResult(Intent.createChooser(intent,"Select files: "),103);
             }
         });
 
@@ -88,4 +102,12 @@ public class AddPostActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==103&&resultCode==RESULT_OK)
+        {
+
+        }
+    }
 }
