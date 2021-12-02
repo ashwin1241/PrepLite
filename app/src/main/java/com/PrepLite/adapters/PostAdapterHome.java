@@ -61,19 +61,16 @@ public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_V
         String dateString = simpleDateFormat.format(Long.parseLong(current_post.getTimestamp())*1000);
         holder.timestamp.setText(dateString);
 
-        //holder.comp_insti.setText(current_post.());
-
-//        if(current_post.getPostImage().trim().length()>0)
-//        Glide.with(context).load(current_post.getPostImage()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
-//        else
-//        {
-//            if(!current_post.getCompany().getCompanyName().isEmpty())
-//                Glide.with(context).load(R.drawable.ic_baseline_work_24).into(holder.compinstilogo);
-//            else if(!current_post.getUniversity().getUniversityName().isEmpty())
-//                Glide.with(context).load(R.drawable.ic_baseline_institute_40).into(holder.compinstilogo);
-//            else
-//                holder.compinstilogo.setBackgroundColor(Color.parseColor("#A0A0A0"));
-//        }
+        if(company.getCompanyName()==null)
+        {
+            holder.comp_insti.setText(university.getUniversityName());
+            Glide.with(context).load(university.getUniversityLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
+        }
+        else if(university.getUniversityName()==null)
+        {
+            holder.comp_insti.setText(company.getCompanyName());
+            Glide.with(context).load(company.getCompanyLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.compinstilogo);
+        }
     }
 
     @Override
