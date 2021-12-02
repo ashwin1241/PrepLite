@@ -4,6 +4,8 @@ import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -20,7 +22,10 @@ import android.widget.Toast;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
+import com.PrepLite.adapters.AddPostAttachmentAdapter;
+import com.PrepLite.models.Attachment;
 import com.PrepLite.models.Company;
 import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.University;
@@ -43,8 +48,9 @@ public class AddPostActivity extends AppCompatActivity {
     private ImageButton addAttachments;
     private String attachments="";
     private ArrayList<String> attachmentList;
-    private TextView attachmentTextView;
-
+    private ArrayList<Attachment> attachments124;
+    private RecyclerView recyclerView;
+    private AddPostAttachmentAdapter adapter;
     private Company company;
     private University university;
 
@@ -55,8 +61,11 @@ public class AddPostActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Create a Post");
 
         attachmentList = new ArrayList<>();
+        attachments124 = new ArrayList<>();
         company = getIntent().getParcelableExtra("company");
         university = getIntent().getParcelableExtra("university");
+
+        buildrecyclerView();
 
         post_content = findViewById(R.id.add_post_et);
         send_post = findViewById(R.id.add_post_post);
@@ -72,7 +81,7 @@ public class AddPostActivity extends AppCompatActivity {
                 addPost(content, company, university);
             }
         });
-        attachmentTextView = findViewById(R.id.add_post_attachment_list);
+
         addAttachments = findViewById(R.id.file_attachments);
         addAttachments.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +92,24 @@ public class AddPostActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void buildrecyclerView()
+    {
+        recyclerView = findViewById(R.id.add_post_attachment_list);
+        adapter = new AddPostAttachmentAdapter(attachments124,this);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListenerAttachment(new OnItemClickListener() {
+            @Override
+            public void onItemClicked(int position) {
+                attachments124.remove(position);
+                attachmentList.remove(position);
+                adapter.notifyItemRemoved(position);
+            }
+        });
     }
 
     private void addPost(String content, Company company, University university) {
@@ -125,8 +152,10 @@ public class AddPostActivity extends AppCompatActivity {
                 String filePath = fileData.getPath();
                 String fileName = queryName(getContentResolver(),fileData);
                 attachments+=fileName+"\n";
-                attachmentTextView.setText(attachments);
+                attachments124.add(new Attachment(fileName,true,fileData,filePath));
                 attachmentList.add(filePath);
+                adapter.notifyItemInserted(attachments124.size()-1);
+                Toast.makeText(this, "File attached "+attachments124.size(), Toast.LENGTH_SHORT).show();
 
             }
             catch (Exception e)

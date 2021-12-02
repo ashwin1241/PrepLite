@@ -23,7 +23,7 @@ public class AddPostAttachmentAdapter extends RecyclerView.Adapter<AddPostAttach
 
     private OnItemClickListener listener;
 
-    private void setOnItemClickListenerAttachment(OnItemClickListener listener)
+    public void setOnItemClickListenerAttachment(OnItemClickListener listener)
     {
         this.listener = listener;
     }
