@@ -89,6 +89,17 @@ public class InstitutePreviewActivity extends AppCompatActivity {
                 //need to add backend code here to check if the user is the one who posted this post
                 deletePost(position);
             }
+
+            @Override
+            public void OnItemClicked(int position, int flag) {
+                super.OnItemClicked(position, flag);
+                if(flag==0)
+                {
+                    Intent intent = new Intent(InstitutePreviewActivity.this,ViewProfileActivity.class);
+                    intent.putExtra("user",post_List.get(position).getUser());
+                    startActivity(intent);
+                }
+            }
         });
 
 

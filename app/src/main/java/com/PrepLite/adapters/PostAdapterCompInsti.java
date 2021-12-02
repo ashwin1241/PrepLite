@@ -92,6 +92,7 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
             itemView.findViewById(R.id.card_individual_page).setOnLongClickListener(this);
 
             post_comments.setOnClickListener(this);
+            username.setOnClickListener(this);
 
         }
 
@@ -105,6 +106,10 @@ public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompIn
                         postListener.OnItemClicked(position, 0);
                     } else if (id == R.id.post_comments) {
                         postListener.OnCommentClicked(position, 0);
+                    }
+                    else if(id == R.id.post_layout_username)
+                    {
+                        postListener.OnItemClicked(position,1);
                     }
                 }
             }

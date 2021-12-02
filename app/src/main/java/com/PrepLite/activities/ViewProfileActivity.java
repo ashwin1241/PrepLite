@@ -8,19 +8,18 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.PrepLite.R;
+import com.PrepLite.models.User;
 
 public class ViewProfileActivity extends AppCompatActivity {
 
-    private TextView user_companies;
-    private TextView user_institutes;
+    private TextView Name;
+    private TextView batch;
     private TextView user_posts;
     private TextView send_messages;
     private String userImagePath;
     private ImageView userImage;
     private Uri userImageUri;
-
-
-
+    private User user;
 
 
     @Override
@@ -28,24 +27,11 @@ public class ViewProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
 
+        user = getIntent().getParcelableExtra("user");
 
-        user_companies= findViewById(R.id.user_companies);
-        user_institutes=findViewById(R.id.user_institutes);
-        user_posts= findViewById(R.id.user_posts);
-        send_messages=findViewById(R.id.send_messages);
-        userImage=findViewById(R.id.user_pic);
-
-
-
-
-
-
-
-
-
-
-
-
+        user_posts= findViewById(R.id.user_posts_view);
+        send_messages=findViewById(R.id.send_messages_view);
+        userImage=findViewById(R.id.profile_pic);
 
 
 

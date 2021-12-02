@@ -121,7 +121,7 @@
                             android:background="#dedede"/>
 
                         <TextView
-                            android:id="@+id/username_profile"
+                            android:id="@+id/batch_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/name_separator"
@@ -131,7 +131,7 @@
                             android:fontFamily="@font/work_sans_medium"
                             android:maxWidth="160dp"
                             android:maxLines="1"
-                            android:text="@string/username"
+                            android:text="Batch"
                             android:textColor="#FF9900"
                             android:textSize="18dp"
                             android:textStyle="italic" />
@@ -140,7 +140,7 @@
                             android:id="@+id/user_name_separator"
                             android:layout_width="match_parent"
                             android:layout_height="3dp"
-                            android:layout_below="@id/username_profile"
+                            android:layout_below="@id/batch_profile"
                             android:layout_marginStart="5dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginTop="5dp"
@@ -216,50 +216,10 @@
             app:drawableStartCompat="@drawable/user32" />
 
         <TextView
-            android:id="@+id/my_companies"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edit_profile"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/profile_textview"
-            android:drawablePadding="40dp"
-            android:elevation="10dp"
-            android:fontFamily="@font/work_sans_medium"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:text="@string/my_companies"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:drawableStartCompat="@drawable/briefcase32" />
-
-        <TextView
-            android:id="@+id/my_institutes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/my_companies"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/profile_textview"
-            android:drawablePadding="40dp"
-            android:elevation="10dp"
-            android:fontFamily="@font/work_sans_medium"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:paddingStart="20dp"
-            android:text="@string/my_institutes"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:drawableStartCompat="@drawable/university" />
-
-        <TextView
             android:id="@+id/my_posts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/my_institutes"
+            android:layout_below="@id/edit_profile"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"

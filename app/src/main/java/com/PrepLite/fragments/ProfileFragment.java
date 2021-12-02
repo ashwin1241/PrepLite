@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
@@ -37,10 +36,7 @@ import androidx.fragment.app.Fragment;
 
 import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
-import com.PrepLite.Progress;
-import com.PrepLite.activities.HomeActivity;
 import com.PrepLite.activities.LoginActivity;
-import com.PrepLite.activities.MainActivity;
 import com.PrepLite.activities.ProfileEditActivity;
 import com.PrepLite.activities.ProfileSettingsActivity;
 import com.PrepLite.R;
@@ -51,7 +47,6 @@ import com.bumptech.glide.Glide;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -139,7 +134,7 @@ public class ProfileFragment extends Fragment {
         });
 
         name = frag_view.findViewById(R.id.full_name_profile);
-        username = frag_view.findViewById(R.id.username_profile);
+        username = frag_view.findViewById(R.id.batch_profile);
         email = frag_view.findViewById(R.id.email_profile);
         contact = frag_view.findViewById(R.id.contact_profile);
         return frag_view;
