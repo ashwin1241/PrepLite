@@ -1,6 +1,7 @@
 package com.PrepLite.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.models.University;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -41,13 +43,12 @@ public class InstiAdapter extends RecyclerView.Adapter<InstiAdapter.Insti_ViewHo
     public void onBindViewHolder(@NonNull Insti_ViewHolder holder, int position) {
         final University university = universities.get(position);
         holder.universityTitle.setText(university.getUniversityName());
-//        if(university.getUniversityLogo().trim().length()>0)
-//        Glide.with(context).load(university.getUniversityLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.universityImage);
-//        else
-//        {
-//            Glide.with(context).load(R.drawable.ic_baseline_institute_40).into(holder.universityImage);
-//            holder.universityImage.setBackgroundColor(Color.parseColor("#A0A0A0"));
-//        }
+        if (university.getUniversityLogo().trim().length() > 0)
+            Glide.with(context).load(university.getUniversityLogo()).placeholder(R.drawable.ic_baseline_hourglass_top_24).into(holder.universityImage);
+        else {
+            Glide.with(context).load(R.drawable.ic_baseline_institute_40).into(holder.universityImage);
+            holder.universityImage.setBackgroundColor(Color.parseColor("#A0A0A0"));
+        }
 
     }
 
