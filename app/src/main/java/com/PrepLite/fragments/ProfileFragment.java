@@ -2,7 +2,11 @@ package com.PrepLite.fragments;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.PrepLite.prefs.SharedPrefsConstants.BATCH;
+import static com.PrepLite.prefs.SharedPrefsConstants.EMAIL;
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+import static com.PrepLite.prefs.SharedPrefsConstants.NAME;
+import static com.PrepLite.prefs.SharedPrefsConstants.PHONE;
 import static com.PrepLite.prefs.SharedPrefsConstants.SESSION_FLAG;
 
 import android.Manifest;
@@ -74,7 +78,11 @@ public class ProfileFragment extends Fragment {
         frag_view = inflater.inflate(R.layout.fragment_profile,container,false);
         //progress = Progress.getProgressDialog(requireContext());
         //Progress.showProgress(true,"Fetching Profile Details...");
+
+
+
         //getProfile();
+
 
         logout = frag_view.findViewById(R.id.logout_button_profile);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +133,12 @@ public class ProfileFragment extends Fragment {
         username = frag_view.findViewById(R.id.batch_profile);
         email = frag_view.findViewById(R.id.email_profile);
         contact = frag_view.findViewById(R.id.contact_profile);
+
+        name.setText(SharedPrefs.getStringParams(requireContext(), NAME, ""));
+        username.setText(SharedPrefs.getStringParams(requireContext(), BATCH, ""));
+        contact.setText(SharedPrefs.getStringParams(requireContext(), PHONE, ""));
+        email.setText(SharedPrefs.getStringParams(requireContext(), EMAIL, ""));
+
         return frag_view;
     }
 

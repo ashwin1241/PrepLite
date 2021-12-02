@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPrefs.setStringParams(LoginActivity.this, EMAIL, serverResponse.getResult().getUser().getEmail());
                         SharedPrefs.setStringParams(LoginActivity.this, BATCH, serverResponse.getResult().getUser().getBatch());
                         SharedPrefs.setStringParams(LoginActivity.this, ALUMNI, serverResponse.getResult().getUser().getUsername());
-                        SharedPrefs.setStringParams(LoginActivity.this, PHONE, serverResponse.getResult().getUser().getUsername());
+                        SharedPrefs.setStringParams(LoginActivity.this, PHONE, serverResponse.getResult().getUser().getPhone());
                         SharedPrefs.setStringParams(LoginActivity.this, IMAGE, serverResponse.getResult().getUser().getProfileImage());
 
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);

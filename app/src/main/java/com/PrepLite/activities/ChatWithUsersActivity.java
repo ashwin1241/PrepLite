@@ -1,5 +1,7 @@
 package com.PrepLite.activities;
 
+import static com.PrepLite.prefs.SharedPrefsConstants.ID;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,7 @@ import com.PrepLite.R;
 import com.PrepLite.adapters.ChatDisplayAdapter;
 import com.PrepLite.models.Chat;
 import com.PrepLite.models.ServerResponse;
+import com.PrepLite.prefs.SharedPrefs;
 import com.PrepLite.models.User;
 
 import java.util.ArrayList;
@@ -43,8 +46,9 @@ public class ChatWithUsersActivity extends AppCompatActivity {
     }
 
     private void retrieveUsers() {
-
         HashMap<String, Integer> map = new HashMap<>();
+        map.put("user_id", SharedPrefs.getIntParams(this, ID));
+
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveUsers(map);
         call.enqueue(new Callback<ServerResponse>() {
             @Override

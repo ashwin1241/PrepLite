@@ -2,6 +2,8 @@ package com.PrepLite;
 
 import static com.PrepLite.app.Constants.BASE_URL;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -20,7 +22,7 @@ public class Client {
             if (BuildConfig.DEBUG) {
                 builder.addInterceptor(interceptor);
             }
-
+            builder.callTimeout(30, TimeUnit.SECONDS);
             retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(BASE_URL)
