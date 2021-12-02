@@ -39,6 +39,7 @@ public class InstituteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_compinstichat, container, false);
         retrieveUniversities();
 
+        universities = new ArrayList<>();
         instiAdapter = new InstiAdapter(universities, requireContext());
         recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -51,8 +52,7 @@ public class InstituteFragment extends Fragment {
             public void onItemClicked(int position) {
                 super.onItemClicked(position);
                 Intent intent = new Intent(requireContext(), InstitutePreviewActivity.class);
-                intent.putExtra("name", universities.get(position).getUniversityName());
-                intent.putExtra("logo", universities.get(position).getUniversityLogo());
+                intent.putExtra("university", universities.get(position));
                 startActivity(intent);
             }
         });
@@ -61,7 +61,7 @@ public class InstituteFragment extends Fragment {
     }
 
     private void retrieveUniversities() {
-        universities = new ArrayList<>();
+
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrieveUniversities();
         call.enqueue(new Callback<ServerResponse>() {
             @Override

@@ -1,8 +1,11 @@
 package com.PrepLite.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class University {
+public class University implements Parcelable {
 
     @SerializedName("university_id")
     public int universityId;
@@ -36,6 +39,26 @@ public class University {
     public University(String universityName) {
         this.universityName = universityName;
     }
+
+    protected University(Parcel in) {
+        universityId = in.readInt();
+        universityName = in.readString();
+        streamName = in.readString();
+        universityLogo = in.readString();
+        participants = in.readInt();
+    }
+
+    public static final Creator<University> CREATOR = new Creator<University>() {
+        @Override
+        public University createFromParcel(Parcel in) {
+            return new University(in);
+        }
+
+        @Override
+        public University[] newArray(int size) {
+            return new University[size];
+        }
+    };
 
     public int getUniversityId() {
         return universityId;
@@ -75,5 +98,19 @@ public class University {
 
     public void setParticipants(int participants) {
         this.participants = participants;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(universityId);
+        parcel.writeString(universityName);
+        parcel.writeString(streamName);
+        parcel.writeString(universityLogo);
+        parcel.writeInt(participants);
     }
 }

@@ -29,8 +29,7 @@ public class InstitutePreviewActivity extends AppCompatActivity {
     private PostAdapterCompInsti postAdapter_compInsti;
     private ArrayList<Post> post_List;
     private Toolbar toolbar;
-    private String title;
-    private String logo;
+    private University university;
     private ImageView insti_logo;
     private ImageButton add_post;
     private ImageButton attachments;
@@ -43,13 +42,12 @@ public class InstitutePreviewActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_title_insti);
         setSupportActionBar(toolbar);
 
-        title = getIntent().getStringExtra("name");
-        logo = getIntent().getStringExtra("logo");
+        university = getIntent().getParcelableExtra("university");
 
         insti_logo = findViewById(R.id.toolbar_image_insti);
-        Glide.with(this).load(logo).fitCenter().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(insti_logo);
+        Glide.with(this).load(university.getUniversityLogo()).fitCenter().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(insti_logo);
 
-        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setTitle(university.getUniversityName());
         getSupportActionBar().setHomeButtonEnabled(false);
 
         buildrecyclerView();
@@ -59,6 +57,7 @@ public class InstitutePreviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(InstitutePreviewActivity.this,AddPostActivity.class);
+                intent.putExtra("university", university);
                 startActivity(intent);
             }
         });

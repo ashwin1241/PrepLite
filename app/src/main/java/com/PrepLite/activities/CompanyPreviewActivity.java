@@ -30,8 +30,7 @@ public class CompanyPreviewActivity extends AppCompatActivity {
     private PostAdapterCompInsti postAdapter_compInsti;
     private ArrayList<Post> post_List;
     private Toolbar toolbar;
-    private String title;
-    private String logo;
+    private Company company;
     private ImageView company_logo;
     private ImageButton add_post;
     private ImageButton attachments;
@@ -44,13 +43,12 @@ public class CompanyPreviewActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_title_company);
         setSupportActionBar(toolbar);
 
-        title = getIntent().getStringExtra("name");
-        logo = getIntent().getStringExtra("logo");
+        company = getIntent().getParcelableExtra("company");
 
         company_logo = findViewById(R.id.toolbar_image_company);
-        Glide.with(this).load(logo).fitCenter().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(company_logo);
+        Glide.with(this).load(company.getCompanyLogo()).fitCenter().placeholder(R.drawable.ic_baseline_hourglass_top_24).into(company_logo);
 
-        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setTitle(company.getCompanyName());
         getSupportActionBar().setHomeButtonEnabled(false);
 
         buildrecyclerView();
@@ -60,6 +58,7 @@ public class CompanyPreviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CompanyPreviewActivity.this,AddPostActivity.class);
+                intent.putExtra("company", company);
                 startActivity(intent);
             }
         });
