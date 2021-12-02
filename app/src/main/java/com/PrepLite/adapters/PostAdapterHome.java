@@ -2,13 +2,11 @@ package com.PrepLite.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,20 +18,19 @@ import com.PrepLite.models.Company;
 import com.PrepLite.models.Post;
 import com.PrepLite.models.University;
 import com.PrepLite.models.User;
-import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class postAdapter_Home extends RecyclerView.Adapter<postAdapter_Home.Post_ViewHolder> {
+public class PostAdapterHome extends RecyclerView.Adapter<PostAdapterHome.Post_ViewHolder> {
 
     ArrayList<Post> posts;
     Context context;
     OnItemClickListener listener;
 
-    public postAdapter_Home(ArrayList<Post> posts, Context context)
+    public PostAdapterHome(ArrayList<Post> posts, Context context)
     {
         this.posts = posts;
         this.context = context;

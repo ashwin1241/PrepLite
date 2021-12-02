@@ -14,12 +14,12 @@ import com.PrepLite.models.ChatP2P;
 
 import java.util.ArrayList;
 
-public class chatMainAdapter extends RecyclerView.Adapter{
+public class ChatMainAdapter extends RecyclerView.Adapter{
 
     private ArrayList<ChatP2P> messageList;
     private Context context;
 
-    public chatMainAdapter(ArrayList<ChatP2P> messageList, Context context) {
+    public ChatMainAdapter(ArrayList<ChatP2P> messageList, Context context) {
         this.messageList = messageList;
         this.context = context;
     }

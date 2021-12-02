@@ -5,13 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
-import com.PrepLite.adapters.attachmentAdapter;
+import com.PrepLite.adapters.AttachmentAdapter;
 import com.PrepLite.models.Attachment;
 
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ public class CompInstiAttachmentsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ArrayList<Attachment> attachmentList;
-    private attachmentAdapter attachmentAdapter;
+    private AttachmentAdapter attachmentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class CompInstiAttachmentsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.attachments_recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        attachmentAdapter = new attachmentAdapter(attachmentList,this);
+        attachmentAdapter = new AttachmentAdapter(attachmentList,this);
         recyclerView.setAdapter(attachmentAdapter);
 
         attachmentAdapter.setOnAttachmentClickListener(new OnItemClickListener() {

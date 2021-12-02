@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.CommentsActivity;
 import com.PrepLite.R;
 import com.PrepLite.models.Post;
@@ -21,12 +22,19 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
-public class postAdapter_CompInsti extends RecyclerView.Adapter<postAdapter_CompInsti.Post_ViewHolder12> {
+public class PostAdapterCompInsti extends RecyclerView.Adapter<PostAdapterCompInsti.Post_ViewHolder12> {
 
     ArrayList<Post> posts;
     Context context;
 
-    public postAdapter_CompInsti(ArrayList<Post> posts, Context context)
+    private OnItemClickListener listener;
+
+    public void setOnPostCompInstiClickListener(OnItemClickListener listener)
+    {
+        this.listener = listener;
+    }
+
+    public PostAdapterCompInsti(ArrayList<Post> posts, Context context)
     {
         this.posts = posts;
         this.context = context;

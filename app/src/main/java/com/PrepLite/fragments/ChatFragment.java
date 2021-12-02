@@ -19,7 +19,7 @@ import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.activities.ChatActivity;
 import com.PrepLite.R;
-import com.PrepLite.adapters.chatDisplayAdapter;
+import com.PrepLite.adapters.ChatDisplayAdapter;
 import com.PrepLite.models.Chat;
 import com.PrepLite.models.ServerResponse;
 import com.PrepLite.prefs.SharedPrefs;
@@ -34,17 +34,16 @@ import retrofit2.Response;
 public class ChatFragment extends Fragment {
 
     private ArrayList<Chat> chatList;
-    private chatDisplayAdapter chatDisplayAdapter;
+    private ChatDisplayAdapter chatDisplayAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_compinstichat,container,false);
         retrieveChats();
-
         chatList = new ArrayList<>();
         RecyclerView recyclerView = view.findViewById(R.id.compinatichat_recyclerView);
-        chatDisplayAdapter = new chatDisplayAdapter(chatList, requireContext());
+        chatDisplayAdapter = new ChatDisplayAdapter(chatList,requireContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(chatDisplayAdapter);
@@ -58,6 +57,7 @@ public class ChatFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         return view;
     }
 

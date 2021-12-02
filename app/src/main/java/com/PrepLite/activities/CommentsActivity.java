@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -17,7 +16,7 @@ import com.PrepLite.ApiCalls;
 import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
-import com.PrepLite.adapters.commentAdapter;
+import com.PrepLite.adapters.CommentAdapter;
 import com.PrepLite.models.Comment;
 import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.User;
@@ -33,7 +32,7 @@ public class CommentsActivity extends AppCompatActivity {
 
     private ArrayList<Comment> comment_list;
     private RecyclerView recyclerView;
-    private commentAdapter commentAdapter;
+    private CommentAdapter commentAdapter;
     private String date;
     private String time;
     private ImageButton comment_send;
@@ -54,7 +53,7 @@ public class CommentsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.comments_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        commentAdapter = new commentAdapter(comment_list, this);
+        commentAdapter = new CommentAdapter(comment_list, this);
         recyclerView.setAdapter(commentAdapter);
 
         comment = findViewById(R.id.comment_text);

@@ -1,8 +1,6 @@
 package com.PrepLite.fragments;
 
-import static com.PrepLite.app.Constants.AMAZON_LOGO;
-import static com.PrepLite.app.Constants.CISCO_LOGO;
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +19,7 @@ import com.PrepLite.Client;
 import com.PrepLite.OnItemClickListener;
 import com.PrepLite.R;
 import com.PrepLite.activities.CommentsActivity;
-import com.PrepLite.adapters.postAdapter_Home;
+import com.PrepLite.adapters.PostAdapterHome;
 import com.PrepLite.models.Post;
 import com.PrepLite.models.ServerResponse;
 
@@ -33,7 +32,7 @@ import retrofit2.Response;
 public class FeedFragment extends Fragment {
 
     private ArrayList<Post> postList;
-    private postAdapter_Home postAdapter_home;
+    private PostAdapterHome postAdapter_home;
 
     @Nullable
     @Override
@@ -42,7 +41,7 @@ public class FeedFragment extends Fragment {
         retrievePosts();
 
         postList = new ArrayList<>();
-        postAdapter_home = new postAdapter_Home(postList, requireContext());
+        postAdapter_home = new PostAdapterHome(postList, requireContext());
         RecyclerView recyclerView = view.findViewById(R.id.feed_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -74,12 +73,19 @@ public class FeedFragment extends Fragment {
                         break;
                 }
             }
+
+            @Override
+            public void OnItemLongClicked(int position) {
+                //need to add backend code here to check if the user is the one who posted this post
+                deletePost(position);
+            }
         });
 
         return view;
     }
 
     private void retrievePosts() {
+        postList = new ArrayList<>();
         Call<ServerResponse> call = Client.getRetrofitInstance().create(ApiCalls.class).retrievePosts();
         call.enqueue(new Callback<ServerResponse>() {
             @Override
@@ -98,6 +104,28 @@ public class FeedFragment extends Fragment {
 
             }
         });
+    }
+
+    private void deletePost(int position)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Delete Post")
+                .setMessage("Are you sure you want to delete this post?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //backend code to actually delete this post
+                        postList.remove(i);
+                        postAdapter_home.notifyItemRemoved(position);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        builder.create().show();
     }
 
 }

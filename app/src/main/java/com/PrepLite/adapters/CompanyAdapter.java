@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_ViewHolder> {
+public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.Company_ViewHolder> {
 
     ArrayList<Company> companydata;
     Context context;
@@ -29,7 +29,7 @@ public class companyAdapter extends RecyclerView.Adapter<companyAdapter.Company_
         this.listener = listener;
     }
 
-    public companyAdapter(ArrayList<Company> companydata, Context activity) {
+    public CompanyAdapter(ArrayList<Company> companydata, Context activity) {
 
         this.companydata = companydata;
         this.context = activity;
