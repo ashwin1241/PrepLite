@@ -154,6 +154,7 @@ public class ProfileFragment extends Fragment {
     private void logout_action()
     {
         SharedPrefs.clearPrefsEditor(requireContext());
+        SharedPrefs.setIntParams(requireContext(), ID, -1);
         Intent intent = new Intent(requireContext(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
