@@ -84,7 +84,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
         android:background="@drawable/add_custom_button_shape"
-        android:src="@drawable/ic_baseline_attach_file_24"
+        android:src="@drawable/ic_baseline_insert_drive_file_24"
         android:elevation="10dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

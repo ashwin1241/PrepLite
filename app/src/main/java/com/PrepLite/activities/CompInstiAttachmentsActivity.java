@@ -34,10 +34,10 @@ public class CompInstiAttachmentsActivity extends AppCompatActivity {
     private void buildRecyclerView()
     {
         attachmentList = new ArrayList<>();
-        attachmentList.add(new Attachment("File1.pdf",true,null));
-        attachmentList.add(new Attachment("File1.txt",false,null));
-        attachmentList.add(new Attachment("File1.ppt",false,null));
-        attachmentList.add(new Attachment("File1.docx",false,null));
+        attachmentList.add(new Attachment("File1.pdf",true,null,""));
+        attachmentList.add(new Attachment("File1.txt",false,null,""));
+        attachmentList.add(new Attachment("File1.ppt",false,null,""));
+        attachmentList.add(new Attachment("File1.docx",false,null,""));
         recyclerView = findViewById(R.id.attachments_recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

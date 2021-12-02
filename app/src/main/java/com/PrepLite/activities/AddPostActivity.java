@@ -2,11 +2,18 @@ package com.PrepLite.activities;
 
 import static com.PrepLite.prefs.SharedPrefsConstants.ID;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +26,9 @@ import com.PrepLite.models.ServerResponse;
 import com.PrepLite.models.University;
 import com.PrepLite.prefs.SharedPrefs;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -30,6 +40,10 @@ public class AddPostActivity extends AppCompatActivity {
     private TextView send_post;
     private EditText post_content;
     private String content;
+    private ImageButton addAttachments;
+    private String attachments="";
+    private ArrayList<String> attachmentList;
+    private TextView attachmentTextView;
 
     private Company company;
     private University university;
@@ -40,6 +54,7 @@ public class AddPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_post);
         getSupportActionBar().setTitle("Create a Post");
 
+        attachmentList = new ArrayList<>();
         company = getIntent().getParcelableExtra("company");
         university = getIntent().getParcelableExtra("university");
 
@@ -53,7 +68,18 @@ public class AddPostActivity extends AppCompatActivity {
                     Toast.makeText(AddPostActivity.this, "Cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                //use this attachmentList to upload the file(s) (pdf/ppt/docx/txt/etc..)
                 addPost(content, company, university);
+            }
+        });
+        attachmentTextView = findViewById(R.id.add_post_attachment_list);
+        addAttachments = findViewById(R.id.file_attachments);
+        addAttachments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                startActivityForResult(Intent.createChooser(intent,"Select files: "),103);
             }
         });
 
@@ -86,6 +112,39 @@ public class AddPostActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==103&&resultCode==RESULT_OK)
+        {
+            try
+            {
+                Uri fileData = data.getData();
+                String filePath = fileData.getPath();
+                String fileName = queryName(getContentResolver(),fileData);
+                attachments+=fileName+"\n";
+                attachmentTextView.setText(attachments);
+                attachmentList.add(filePath);
+
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private String queryName(ContentResolver resolver, Uri uri) {
+        Cursor returnCursor =
+                resolver.query(uri, null, null, null, null);
+        assert returnCursor != null;
+        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        returnCursor.moveToFirst();
+        String name = returnCursor.getString(nameIndex);
+        returnCursor.close();
+        return name;
     }
 
 }
